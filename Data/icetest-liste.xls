@@ -1,0 +1,256 @@
+STA	FEIFID	Name_First	Name_Last	Birthday	City	Name_Horse	T1	T2	T3	T4	V1	F1	V2	F2
+1	IS2006187766	Jeanette Holst	Gohn	07/08/1979	Ringsted	Blossi frá Efri-Gegnishólum				1R				1R
+2	IS2003156302	Mie	Ravn	04/09/1985	Støvring	Vilji frá Leysingjastöðum II	1				1			
+3	IS2006225118	Maja Nymann	Blitskov	09/10/1997	Hillerød	Folda frá Dallandi	1				1			
+4	IS2004176173	Maja Nymann	Blitskov	09/10/1997	Hillerød	Ljóni frá Ketilsstöðum						1		
+5	DK2004205320	Maja Nymann	Blitskov	09/10/1997	Hillerød	Köllun fra Nord								1R
+6	DK2007106044	Michelle Munkholm	Andersen	08/03/1999	Holstebro	Gyllir fra Lipo	1				1			
+7	IS2005165247	Tine	Terkildsen	21/02/1965	Fredensborg	Hrímnir frá Ósi	1				1			
+8	DK2008108893	Amalie	Møller-San Pedro	22/04/1994	Helsinge	Viktor fra Bækkegården		1				1		
+9	IS2009158600	Amalie	Møller-San Pedro	22/04/1994	Helsinge	Fengur frá Flugumýri			1R				1L	
+10	IS2009286808	Anne Sofie	Nielsen	21/02/1965	Fredensborg	Salka frá Lækjarbotnum		1				1		
+11	DK2000200000	Charlotte	Cook	24/01/1978	Græsted	Hest fra Bakkeholm	1					1		
+12	DK2000200000	Charlotte	Cook	24/01/1978	Græsted	Hest fra Bakkeholm	1				1			
+13	IS2009156955	Emma	Hannover	10/05/1995	Klampenborg	Styrmir frá Skagaströnd		1				1		
+14	IS2007155250	Laura	Hannover	10/05/1995	Klampenborg	Fylkir frá Efri-Þverá	1							
+15	IS2008176238	Laura	Hannover	10/05/1995	Klampenborg	Askur frá Lönguhlíð					1			
+16	DK2008102550	Katrine	Skrubbeltrang	30/10/1986	Frederikshavn	Isak fra Rendborg	1					1		
+17	IS2010225145	Anne	Balslev	16/05/1981	Herfølge	Gæfa frá Grímsstöðum			1R					
+18	IS2007187812	Anne	Balslev	16/05/1981	Herfølge	Björgúlfur frá Blesastöðum 1A	1				1			
+19	IS2006165679	Anne	Balslev	16/05/1981	Herfølge	Kolgrímur frá Akureyri						1		
+20	IS2010137637	Anne	Balslev	16/05/1981	Herfølge	Drösull frá Brautarholti	1							
+21	IS2010187807	Anne	Balslev	16/05/1981	Herfølge	Flaumur frá Blesastöðum 1A				1L			1R	
+22	IS2007225698	Johanna	Beuk	27/01/1995	Dahlenburg	Kilja frá Grindavík	1					1		
+23	DE2002134221	Johanna	Beuk	27/01/1995	Dahlenburg	Tígull vom Kronshof					1			
+24	IS2001186752	Kristian	Jørgensen	30/06/1980	Frederikshavn	Sambó frá Skarði		1				1		
+25	DK2009100051	Anne Stine	Haugen	18/06/1985	Silkeborg	Draumur fra Høje Sandbjerggård			1L				1L	
+26	IS2010187281	Agnar Snorri	Stefánsson	21/03/1981	Silkeborg	Magnús frá Tóftum			1L				1L	
+27	IS2006186644	Agnar Snorri	Stefánsson	21/03/1981	Silkeborg	Grímur frá Efsta-Seli						1		
+28	DK2010101110	Anne Stine	Haugen	18/06/1985	Silkeborg	Grímur fra Gavnholt	1					1		
+29	DK2011100980	Anne Stine	Haugen	18/06/1985	Silkeborg	Sjóli fra Gavnholt		1				1		
+30	DE2010110333	Steffi	Svendsen	22/01/1977	Bindslev	Sjóli von Teland					1			
+31	IS2005166013	Steffi	Svendsen	22/01/1977	Bindslev	Fjölnir frá Akureyri	1							
+32	DE2007122056	Rikke Schöllhammer	Wolff	04/02/1980	Beder	Arko vom Heesberg		1				1		
+33	DK2010100200	Rikke Schöllhammer	Wolff	04/02/1980	Beder	Árelius fra Bispelyst			1L				1R	
+34	SE2006106452	Julie	Christiansen	22/03/1977	Allingåbro	Divar från Lindnäs	1					1		
+35	IS2000156302	Lea	Albeck Laursen	31/07/1997	Aalborg	Eitill frá Leysingjastöðum II		1			1			
+36	DK2009100410	Søren	Madsen	30/12/1986	Skjern	Snorri fra Enighed	1				1			
+37	DK2011000791	Søren	Madsen	30/12/1986	Skjern	Gestur fra Debelmose	1				1			
+38	DK2012100113	Søren	Madsen	21/05/1955	Skjern	Skinfaxi fra Lysholm			1L			1		
+39	IS2004184906	Steffi	Svendsen	22/01/1977	Bindslev	Víðir frá Lynghaga		1						
+40	NO2010210001	Steffi	Svendsen	22/01/1977	Bindslev	Sóldís fra Teland								1R
+41	IS2006180622	Frederikke	Bøgeblad Larsen	20/12/1998	Klampenborg	Veigur frá Eystri-Hól	1				1			
+42	IS2007156418	Steffi	Svendsen	22/01/1977	Bindslev	Viti frá Kagaðarhóli	1							
+43	AT2011270864	Freija	Thye	11/02/1982	Oberkreuzberg	Elfa-Freyja von Fürstenbrunn						1		
+44	DK2010100419	Anna Christine	Ulbæk	29/08/1991	Tikøb	Agnar fra Ulbæk	1					1		
+45	IS2010155470	Anna Christine	Ulbæk	29/08/1991	Tikøb	Bastían frá Þóreyjarnúpi	1				1			
+46	IS2009180613	Elin	Tindskard	21/09/1982	Hirtshals	Fengur frá Hemlu II							1R	
+47	DK2009100212	Elin	Tindskard	21/09/1982	Hirtshals	Bassi fra Tindsgarði		1			1			
+48	IS2002123456	Sigurður Óli	Kristinsson	03/06/1975	Søndersø	Hest fra Hest			1R				1L	
+49	IS2007287421	Sys	Pilegaard	11/08/1991	Søndersø	Fluga frá Langsstöðum	1				1			
+50	DE2006134453	Sys	Pilegaard	11/08/1991	Søndersø	Muni vom Hrafnsholt		1				1		
+51	IS2007284310	Sys	Pilegaard	11/08/1991	Søndersø	Ljóska frá Borgareyrum	1				1			
+52	DK2011100181	SIgurður Óli	Kristinsson	03/06/1975	Søndersø	Sonur fra Dalur						1		
+53	IS2010187190	Rasmus Møller	Jensen	02/02/1976	Svenstrup J	Garpur frá Kjarri	1					1		
+54	IS2009186700	Mads	Borg	25/09/1975	Beder	Oddaverji frá Leirubakka			1L			1		
+55	NO2009210250	Mads	Borg	25/09/1975	Beder	Gréta fra Ausviga		1			1			
+56	IS2007186651	Elise	Lundhaug	22/02/1991	MJØNDALEN	Framherji frá Flagbjarnarholti	1				1			
+57	DK2009200214	Karina	Sloth	29/03/1973	Farum	Tindra fra Tyrevoldsdal						1		
+58	IS2005158856	Frederikke	Stougård	22/09/1994	Holstebro	Börkur frá Sólheimum	1							
+59	SE2003104825	Arnella Alexandra Emilia	Nyman	20/12/1993	Sibbo	Thór från Järsta		1			1			
+60	IS2003181966	Jana	Köthe	28/12/1991	Rotenburg an der Fulda	Fannar frá Kvistum						1		
+61	IS2006180500	Julie	Christiansen	22/03/1977	Allingåbro	Stormur frá Hemlu I		1				1		
+62	IS2009101233	Hans-Christian	Løwe	10/12/1984	Hadsten	Jarl frá Tvennu	1							
+63	DK2009201002	Hans-Christian	Løwe	10/12/1984	Hadsten	Vigdís fra Vivildgård	1					1		
+64	IS2010276231	Christina	Johansen	13/10/1985	Hadsten	Ófeig frá Úlfsstöðum	1					1		
+65	DE2006134619	Josefin	Þorgeirsson	02/05/1990	Egestorf	Selur vom Hrafnsholt						1		
+66	IS2009186613	Þórður	Þorgeirsson	12/11/1964	Egestorf	Mímir frá Hamrahóli						1		
+67	DK2009100149	Dennis Hedebo	Johansen	10/07/1983	København N	Muni fra Bendstrup	1				1			
+68	IS2009101511	Dennis Hedebo	Johansen	10/07/1983	København N	Sindri frá Helgatúni		1			1			
+69	Is2001101093	Kristian	Tofte Ambo	15/02/1994	Tranekær	Tónn frá Ólafsbergi	1				1			
+70	DK2009100354	Kristian	Tofte Ambo	15/02/1994	Tranekær	Viktor fra Kirstineholm						1		
+71	IS2011287404	Kristian	Tofte Ambo	15/02/1994	Tranekær	Liljurós frá Hrafnsholti						1		
+72	IS2009188336	Nils-Christian	Larsen	03/06/1979	Herning	Kristall frá Jaðri	1				1			
+73	IS2007165003	Nils-Christian	Larsen	03/06/1979	Herning	Pistill frá Litlu-Brekku		1			1			
+74	DK2011200797	Susanne	Larsen Murphy	23/12/1971	galtenGalten	Viktoría fra Helledige			1L		1			
+75	IS2003184557	Emilie	Tofte Ambo	10/03/1997	Tranekær	Dugur frá Þúfu í Landeyjum	1				1			
+76	DK2008108842	Michelle Munkholm	Andersen	08/03/1999	Holstebro	Dagur fra Debelmose		1			1			
+77	DK2012200434	Johanne	Krause-Kjær	09/03/1996	Svenstrup J	Ragna fra Alrø				1R				
+78	DK2011100051	Smilla	Beyer	23/02/2001	Gadstrup	Fókus fra Nøddegården	1				1			
+79	DK2012200277	Johanne	Krause-Kjær	09/03/1996	Svenstrup J	Svala fra Espekær							1R	
+80	DK2009100606	Mette Bovbjerg	Sørensen	13/06/1978	Nykøbing M	Nökkvi fra Glyngøre						1		
+81	DK2008107389	Laura	Midtgård	18/06/1986	Ulfborg	Gauti fra Rødstenskær	1				1			
+82	IS2011186702	Anne Frank	Andresen	05/03/1994	Varde	Vökull frá Leirubakka						1		
+83	IS2004156498	Ebba	Johannesen	31/07/2001	Båstad	Prins frá Blönduósi						1		
+84	DK2008102214	Anders	Stokbro	24/11/1981	Støvring	Ljosi fra Bispegården						1		
+85	IS2006284811	Lisa	Lambertsen	13/10/1994	Brovst	Hreyfing frá Tjaldhólum			1R				1L	
+86	IS2002165228	Ida Emilie	Kaasgaard	10/02/1997	Odder	Naskur frá Búlandi		1			1			
+87	DK2004103694	Lærke	Christensen	23/01/1997	Grenaa	Leikur fra Bispegården				1L			1R	
+88	IS2011158161	Charlotte	Sand Pedersen	13/06/1992	Ans By	Eldar frá Þúfum			1R				1R	
+89	DK2002105552	Emilie	Bech	08/11/2001	Aalborg	Vakur fra Gultentorp			1R			1		
+90	DK2011200408	Lasse Grønberg	Jensen	18/11/1986	Læsø	Hetja fra Starbakken								1L
+91	IS2008136486	Lis	Poulsen	11/06/1958	Græsted	Flygill frá Hjarðarholti		1						1L
+92	IS2000281499	Dorthe Klitgaard	Christensen	16/08/1972	Kongerslev	Lýsa frá Ásmundarstöðum	1							
+93	DK2012100144	Simone	Lunding-Hoppe	30/04/1988	Knebel	Oður fra Jór			1L				1R	
+94	IS2008181103	Mette	Haugslien	28/04/1972	Brande	Kiljan fra Holtsmúla 1				1R				
+95	DK2006106232	Maria	Munk	09/05/1984	Them	Myrkvi fra Selsø			1R				1L	
+96	DK2011200312	Michelle Rudbech	Sørensen	04/10/1995	Hjallerup	Eyrún fra Elvahøj								1L
+97	IS2008265307	Lucas Hedegaard	Sørensen	16/02/2005	Svenstrup J	Blika frá Skriðu			1L					1L
+98	DK2006105387	Anne Sofie	Pedersen	20/11/1993	Haderup	Tývar fra Toosholm			1R			1		
+99	DK2010200133	Mette Birch	Skiffard-Nielsen	28/09/1984	Odder	Gláma fra Eskildsminde			1R					1L
+100	SE2001100540	Isa	Norén	05/08/1999	Strandbaden	Hektor från Bråtorps gård		1				1		
+101	IS2010187637	Toti	Njalsson	28/02/1958	Odder	Hrafn frá Laugarbökkum			1R				1L	
+102	DK2012100030	Denise	Borst	23/09/1996	Bindslev	Baltasar fra Teland			1R				1L	
+103	DK2011200771	Camilla	Christensen	01/03/1988	Svenstrup J	Nóra fra Guldbæk		1						
+104	DK2004105319	Catharina	Smidth	02/11/2001	Kokkedal	Hápunktur fra Nord	1					1		
+105	DK2010101081	Rikke	Sejlund	28/06/1997	Holstebro	Sólon fra Stutteri Sonne	1				1			
+106	DK2009100627	Vibe	Sund	01/08/1972	Tjele	Kraftur fra Flødal			1R				1L	
+107	DK2010100776	Liv	Egerland	28/04/2001	Aalborg	Seiður fra Jór	1				1			
+108	IS2009281965	Jannike	Fogh	25/11/1954	København Ø	Skutla frá Kvistum			1R					1R
+109	IS2011181915	Anna	Östman	20/10/1977	Holstebro	Stæll frá Rauðalæk			1R				1L	
+110	DK2004205184	Ida	Christensen	13/01/1993	Holstebro	Wynja fra Stutteri Sonne			1R				1R	
+111	IS2002155250	Emilie Sofie	Ternvalt	03/11/1997	Viby Sjælland	Kraftur frá Efri-Þverá								1L
+112	NO2004115369	Rosemarie	Wodschow	18/02/2001	Hellerup	Léttir fra Hellesylt		1			1			
+113	DK2009100877	Malene	Busk	15/05/1990	Ballerup	Hrappur fra Hejelte	1				1			
+114	DE2010134578	Emma	Nielsen	19/09/1995	Veflinge	Mentor vom Hrafnsholt	1				1			
+115	DK2005103276	Nathalie	Brandt	19/12/1983	Kalundborg	Eypór fra Lykkesminde				1L				1L
+116	DK2008103075	Cecilia Nanna	Rosell	24/09/1997	Tommerup	Abel fra Trappehaven			1R				1L	
+117	NO2009115263	Fiona	Bering	19/03/2002	København K	Funi fra Stall Øvstedal	1				1			
+118	DK2008101181	Maria	Hove Andersen	19/05/1979	Thisted	Ægir fra Vigsø					1			
+119	DK2007107790	Emilie	Saaugaard-Haaning	26/04/2004	Holstebro	Glæpur fra Nr. Tolstrup	1				1			
+120	DK2007204891	Maja Marie	Warmdahl Mikkelsen	10/04/2003	Thisted	Lukka fra Heimdahl			1L				1L	
+121	DK2010200116	Kari-Nina	Sprunk-Jansen	27/10/1990	Glostrup	Gná fra Søborg			1L					
+122	DK2001102145	Jan	Horndrup Hansen	06/01/1960	Viby J	Seifur fra Bispegården	1				1			
+123	DK2003103141	Clara	Håkonsson	29/03/1999	Klampenborg	Kolfaxi fra Lilleheden	1				1			
+124	DK2010200971	Marie	Rytter	16/07/1997	Aalborg	Kilja fra Debelmose		1				1		
+125	DK2011100117	Andreas	Kjelgaard	27/12/1986	Nørresundby	Guðmundur fra Gultentorp	1					1		
+126	DK2006204623	Mette	Carlsen	14/03/1986	Odense C	Sigrún fra Ørskov Vestergård				1L			1R	
+127	IS2008135086	Henrik	Gohn	24/06/1968	Ringsted	Hrymur frá Steinsholti			1L				1R	
+128	IS2005125086	Caroline Grønbek	Nielsen	02/10/1996	Ringe	Kaldi frá Meðalfelli						1		
+129	DK2009101331	Nickie	Eriksen	23/04/1970	Klarup	Draumfari fra Yggdrasil			1R				1L	
+130	DK1998103061	Catharina	Smidth	02/11/2001	Kokkedal	Nökkvi fra Ryethøj		1			1			
+131	IS2006235991	Carla	Guld	30/09/1997	Charlottenlund	Pía frá Hrísum	1				1			
+132	DE2002135634	Karoline	D. Kjærulff	13/07/1999	Hjortshøj	Kraftur von Winkelsett		1				1		
+133	DK2010100613	Mette	Haugslien	28/04/1972	Brande	Hektor fra Holtum								1L
+134	DK2010100730	Ane	Nim Bruhn	20/01/1997	Egtved	Eldingur fra Rønnow				1R				
+135	IS2008257691	Magnus	Klindt	03/04/1996	Randers NV	Gola frá Krossanesi	1							
+136	DK2008107522	Nikoline	Jørgensen	05/09/1999	Hillerød	Sindri fra Flødal	1				1			
+137	IS2003165050	Nicole Mai	Nielsen	08/08/1995	Otterup	Glanni frá Dalvík		1			1			
+138	DK2004102048	Lærke	Andersen	21/06/1991	Nørresundby	Gangvari fra Lunakilde			1L		1			
+139	IS2007184555	Celine Bach	Laursen	17/07/1991	Asperup	Þórgnýr frá Þúfu í Landeyjum			1R				1L	
+140	IS2007266571	Rebekka	Hyldgaard	23/12/1997	Vinderup	Dalvör frá Stafni	1				1			
+141	DK2011200840	Sara	Mogensen	20/04/1997	Fjerritslev	Díva fra Sø-Dís			1L				1R	
+142	DK2007206604	Mie Thorsaa	Knudsen	06/04/1997	Børkop	Von fra Kirsebærlunden							1R	
+143	DK2010200547	Mathilde	Brønden	29/01/1993	Dronninglund	Súsanna fra Sandagervej		1						
+144	DK2009100141	Mathilde	Madsen	21/02/1997	Herning	Náttfari fra Ll. Hafmey			1R				1L	
+145	NO2002115402	Laura Louise	Ullitz Nielsen	01/05/2002	Frederikshavn	Adam fra Skarholt		1						
+146	IS2002281966	Alva	Bonde	11/03/2004	Bryrup	Ösp frá Kvistum	1				1			
+147	DK2010100416	Jannike	Fogh	25/11/1954	København Ø	Síríus fra Bakkeholm			1L				1L	
+148	DK2012100344	Simone	Lunding-Hoppe	30/04/1988	Knebel	Magnús fra Bjarup			1R				1R	
+149	DK2007105763	Malene	Busk	15/05/1990	Ballerup	Peli fra Akri				1L				
+150	DK2008108267	Helene	Jørgensen	25/08/1986	Nykøbing M	Víli fra Nøddegården				1R			1L	
+151	DK2008202284	Henriette	Jefta Pedersen	21/06/1994	Randers NV	Samba fra Tindsgarði		1						1R
+152	IS2006184554	Lisbet Karred	Larsen	30/05/1975	Ålbæk	Gammur frá Þúfu í Landeyjum			1R					1L
+153	IS2005165649	Ingolf	Nordal	29/08/1952	Horsens	Kristall frá Jarðbrú			1L				1R	
+154	DK2009100237	Michélle Holte	Lebeck	07/11/1967	Dronningmølle	Hugi fra Bækkegaarden							1L	
+155	DK2001106391	Marie	Rytter	16/07/1997	Aalborg	Ási fra Guldbæk	1					1		
+156	DK2009200580	Mia Caben	Iversen	05/02/1988	Esbjerg V	Fíla fra Skovly			1R				1L	
+157	DK2010101111	Rebekka	Hyldgaard	23/12/1997	Vinderup	Aðall fra Gavnholt			1R					
+158	IS2003284653	Ida Hald	Ludvigsen	25/03/1997	Thyholm	Rúmba frá Vestra-Fíflholti						1		
+159	IS2008184958	Line Sofie	Henriksen	27/08/1993	Dybvad	Glóstjarni frá Efri-Þverá			1R				1L	
+160	DK2009101300	Helene Seidelin	Petersen	08/09/1995	Vejle	Dugur fra Gultentorp							1L	
+161	DK2005106359	Amanda	Frandsen	12/03/2005	Skanderborg	Djarfur fra Ballebækgaard			1L				1L	
+162	DK2004106828	Lisbet Karred	Larsen	30/05/1975	Ålbæk	Elgur fra Ærtebjerg			1R				1R	
+163	IS2007184743	Michala	Breyen	07/11/1989	Mårslet	Kolar frá Strandarhöfði	1				1			
+164	DK2007104776	Anne	Thomsen	26/02/1995	Horsens	Haukur fra Dannevang					1			
+165	DK2008206654	Sigrid Bisgaard	Amstrup	08/10/1997	Rønde	Dröfn fra HCL Hestar			1L				1R	
+166	DK2011100904	Simone	Lunding-Hoppe	30/04/1988	Knebel	Trostan fra Midtgaard			1R				1L	
+167	DK2009100958	Mille	Jønch Hansen	18/02/2003	Tureby	Griður fra Bakholm			1R				1R	
+168	IS2011287807	Malte Cook	Simonsen	09/10/2008	København Ø	Hervör frá Blesastöðum 1A				1L			1R	
+169	DK2010100089	Alberte	Møller San Pedro	05/06/1996	Helsinge	Arnar fra Store Skovgaard		1				1		
+170	DK2010100089	Alberte	Møller San Pedro	05/06/1996	Helsinge	Hest fra hest	1				1			
+171	DK2002100260	Pernille Andersen	Dall	08/04/1971	Middelfart	Eldjárn fra Jernbjerg							1L	
+172	DE2006122995	Julia	Gerke	23/01/1993	Burgwedel	Flækingur vom Grauberg				1L				1L
+173	DK2007103016	Freja	Gandrup	16/03/2004	Herning	Fjölvi fra Hedegaard			1R			1		
+174	DK2003204120	Rie	Dideriksen	01/03/1962	København Ø	Seyla fra Rue			1L				1L	
+175	IS2004125421	Carolin	Storebø	06/09/1992	Fitjar	"Fjarki frá Breiðholti, Gbr."	1				1			
+176	DK2006107070	Karen	Møller	19/12/1961	Birkerød	Fursti fra Møllegaard			1R				1R	
+177	DK2011200215	Tina Møller	Jørgensen	15/09/1971	Horsens	Sólrún fra Kærgården							1L	
+178	DK2002103708	Therese Clausen	Brock	23/08/1998	Gistrup	Nóttfari fra Breth		1				1		
+179	DK2007207366	Pernille	Jacobsen	28/04/1989	Aabenraa	Örk fra Bjarup			1R					1R
+180	IS2007182076	Carolin	Storebø	06/09/1992	Fitjar	Arnviður frá Hveragerði		1						1L
+181	DK2010101090	Maja Birk	Pedersen	08/05/1979	Tranbjerg J	Brími fra Helledige			1R				1R	
+182	NO2011216278	An-Magritt	Morset Hegstad	06/09/1975	Tydal	Díva fra Stugudal	1							
+183	DK2006107673	Birgitte	Simoni	13/01/1961	Fredensborg	Kiljan fra Katulabo	1				1			
+184	DK2006107047	Gerd Nyegaard	Hansen	26/11/1978	Viby Sjælland	Kári fra Belkanto			1R				1L	
+185	DK2011100406	Jette Saltoft	Gram	20/08/1963	Tølløse	Kjarval fra Søtofte			1R					1L
+186	IS2010157593	An-Magritt	Morset Hegstad	06/09/1975	Tydal	Hlekkur frá Ytra-Vallholti						1		
+187	DK2007103415	Lærke Bjørnholt	Pedersen	20/06/1992	Vildbjerg	Jörfi fra Stutt. Engimýri			1L				1R	
+188	DE2011122882	Sabina	Svärd	28/01/1982	Kävlinge	Kóngur vom Kranichtal	1				1			
+189	IS2004187622	Mathilde	Kristensen	14/09/1996	Randers NØ	Dropi frá Akurgerði				1R				1L
+190	DK2009100213	Barbara	Højlund	06/05/1971	Roskilde	Ávaldi fra Toftemosen			1L					1L
+191	DK2008208908	Karen-Julie	Holsbo	28/08/1981	Slagelse	Kátina fra Grønkær			1L				1L	
+192	DK2008107612	Sofie	Tolgaard	17/06/1997	Odense SV	Brellir fra St. Sognstrup			1L				1R	
+193	DK2009100612	Mie	Hedebo Knudsen	23/10/1980	Morud	Eitill fra Hedebo				1R			1R	
+194	DK2008208762	Anne Sofie	Jensen	05/04/1999	Vodskov	Tanja fra Guldbæk							1L	
+195	DK2008108093	Sophia Møller	Kjær	12/06/2000	Egtved	Fáni fra Høgsbro			1R				1L	
+196	DK2007108307	Britt Werner	Raabymagle	02/04/1974	Vig	Ari fra Ousbjerggård			1L				1R	
+197	DK2011100947	Elias	Árnason	20/01/1973	Tørring	Kraftur fra Yggdrasil			1R					1R
+198	DK2009100008	Eva	Nordahl Duval	21/10/1966	Ballerup	Viðar fra Bredgaard			1L				1L	
+199	Is2007000000	Stephanie	Wimmer	26/01/1987	Fredensborg	Jarl fra jardi				1R				1R
+200	NO2008104233	Eline	Kirkholt Bengtsen	11/02/1998	Verdal	Þristur fra Lian			1R				1R	
+201	DK2003106237	Ida	Gerdes Bastrup	13/11/2003	Helsinge	Jóki fra Bispegården		1						
+202	DK2010100791	Dorte	Rasmussen	13/12/1964	Rude	Bragi fra Strø			1R				1L	
+203	DK2006103744	Rikke	Lønbro	15/07/1988	Silkeborg	Fákur fra Dommerhuset			1L				1L	
+204	DE2006122972	Emilie	Christiansen	18/12/1996	Kirke Eskilstrup	Hraunar vom Heesberg				1L			1R	
+205	DK2011100851	Rikke	Nielsen	30/05/1972	Kirke Hyllinge	Strokkur fra Rævehøj			1R					1L
+206	IS2008187957	Frederikke	Lawaetz	19/01/2003	Assens	Vinkill frá Ósabakka 2			1R				1L	
+207	DK2005201656	Maja	Kallmayer	09/03/2000	Løkken	Spes fra Gultentorp				1L				1R
+208	DK2011200843	Hanne	Borg	21/03/1949	Nørre Nebel	Gunnlöð fra Trudvang			1L				1R	
+209	DK2010200946	Matilde	Rokkedal	21/06/2003	Nibe	Korka fra Gunderstofte			1L				1R	
+210	DK2012200116	Karla	Rokkedal	03/01/2005	Nibe	Dana fra Jespersgaarde			1R				1L	
+211	SE2011103915	Anna	Østergaard Knudsen	12/10/1999	Snekkersten	Leikari från Miklagård			1L				1R	
+212	DK2008103984	Tina	Rasmussen	27/04/1976	Hammel	Baltasar fra Pegasus			1L				1L	
+213	DK2008108567	Christina Julie	Christiansen	21/10/1983	Aabybro	Sveipur fra Rendborg				1R				1L
+214	IS2003186200	Jenny	Wiström	27/04/1985	Brottby	Aragon frá Sælukoti			1L				1R	
+215	IS2004256408	Lilian	Pedersen	30/01/1964	Galten	Hreinsun frá Köldukinn			1R				1R	
+216	DK2009101373	Ingeborg	Pedersen	30/10/1966	Ringkøbing	Jötunn fra Engimýri			1L				1R	
+217	DK2003104915	Marie	Lybech Juncher	06/10/2003	Spentrup	Thor fra Vestrup								1L
+218	DK2010200423	Pernille	Mølgaard Nielsen	01/10/1993	Bindslev	Stjarna fra Langtved			1R				1L	
+219	DE2001143688	Maja Frank	Andresen	08/09/2001	Varde	Vísir vom Birkenhof			1L				1L	
+220	IS2008184553	Steinar Clausen	Kolnes	06/11/1996	HAUGESUND	Þráður frá Þúfu í Landeyjum	1							1L
+221	DE2008122359	Inga	Trottenberg	09/01/1980	Ehndorf	Gídeon vom Störtal						1		
+222	IS2005182282	Stephan	Michel	12/04/1979	Ehndorf	Hafþór frá Sólvangi		1						
+223	DE2010157660	Vicky	Eggertsson	06/10/1973	Beelitz	Gandur vom Sperlinghof		1				1		
+224	IS2009135941	Vicky	Eggertsson	06/10/1973	Beelitz	Víkingur frá Hellubæ				1L			1R	
+225	IS2011264066	Bergþór	Eggertsson	25/08/1973	Beelitz	Vænting frá Garðshorni á Þelamörk						1		
+226	IS2011186131	Bergþór	Eggertsson	25/08/1973	Beelitz	Axel frá Ármóti						1		
+227	DK2009100107	Trine	Risvang	11/08/1983	Århus C	Hlýri fra Elvahøj						1		
+228	IS2005101034	Kirstine Skydt	Thorsen	07/01/1998	Ebeltoft	Þristur frá Margrétarhofi		1						
+229	IS2008184082	Louise	Löfgren	04/11/1982	Lindome	Dagfari frá Eylandi	1				1			
+230	SE2000103623	Louise	Löfgren	04/11/1982	Lindome	Hrekkur från Hålåsen						1		
+231	nn1111111111	Tina	Kalmo Pedersen	24/10/1989	Lier	nnxxxx fra nnxxx	1				1			
+232	Nn1111111111	Tina	Kalmo Pedersen	24/10/1989	Lier	Nnxxx fra nnxxxx						1		
+233	IS2007186005	Olivia	Ritschel	15/10/1996	Jöhlingen	Alvar frá Stóra-Hofi	1				1			
+234	IS2008186917	Jørgen	Svendsen	18/05/1964	Fredensborg	Straumur frá Feti			1L				1R	
+235	IS2008157057	Mette	Hjort	12/01/1978	Vejle	Skuggi frá Barði			1L					
+236	DK2002105512	Alberte Munk	Vallentin	15/10/2000	Herning	Gestur fra Guldbæk		1						
+237	IS2006165495	Katie	Sundin Brumpton	01/02/1990	Hästveda	Símon frá Efri-Rauðalæk						1		
+238	FI2009112002	Sölvi	Sigurðarsson	12/01/1978	Helsinge	Freir fra Kaakkola				1L				1L
+239	IS2008135726	Sanne	Thiemke	26/09/1958	Tisvildeleje	Villi frá Breiðabólsstað			1R				1L	
+240	IS2006165170	Mette Camilla	Moe Mannseth	10/04/1975	hofsos	Stjörnustæll frá Dalvík		1				1		
+241	IS2008158160	Mette Camilla	Moe Mannseth	10/04/1975	hofsos	Kiljan frá Þúfum		1				1		
+242	IS2006182022	Eva-Karin	Bengtsson	26/02/1961	Falkenberg	Ögri frá Kirkjuferjuhjáleigu	1				1			
+243	IS2006165492	Eva-Karin	Bengtsson	26/02/1961	Falkenberg	Geisli frá Efri-Rauðalæk			1R				1L	
+244	IS2004182208	Louise	Sieka	25/09/1986	[ukendt postnr]	Ómi frá Úlfljótsvatni	1				1			
+245	NL2006100059	Toke	Van Branteghem	29/04/1987	Weelde	Skrýmir frá Wyler		1						
+246	DK2009200775	Ditte	Byskov	02/03/1994	Gørding	Gylling fra Hafdal				1L				1L
+247	DK2012200540	Annika	Skrubbeltrang	09/03/1990	Aalborg	Díva fra Rendborg			1R				1R	
+248	DK2003105565	Josefine Lund	Damkier	04/03/2004	Svenstrup J	Stillir fra Susja	1				1			
+249	CH2009202452	Steffi	Svendsen	22/01/1977	Bindslev	Águsta vom Ibikonhof							1L	
+250	IS2003125055	Katrine	Skrubbeltrang	30/10/1986	Frederikshavn	Fengur frá Miðdal							1L	
+251	DK2008104997	Klavs	Friberg	23/05/1967	Brande	Magnus fra Moselundgård			1R					1L
+252	DK2007205034	Petrine	Jakobsen	19/08/2003	Græsted	Hedda fra Nord			1L				1R	
+253	NL2005100027	Christa	Rike	29/07/1999	Alphen	Vaðall frá Fensalir	1							
+254	IS2008187133	Lene	Kamm	25/06/1957	Gentofte	Hlýri frá Hverargerði			1R				1L	
+255	IS2011284960	Anne	Sundby	16/08/1982	Svenstrup J	Ágústína fra Midhúsum			1R				1L	
