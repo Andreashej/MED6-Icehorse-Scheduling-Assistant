@@ -12,3 +12,6 @@ for test in icehorse.get_test_list():
             icehorse.count_test(test)[1]
         )
     )
+
+for test in testlist:
+    print("Testcode: {}, LR: {}, RR: {}".format(test.testcode, test.left_rein, test.right_rein))
