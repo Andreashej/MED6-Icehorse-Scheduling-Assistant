@@ -1,0 +1,8 @@
+.day {
+    border-right: #312783 thin solid;
+    padding: 10px 25px;
+}
+
+.day:last-of-type {
+    border: none;
+}

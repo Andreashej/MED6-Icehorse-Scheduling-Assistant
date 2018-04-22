@@ -1,0 +1,8 @@
+<div class="h-100">
+    <h2>{{ date | date:'EEEE MMM d'}}</h2>
+    <div class="grid h-100" droppable (onDrop)="onDropTest($event)">
+      <div *ngFor="let test of droppedItems">
+        <app-test-card [test]="test"></app-test-card>
+      </div>
+    </div>
+</div>

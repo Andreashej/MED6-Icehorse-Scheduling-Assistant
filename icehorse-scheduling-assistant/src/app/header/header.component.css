@@ -1,0 +1,18 @@
+.header {
+    background-color: #312783;
+    color: white;
+    padding: 10px;
+}
+
+.competition-name, i {
+    margin: 0;
+    font-size: 32px;
+}
+
+.competition-name {
+    text-align: center;
+}
+
+#menu-button {
+    float: left;
+}

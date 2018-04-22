@@ -1,0 +1,13 @@
+<div class="unassigned-container h-100">
+  <span class="title-area">
+    <h2>Unassigned tests <i *ngIf="testdata" class="fa fa-refresh" [class.loading]="loading" id="refresh" (click)="reloadTestData()"></i></h2>
+  </span>
+  <app-test-card *ngFor="let test of testdata" [test]="test" (testGrab)="removeUnassigned($event)"></app-test-card>
+
+  <div class="btn-container" *ngIf="!testdata">
+    <button class="btn btn-success btn-large" (click)="getTestData()">Import tests</button>
+  </div>
+  <div class="btn-container" *ngIf="testdata">
+    <button class="btn btn-success btn-large">Generate Schedule</button>
+  </div>
+</div>

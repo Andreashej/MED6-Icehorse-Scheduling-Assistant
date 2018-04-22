@@ -1,0 +1,3 @@
+<div class="row h-100 hour-grid" *ngIf="settings">
+  <app-day class="col day h-100" *ngFor="let day of settings[0].days" [date]="day"></app-day>
+</div>

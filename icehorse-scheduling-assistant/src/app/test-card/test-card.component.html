@@ -1,0 +1,8 @@
+<div class="test-card alert alert-dark" draggable [dragData]="test">
+    <h5>{{ test.testcode }} {{ test.phase }}</h5>
+    <div *ngIf="test.right_rein === 0; else heats" class="groupsize-1">Number of riders: {{ test.left_rein }} </div>
+    <ng-template #heats class="heats">
+      <span class="lr">Left Rein:  {{ test.left_rein }}</span>
+      <span class="rr"> | Right Rein: {{ test.right_rein }}</span>
+    </ng-template>
+</div>

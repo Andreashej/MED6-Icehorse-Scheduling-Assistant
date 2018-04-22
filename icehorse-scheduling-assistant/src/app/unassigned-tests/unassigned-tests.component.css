@@ -1,0 +1,22 @@
+.unassigned-container {
+    border-right: #312783 medium solid;
+    box-shadow: 5px 0px 10px -5px black;
+    padding: 10px 25px;
+}
+
+button {
+    width: 100%;
+}
+
+#refresh {
+    text-align: right;
+}
+
+.loading {
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
