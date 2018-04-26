@@ -8,16 +8,27 @@ import { NgDragDropModule } from 'ng-drag-drop';
 })
 export class TestCardComponent implements OnInit {
   @Input() test;
+  hours = 0;
+  minutes = 0;
+  free_left = 0;
+  free_right = 0;
 
   @Output() testGrab = new EventEmitter();
 
-  constructor() { }
+  constructor() {
+  }
 
   testGrabbed(e: any) {
     this.testGrab.emit(e);
   }
 
   ngOnInit() {
+    this.hours = Math.floor(this.test.prel_time / 60);
+    this.minutes = this.test.prel_time % 60;
+    if (this.test.riders_per_heat > 1) {
+      this.free_left = this.test.left_heats * 3 - this.test.left_rein;
+      this.free_right = this.test.right_heats * 3 - this.test.right_rein;
+    }
   }
 
 }

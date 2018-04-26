@@ -1,0 +1,63 @@
+.test-card {
+    height: 100%;
+    width: 100%;
+    border-radius: 0;
+    border: none;
+}
+
+.draghandle {
+    cursor: move;
+}
+
+.card-body {
+    padding: .5em 1em;
+    overflow: hidden;
+}
+
+.drag-border {
+    display: none;
+}
+
+.time {
+    text-align: right;
+}
+
+.T1 {
+    background-color: #1abc9c;
+    color: black;
+}
+
+.T2 {
+    background-color: #2ecc71;
+    color: black;
+}
+
+.T3 {
+    background-color: #3498db;
+    color: black;
+}
+
+.T4 {
+    background-color: #9b59b6;
+    color: white;
+}
+
+.V1 {
+    background-color: #34495e;
+    color: white;
+}
+
+.V2 {
+    background-color: #f39c12;
+    color: black;
+}
+
+.F1 {
+    background-color: #c0392b;
+    color: white;
+}
+
+.F2 {
+    background-color: #6ab04c;
+    color: black;
+}

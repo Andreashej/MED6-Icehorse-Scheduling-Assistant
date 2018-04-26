@@ -21,7 +21,7 @@ export class ScheduleComponent implements OnInit {
 
   getSettings(): void {
     this.settingsProvider.getSettings().subscribe(
-      data => this.settings = data,
+      data => this.settings = data[0],
       error => console.log('Error when fetching data'),
       () => this.initDays()
     );

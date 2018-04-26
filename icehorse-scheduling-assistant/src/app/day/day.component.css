@@ -1,0 +1,38 @@
+.hour-divider {
+    border-top: thin solid lightgray;
+    vertical-align: top;
+    color: gray;
+    font-size: 12px;
+}
+
+.time {
+    width: 1px;
+    padding-left: 5px;
+}
+
+.grid {
+    width: 100%;
+}
+
+.grid tr {
+    height: .45em;
+}
+
+td {
+    height: inherit;
+}
+
+h2 {
+    padding: 10px 20px;
+    text-align: center;
+}
+
+.scheduled {
+    width: 100%;
+    padding: 0 5px;
+}
+
+app-test-card-schedule {
+    height: 100%;
+    display: flex;
+}

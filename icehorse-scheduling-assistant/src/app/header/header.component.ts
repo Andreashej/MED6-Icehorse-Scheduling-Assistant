@@ -19,7 +19,6 @@ export class HeaderComponent implements OnInit {
   }
 
   setTitle(): void {
-    console.log(this.settings);
     this.name += ' | ' + this.settings[0].name;
   }
 

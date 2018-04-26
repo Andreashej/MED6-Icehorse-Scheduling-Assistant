@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { CompetitionImporterService } from '../competition-importer.service';
 import { NgDragDropModule } from 'ng-drag-drop';
 
@@ -9,32 +9,40 @@ import { NgDragDropModule } from 'ng-drag-drop';
 })
 export class UnassignedTestsComponent implements OnInit {
   testdata;
-  droppedItems = [];
   loading = false;
 
   constructor(private competitionImporter: CompetitionImporterService) { }
 
   ngOnInit() {
+    if (this.getTestData()) {
+    } else {
+      this.reloadTestData();
+    }
   }
 
-  getTestData(): void {
-    this.competitionImporter.getTestData().subscribe(
-        data => this.testdata = data
+  getTestData(): Boolean {
+    this.competitionImporter.getTestData('unassigned').subscribe(
+      data => this.testdata = data,
+      () => console.log('Error')
     );
+
+    if (this.testdata === undefined) {
+      return true;
+    }
+    return false;
   }
 
   reloadTestData(): void {
     this.loading = true;
     this.competitionImporter.refreshTestData().subscribe(
       data => this.testdata = data,
-      () => console.log('Error when reloading'),
+      () => function () { console.log('Error when reloading'); this.loading = false; },
       () => this.loading = false
     );
   }
 
   onDrop(e: any) {
-    console.log(e.dragData);
-    this.droppedItems.push(e.dragData);
+    this.testdata.push(e.dragData);
   }
 
   removeUnassigned(e: any) {

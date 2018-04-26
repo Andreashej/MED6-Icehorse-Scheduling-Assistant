@@ -1,0 +1,24 @@
+<div class="card test-card {{ test.testcode }}" draggable [dragData]="test" (onDragEnd)="testGrabbed($event)" (onDragStart)="grabStart($event)"
+  [dragHandle]="draghandle">
+  <div class="card-body">
+    <div class="row draghandle">
+      <h5 class="card-title col-8">{{ test.testcode }} {{ test.phase }} ({{ test.right_heats + test.left_heats }})</h5>
+      <h4 class="col time">
+        <span class="hours" *ngIf="hours > 0">{{ hours }}h</span>
+        <span class="minutes" *ngIf="minutes > 0">{{ minutes }}m</span>
+      </h4>
+    </div>
+    <div class="row">
+      <h6 class="badge">{{ test.section }}</h6>
+    </div>
+    <div class="row">
+      <input class="col-2" type="number" name="lr" [(ngModel)]="split_lr" placeholder="Left Rein">
+      <input *ngIf="test.right_heats > 0" class="col-2" type="number" name="rr" [(ngModel)]="split_rr" placeholder="Right Rein">
+      <button class="col" (click)="split()">Split</button>
+
+      <input class="col-2" type="number" name="join" [(ngModel)]="join_section" placeholder="Join">
+      <button class="col" (click)="join()">Join</button>
+    </div>
+  </div>
+
+</div>
