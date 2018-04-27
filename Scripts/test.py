@@ -4,7 +4,7 @@ from flask_cors import CORS, cross_origin
 from pymongo import MongoClient
 import math
 
-ip = '100.91.183.45'
+ip = '85.191.252.150'
 port = 32772
 
 app = Flask(__name__)
