@@ -2,7 +2,7 @@ import pandas as pd
 from pymongo import MongoClient
 import math
 
-ip = '192.168.1.254'
+ip = '85.191.252.150'
 port = 32772
 
 class SportiImporter:

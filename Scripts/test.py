@@ -10,7 +10,10 @@ port = 32772
 app = Flask(__name__)
 CORS(app, support_credentials=True)
 
-icehorse = ch.SportiImporter('D:\\Dokumenter\\MED6-Icehorse-Scheduling-Assistant\\Data\\icetest-liste.xlsx')
+# Laptop
+icehorse = ch.SportiImporter('C:\\Users\\ah\\Documents\\MED6-Icehorse-Scheduling-Assistant\\Data\\icetest-liste.xlsx')
+# Desktop
+# icehorse = ch.SportiImporter('D:\\Dokumenter\\MED6-Icehorse-Scheduling-Assistant\\Data\\icetest-liste.xlsx')
 
 @app.route('/get-tests/<state>')
 @cross_origin(support_credentials=True)
@@ -51,7 +54,6 @@ def toggle_final(test, x):
 def save(testcode, phase, section, state, start_block):
     client = MongoClient(ip, port)
     test_db = client.IcehorseDB.tests.find_one({'testcode': testcode.upper(), 'phase': phase, 'section': section})
-    print(test_db)
     test_db['state'] = state
     test_db['start_block'] = start_block
     client.IcehorseDB.tests.replace_one({'testcode': testcode.upper(), 'phase': phase, 'section': section}, test_db)
@@ -106,21 +108,22 @@ def split(testcode, phase, section_id, left, right):
     client = MongoClient(ip, port)
     test_doc = client.IcehorseDB.tests.find_one(match_doc)
     new_section = test_doc.copy()
-    test_doc['left_rein'] -= left
-    test_doc['right_rein'] -= right   
-    test_doc['left_heats'] = math.ceil(test_doc['left_rein'] / test_doc['riders_per_heat'])
-    test_doc['right_heats'] = math.ceil(test_doc['right_rein'] / test_doc['riders_per_heat'])
-    test_doc['prel_time'] = (test_doc['left_heats'] + test_doc['right_heats']) * test_doc['time_per_heat']
-    client.IcehorseDB.tests.replace_one(match_doc, test_doc)
 
-    new_section['left_rein'] = left
-    new_section['right_rein'] = right
+    new_section['left_rein'] = test_doc['left_rein'] - left
+    new_section['right_rein'] = test_doc['right_rein'] - right
     new_section['left_heats'] = math.ceil(new_section['left_rein'] / new_section['riders_per_heat'])
     new_section['right_heats'] = math.ceil(new_section['right_rein'] / new_section['riders_per_heat'])
     new_section['section'] += 1
     new_section['prel_time'] = (new_section['left_heats'] + new_section['right_heats']) * new_section['time_per_heat']
     new_section['state'] = 'unassigned'
     new_section.pop('_id')
+
+    test_doc['left_rein'] = left
+    test_doc['right_rein'] = right
+    test_doc['left_heats'] = math.ceil(test_doc['left_rein'] / test_doc['riders_per_heat'])
+    test_doc['right_heats'] = math.ceil(test_doc['right_rein'] / test_doc['riders_per_heat'])
+    test_doc['prel_time'] = (test_doc['left_heats'] + test_doc['right_heats']) * test_doc['time_per_heat']
+    client.IcehorseDB.tests.replace_one(match_doc, test_doc)
     
     client.IcehorseDB.tests.insert_one(new_section)
     client.close()

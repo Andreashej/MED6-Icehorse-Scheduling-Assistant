@@ -10,6 +10,7 @@ import { NgDragDropModule } from 'ng-drag-drop';
 export class UnassignedTestsComponent implements OnInit {
   testdata;
   loading = false;
+  saved;
 
   constructor(private competitionImporter: CompetitionImporterService) { }
 
@@ -43,11 +44,20 @@ export class UnassignedTestsComponent implements OnInit {
 
   onDrop(e: any) {
     this.testdata.push(e.dragData);
+    this.saveTest(e.dragData.testcode, e.dragData.phase, e.dragData.section, 'unassigned', 0);
   }
 
   removeUnassigned(e: any) {
     console.log(e);
     this.testdata.splice(this.testdata.indexOf(e), 1);
+  }
+
+  saveTest(test, phase, section_id, state, startBlock): void {
+    this.competitionImporter.saveTestState(test, phase, section_id, state, startBlock).subscribe(
+      data => this.saved = data,
+      error => console.log('Error when fetching data'),
+      () => console.log('Successfully saved test state')
+    );
   }
 
 }
