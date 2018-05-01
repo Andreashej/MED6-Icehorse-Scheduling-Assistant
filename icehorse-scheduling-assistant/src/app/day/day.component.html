@@ -2,7 +2,7 @@
 <div class="h-100">
   <div class="h-100">
     <table class="grid">
-      <tr *ngFor="let block of blocks">
+      <tr *ngFor="let block of blocks" (update)="console.log('Check!')">
         <td *ngIf="block.blocktime && block.blocktime.getMinutes() == 0" class="hour-divider time" rowspan="12">{{ block.blocktime | date:'HH:mm'}}</td>
         <td [class.hour-divider]="block.blocktime.getMinutes() == 0" 
             [class.scheduled]="block.rowspan > 1"
@@ -10,7 +10,7 @@
             droppable
             [dropEnabled]="block.droppable"
             (onDrop)="onDropTest($event, block)">
-            <app-test-card-schedule *ngIf="block.content" [test]="block.content" (testGrab)="remove(block)" (testGrabStart)="allowDrop(block)"></app-test-card-schedule>
+            <app-test-card-schedule *ngIf="block.content" [test]="block.content" [rowspan]="block.rowspan" (testGrab)="remove(block)" (testGrabStart)="allowDrop(block)"></app-test-card-schedule>
         </td>
       </tr>
     </table>

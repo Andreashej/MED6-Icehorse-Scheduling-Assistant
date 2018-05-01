@@ -3,6 +3,7 @@ from flask import Flask, jsonify
 from flask_cors import CORS, cross_origin
 from pymongo import MongoClient
 import math
+import os
 
 ip = '85.191.252.150'
 port = 32772
@@ -10,10 +11,12 @@ port = 32772
 app = Flask(__name__)
 CORS(app, support_credentials=True)
 
+filepath = os.path.dirname(os.path.realpath(__file__))
+
 # Laptop
-icehorse = ch.SportiImporter('C:\\Users\\ah\\Documents\\MED6-Icehorse-Scheduling-Assistant\\Data\\icetest-liste.xlsx')
+# icehorse = ch.SportiImporter('C:\\Users\\ah\\Documents\\MED6-Icehorse-Scheduling-Assistant\\Data\\icetest-liste.xlsx')
 # Desktop
-# icehorse = ch.SportiImporter('D:\\Dokumenter\\MED6-Icehorse-Scheduling-Assistant\\Data\\icetest-liste.xlsx')
+icehorse = ch.SportiImporter(filepath + '\\..\\Data\\icetest-liste.xlsx')
 
 @app.route('/get-tests/<state>')
 @cross_origin(support_credentials=True)
@@ -39,14 +42,27 @@ def reload():
 @cross_origin(support_credentials=True)
 def toggle_final(test, x):
     client = MongoClient(ip, port)
-    test_db = client.IcehorseDB.tests.find_one({'testcode': test})
+    test_db = client.IcehorseDB.tests.find_one({'testcode': test.upper(), 'phase': 'Preliminary'})
     if x == 'a':
         test_db['hasAfinal'] = not test_db['hasAfinal']
+        if test_db['hasAfinal']:
+            final = icehorse.create_final(test, x)
+        else:
+            final = icehorse.remove_final(test, x)
+
     elif x == 'b':
         test_db['hasBfinal'] = not test_db['hasBfinal']
-    client.IcehorseDB.tests.replace_one({'testcode': test}, test_db)
+
+        if test_db['hasBfinal']:
+            final = icehorse.create_final(test, x)
+        else:
+            final = icehorse.remove_final(test, x)
+
+    client.IcehorseDB.tests.replace_one({'testcode': test.upper(), 'phase': 'Preliminary'}, test_db)
     client.close()
+
     test_db.pop('_id')
+
     return jsonify(test_db)
 
 @app.route('/<testcode>/<phase>/<int:section>/save/<state>/<start_block>/')
@@ -59,15 +75,6 @@ def save(testcode, phase, section, state, start_block):
     client.IcehorseDB.tests.replace_one({'testcode': testcode.upper(), 'phase': phase, 'section': section}, test_db)
     test_db.pop('_id')
     client.close()
-    return jsonify(test_db)
-
-@app.route('/<testcode>')
-@cross_origin(support_credentials=True)
-def get_test(testcode):
-    client = MongoClient(ip, port)
-    test_db = client.IcehorseDB.tests.find_one({'testcode': testcode})
-    client.close()
-    test_db.pop('_id')
     return jsonify(test_db)
 
 @app.route('/settings')
@@ -109,11 +116,13 @@ def split(testcode, phase, section_id, left, right):
     test_doc = client.IcehorseDB.tests.find_one(match_doc)
     new_section = test_doc.copy()
 
+    highest_id = client.IcehorseDB.tests.find({'phase': phase, 'testcode': testcode.upper()}).sort('section', -1).limit(1)[0]['section']
+
     new_section['left_rein'] = test_doc['left_rein'] - left
     new_section['right_rein'] = test_doc['right_rein'] - right
     new_section['left_heats'] = math.ceil(new_section['left_rein'] / new_section['riders_per_heat'])
     new_section['right_heats'] = math.ceil(new_section['right_rein'] / new_section['riders_per_heat'])
-    new_section['section'] += 1
+    new_section['section'] = highest_id + 1
     new_section['prel_time'] = (new_section['left_heats'] + new_section['right_heats']) * new_section['time_per_heat']
     new_section['state'] = 'unassigned'
     new_section.pop('_id')
@@ -154,6 +163,7 @@ def join(testcode, phase, section_id1, section_id2):
     section1['left_heats'] += section2['left_heats']
     section1['right_heats'] += section2['right_heats']
     section1['prel_time'] = (section1['left_heats'] + section1['right_heats']) * section1['time_per_heat']
+    section1['section'] = min([section1['section'],section2['section']])
     
     client.IcehorseDB.tests.remove(section2)
     client.IcehorseDB.tests.update(match_doc1, section1)
@@ -162,6 +172,49 @@ def join(testcode, phase, section_id1, section_id2):
     section1.pop('_id')
 
     return jsonify(section1)
+
+@app.route('/<testcode>/<phase>/judges/add/<name>')
+@cross_origin(support_credentials=True)
+def add_judge(testcode, phase, name):
+    match = {
+        'phase': phase,
+        'testcode': testcode.upper(),
+    }
+    client = MongoClient(ip, port)
+    tests = client.IcehorseDB.tests.find(match)
+    test_arr = ()
+    for test in tests:
+        test['judges'].append(name)
+        client.IcehorseDB.tests.save(test)
+
+        test.pop('_id')
+        test_arr += (test,)
+
+    return jsonify(test_arr)
+
+@app.route('/<testcode>/<phase>/judges/remove/<name>')
+@cross_origin(support_credentials=True)
+def remove_judge(testcode, phase, name):
+    match = {
+        'phase': phase,
+        'testcode': testcode.upper(),
+    }
+    client = MongoClient(ip, port)
+    tests = client.IcehorseDB.tests.find(match)
+    test_arr = ()
+    for test in tests:
+        test['judges'].remove(name)
+        client.IcehorseDB.tests.save(test)
+        
+        test.pop('_id')
+        test_arr += (test,)
+
+    return jsonify(test_arr)
+
+@app.route('/get-judges')
+@cross_origin(support_credentials=True)
+def get_judges():
+    print()
 
 
 if __name__ == '__main__':

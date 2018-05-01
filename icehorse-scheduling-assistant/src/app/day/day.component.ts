@@ -1,15 +1,17 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Input, Output, OnChanges, OnDestroy, DoCheck } from '@angular/core';
 import { NgDragDropModule } from 'ng-drag-drop';
 import { SettingsProviderService } from '../settings-provider.service';
 import { CompetitionImporterService } from '../competition-importer.service';
 import { EventEmitter } from 'events';
+import { GlobalUpdateService } from '../global-update.service';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-day',
   templateUrl: './day.component.html',
   styleUrls: ['./day.component.css']
 })
-export class DayComponent implements OnInit {
+export class DayComponent implements OnInit, OnDestroy, DoCheck {
   @Input() date;
   scheduledTests = [];
   settings = {
@@ -20,6 +22,8 @@ export class DayComponent implements OnInit {
   hours = [];
   blocks = [];
   saved;
+  updates = false;
+  subscription: Subscription;
 
   onDropTest(test: any, elt) {
     const blockSize = Math.ceil(test.dragData.prel_time / 5);
@@ -43,10 +47,26 @@ export class DayComponent implements OnInit {
     }
   }
 
-  constructor(private settingsProvider: SettingsProviderService, private competitionImporter: CompetitionImporterService) { }
+  constructor(private settingsProvider: SettingsProviderService,
+              private competitionImporter: CompetitionImporterService,
+              private updateService: GlobalUpdateService) { }
 
   ngOnInit() {
     this.getSettings();
+
+    this.subscription = this.updateService.update.subscribe(
+      hasUpdates => this.updates = hasUpdates);
+  }
+
+  ngDoCheck() {
+    if (this.updates) {
+      this.initDays();
+      this.updateService.doUpdate(false);
+    }
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   removeUnassigned(e: any, test) {

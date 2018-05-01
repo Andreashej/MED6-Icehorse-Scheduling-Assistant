@@ -6,7 +6,7 @@
       </h2>
     </span>
     <div (onDrop)="onDrop($event)" droppable>
-      <app-test-card *ngFor="let test of testdata" [test]="test" (testGrab)="removeUnassigned($event)"></app-test-card>
+      <app-test-card *ngFor="let test of testdata" [test]="test" (testGrab)="removeUnassigned(test)" (_toggleFinal)="getTestData()"></app-test-card>
       
     </div>
   </div>

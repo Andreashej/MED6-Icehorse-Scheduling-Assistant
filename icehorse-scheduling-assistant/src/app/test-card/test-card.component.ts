@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { NgDragDropModule } from 'ng-drag-drop';
+import { CompetitionImporterService } from '../competition-importer.service';
 
 @Component({
   selector: 'app-test-card',
@@ -8,6 +9,7 @@ import { NgDragDropModule } from 'ng-drag-drop';
 })
 export class TestCardComponent implements OnInit {
   @Input() test;
+  @Output() _toggleFinal = new EventEmitter();
   hours = 0;
   minutes = 0;
   free_left = 0;
@@ -15,7 +17,7 @@ export class TestCardComponent implements OnInit {
 
   @Output() testGrab = new EventEmitter();
 
-  constructor() {
+  constructor(private competitionImporter: CompetitionImporterService) {
   }
 
   testGrabbed(e: any) {
@@ -29,6 +31,13 @@ export class TestCardComponent implements OnInit {
       this.free_left = this.test.left_heats * 3 - this.test.left_rein;
       this.free_right = this.test.right_heats * 3 - this.test.right_rein;
     }
+  }
+
+  toggleFinal(phase: string) {
+    this.competitionImporter.toggleFinal(this.test.testcode, phase).subscribe(
+      update => this.test = update
+    );
+    this._toggleFinal.emit(null);
   }
 
 }

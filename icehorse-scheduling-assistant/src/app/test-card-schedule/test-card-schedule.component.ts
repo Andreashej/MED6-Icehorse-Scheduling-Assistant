@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { CompetitionImporterService } from '../competition-importer.service';
+import { GlobalUpdateService } from '../global-update.service';
 
 @Component({
   selector: 'app-test-card-schedule',
@@ -8,6 +9,7 @@ import { CompetitionImporterService } from '../competition-importer.service';
 })
 export class TestCardScheduleComponent implements OnInit {
   @Input() test;
+  @Input() rowspan;
   @Output() testGrab = new EventEmitter();
   @Output() testGrabStart = new EventEmitter();
 
@@ -19,7 +21,7 @@ export class TestCardScheduleComponent implements OnInit {
   split_lr = 0;
   join_section = 0;
 
-  constructor(private competitionImporter: CompetitionImporterService) { }
+  constructor(private competitionImporter: CompetitionImporterService, private updateService: GlobalUpdateService) { }
 
   ngOnInit() {
     this.hours = Math.floor(this.test.prel_time / 60);
@@ -38,16 +40,34 @@ export class TestCardScheduleComponent implements OnInit {
     this.testGrabStart.emit(e);
   }
 
-  split() {
+  splitTest(): void {
     this.competitionImporter.split(this.test.testcode, this.test.phase, this.test.section, this.split_lr, this.split_rr).subscribe(
-      () => console.log('Split test ' + this.test.testcode)
+      () => console.log('Split test ' + this.test.testcode),
+      () => console.log('Error with split')
     );
+    this.updateService.doUpdate(true);
   }
 
-  join() {
-    this.competitionImporter.join(this.test.testcode, this.test.phase, this.join_section, this.test.section).subscribe(
-      () => console.log('Joined test' + this.test.testcode)
+  joinTest(): void {
+    this.competitionImporter.join(this.test.testcode, this.test.phase, this.join_section - 1, this.test.section).subscribe(
+      () => console.log('Joined test ' + this.test.testcode)
     );
+    this.updateService.doUpdate(true);
+  }
+
+  addJudge(name: string) {
+    this.competitionImporter.addJudge(this.test.testcode, this.test.phase, name).subscribe(
+      () => console.log('Added judge ' + name)
+    );
+    this.test.judges.push(name);
+  }
+
+  removeJudge(name: string) {
+    this.competitionImporter.removeJudge(this.test.testcode, this.test.phase, name).subscribe(
+      () => console.log('Removed judge ' + name)
+    );
+    this.test.judges.pop(name);
+    name = '';
   }
 
 }

@@ -1,24 +1,41 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit, Output, DoCheck, OnDestroy } from '@angular/core';
 import { CompetitionImporterService } from '../competition-importer.service';
 import { NgDragDropModule } from 'ng-drag-drop';
+import { Subscription } from 'rxjs/Subscription';
+import { GlobalUpdateService } from '../global-update.service';
 
 @Component({
   selector: 'app-unassigned-tests',
   templateUrl: './unassigned-tests.component.html',
   styleUrls: ['./unassigned-tests.component.css']
 })
-export class UnassignedTestsComponent implements OnInit {
+export class UnassignedTestsComponent implements OnInit, DoCheck, OnDestroy {
   testdata;
   loading = false;
   saved;
+  updates;
+  subscription: Subscription;
 
-  constructor(private competitionImporter: CompetitionImporterService) { }
+  constructor(private competitionImporter: CompetitionImporterService, private updateService: GlobalUpdateService) { }
 
   ngOnInit() {
     if (this.getTestData()) {
     } else {
       this.reloadTestData();
     }
+
+    this.subscription = this.updateService.update.subscribe(
+      hasUpdates => this.updates = hasUpdates);
+  }
+
+  ngDoCheck() {
+    if (this.updates) {
+      this.getTestData();
+    }
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
   getTestData(): Boolean {
@@ -48,7 +65,6 @@ export class UnassignedTestsComponent implements OnInit {
   }
 
   removeUnassigned(e: any) {
-    console.log(e);
     this.testdata.splice(this.testdata.indexOf(e), 1);
   }
 

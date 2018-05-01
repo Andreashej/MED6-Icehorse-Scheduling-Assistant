@@ -7,8 +7,6 @@ export class CompetitionImporterService {
 
   constructor(private http: HttpClient) { }
   base_url = 'http://127.0.0.1:5000/';
-  importUrl = 'http://127.0.0.1:5000/get-tests';
-  reloadUrl = 'http://127.0.0.1:5000/reload-file';
 
   getTestData(state: string): Observable<any> {
     return this.http.get(this.base_url + 'get-tests/' + state);
@@ -33,5 +31,17 @@ export class CompetitionImporterService {
 
   join(test: string, phase: string, section1: number, section2: number): Observable<any> {
     return this.http.get(this.base_url + test + '/' + phase + '/join/' + section1 + '/' + section2);
+  }
+
+  addJudge(test: string, phase: string, judge: string): Observable<any> {
+    return this.http.get(this.base_url + test + '/' + phase + '/judges/add/' + judge);
+  }
+
+  removeJudge(test: string, phase: string, judge: string): Observable<any> {
+    return this.http.get(this.base_url + test + '/' + phase + '/judges/remove/' + judge);
+  }
+
+  toggleFinal(test: string, phase: string) {
+    return this.http.get(this.base_url + test + '/toggle-' + phase + '-final');
   }
 }

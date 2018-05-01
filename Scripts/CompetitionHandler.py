@@ -16,6 +16,7 @@ class SportiImporter:
         
     
     def load_file(self):
+        MongoClient(ip, port).IcehorseDB.tests.remove({})
         xls = pd.ExcelFile(self.filepath)
         self.sheet = xls.parse(0)
         
@@ -44,7 +45,48 @@ class SportiImporter:
             self.testlist.append(current)
 
         return testlist
+    
+    def create_final(self, testcode, phase):
+        client = MongoClient(ip, port)
+        db = client.IcehorseDB
+        collection = db.tests
+        times = db.test_times
 
+        test = collection.find_one({
+            'testcode': testcode.upper(),
+            'phase': 'Preliminary'
+        })
+
+        final = test.copy()
+        final['phase'] = (phase + 'fin').lower()
+        final['prel_time'] = times.find_one({
+            'test': testcode.lower(),
+            'phase': final['phase'].lower()
+        })['time']
+        final['left_rein'] = 1
+        final['right_rein'] = 0
+        final['left_heats'] = 1
+        final['right_heats'] = 0
+        final['state'] = 'unassigned'
+        final['section'] = 0
+        final['start_block'] = 0
+        final.pop('_id')
+        collection.insert_one(final)
+
+        final.pop('_id')
+        return(final)
+
+    def remove_final(self, testcode, phase):
+        client = MongoClient(ip, port)
+        db = client.IcehorseDB
+        collection = db.tests
+
+        deleted = collection.remove({
+            'testcode': testcode.upper(),
+            'phase': (phase + 'fin').lower()
+        })
+        client.close()
+        return(deleted)
 
 class Test:
 
@@ -57,6 +99,7 @@ class Test:
         self.state = 'unassigned'
         self.hasAfinal = False
         self.hasBfinal = False
+        self.judges = []
 
         client = MongoClient(ip, port)
         db = client.IcehorseDB
@@ -73,7 +116,9 @@ class Test:
         self.left_heats = math.ceil(self.left_rein / self.riders_per_heat)
         self.right_heats = math.ceil(self.right_rein / self.riders_per_heat)
         self.prel_time = (self.left_heats + self.right_heats) * self.time_per_heat
+        self.expected_judges = test_info['expected_judges']
 
+        client.close()
         if tests.find_one({'testcode': self.testcode}):
             self.update()
         else:
@@ -95,7 +140,9 @@ class Test:
                 'start_block': self.start_block,
                 'section': self.section_id,
                 'left_heats': self.left_heats,
-                'right_heats': self.right_heats
+                'right_heats': self.right_heats,
+                'judges': self.judges,
+                'expected_judges': self.expected_judges
             },
         )
     
@@ -114,7 +161,9 @@ class Test:
             'start_block': self.start_block,
             'section': self.section_id,
             'left_heats': self.left_heats,
-            'right_heats': self.right_heats
+            'right_heats': self.right_heats,
+            'judges': self.judges,
+            'expected_judges': self.expected_judges
         }
 
     def save(self):

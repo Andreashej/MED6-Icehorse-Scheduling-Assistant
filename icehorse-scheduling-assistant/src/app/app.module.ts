@@ -17,6 +17,8 @@ import { ScheduleComponent } from './schedule/schedule.component';
 import { DayComponent } from './day/day.component';
 
 import { TestCardScheduleComponent } from './test-card-schedule/test-card-schedule.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { GlobalUpdateService } from './global-update.service';
 
 
 @NgModule({
@@ -34,11 +36,13 @@ import { TestCardScheduleComponent } from './test-card-schedule/test-card-schedu
     HttpClientModule,
     NgDragDropModule.forRoot(),
     BrowserModule,
-    FormsModule
+    FormsModule,
+    NgbModule.forRoot()
   ],
   providers: [
     CompetitionImporterService,
     SettingsProviderService,
+    GlobalUpdateService
   ],
   bootstrap: [AppComponent]
 })

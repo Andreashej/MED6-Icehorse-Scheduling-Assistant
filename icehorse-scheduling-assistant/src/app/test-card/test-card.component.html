@@ -1,14 +1,27 @@
 <div class="test-card alert alert-dark row" draggable [dragData]="test" (onDragEnd)="testGrabbed($event)">
   <div class="test-content col">
-    <h5>{{ test.testcode }} {{ test.phase }}</h5>
-    <div *ngIf="test.right_rein === 0; else heats" class="groupsize-1 heats">Number of riders: {{ test.left_rein }} </div>
-    <ng-template #heats>
-      <span class="heats lr">Left Rein: {{ test.left_heats }} ({{ test.left_rein }}) <span class="bagde" [class.badge-danger]="this.free_left == 0" [class.badge-success]="this.free_left > 0">+{{ this.free_left }}</span></span>
-      <span class="heats rr">Right Rein: {{ test.right_heats }} ({{ test.right_rein }}) <span class="bagde" [class.badge-danger]="this.free_right == 0" [class.badge-success]="this.free_right > 0">+{{ this.free_right }}</span></span>
-    </ng-template>
+    <h5 [class.capitalize]="test.phase !== 'Preliminary'">{{ test.testcode }} {{ test.phase }}</h5>
+    <div *ngIf="test.phase === 'Preliminary'">
+      <div *ngIf="test.right_rein === 0; else heats" class="groupsize-1 heats">Number of riders: {{ test.left_rein }} </div>
+      <ng-template #heats>
+        <span class="heats lr">Left Rein: {{ test.left_heats }} ({{ test.left_rein }})
+          <span class="bagde" [class.badge-danger]="this.free_left == 0"
+            [class.badge-success]="this.free_left > 0">+{{ this.free_left }}</span>
+        </span>
+        <span class="heats rr">Right Rein: {{ test.right_heats }} ({{ test.right_rein }})
+          <span class="bagde" [class.badge-danger]="this.free_right == 0"
+            [class.badge-success]="this.free_right > 0">+{{ this.free_right }}</span>
+        </span>
+      </ng-template>
+    </div>
   </div>
   <div class="time col-4">
     <span class="hours" *ngIf="hours > 0">{{ hours }}h</span>
     <span class="minutes" *ngIf="minutes > 0">{{ minutes }}m</span>
+    <div class="btn-group" *ngIf="test.phase === 'Preliminary'">
+        <button class="btn btn-sm" [class.btn-danger]="!test.hasAfinal" [class.btn-success]="test.hasAfinal" type="button" (click)="toggleFinal('a')">AFIN</button>
+        <button class="btn btn-sm" [class.btn-danger]="!test.hasBfinal" [class.btn-success]="test.hasBfinal" type="button" (click)="toggleFinal('b')">BFIN</button>
+      </div>
   </div>
+  
 </div>

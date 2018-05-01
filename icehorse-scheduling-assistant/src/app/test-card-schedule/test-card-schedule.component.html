@@ -2,23 +2,56 @@
   [dragHandle]="draghandle">
   <div class="card-body">
     <div class="row draghandle">
-      <h5 class="card-title col-8">{{ test.testcode }} {{ test.phase }} ({{ test.right_heats + test.left_heats }})</h5>
-      <h4 class="col time">
+      <h5 class="card-title col-9">{{ test.testcode }} {{ test.phase }} ({{ test.right_heats + test.left_heats }})
+        <i *ngIf="rowspan <= 9" class="fa fa-cog edit"
+          [ngbPopover]="testDetails" placement="bottom" container="body"></i>
+      </h5>
+
+      <h5 class="col time">
         <span class="hours" *ngIf="hours > 0">{{ hours }}h</span>
         <span class="minutes" *ngIf="minutes > 0">{{ minutes }}m</span>
-      </h4>
+      </h5>
     </div>
-    <div class="row">
-      <h6 class="badge">{{ test.section }}</h6>
-    </div>
-    <div class="row">
-      <input class="col-2" type="number" name="lr" [(ngModel)]="split_lr" placeholder="Left Rein">
-      <input *ngIf="test.right_heats > 0" class="col-2" type="number" name="rr" [(ngModel)]="split_rr" placeholder="Right Rein">
-      <button class="col" (click)="split()">Split</button>
-
-      <input class="col-2" type="number" name="join" [(ngModel)]="join_section" placeholder="Join">
-      <button class="col" (click)="join()">Join</button>
+    <div class="row" *ngIf="rowspan > 9">
+      <ng-container *ngTemplateOutlet="testDetails"></ng-container>
     </div>
   </div>
 
 </div>
+
+<ng-template #split>
+  <input class="" type="number" name="lr" [(ngModel)]="split_lr" placeholder="Left Rein">
+  <input *ngIf="test.right_heats > 0" class="col-2" type="number" name="rr" [(ngModel)]="split_rr" placeholder="Right Rein">
+  <button type="button" class="btn btn-outline-primary" (click)="splitTest()">Split</button>
+</ng-template>
+
+<ng-template #join>
+  <input class="" type="number" name="join" [(ngModel)]="join_section" placeholder="Join">
+  <button type="button" class="btn btn-outline-primary" (click)="joinTest()">Merge</button>
+</ng-template>
+
+<ng-template #judges>
+  <div *ngFor="let judge of test.judges" class="alert alert-primary">{{ judge }}
+    <i class="fa fa-times remove" (click)="removeJudge(judge)"></i>
+  </div>
+  <div *ngIf="test.judges.length < test.expected_judges">
+    <input type="text" #name placeholder="Type judge name here..." (keyup.enter)="addJudge(name.value); name.value=''">
+    <i class="fa fa-plus add" (click)="addJudge(name.value); name.value=''"></i>
+  </div>
+</ng-template>
+
+<ng-template #testDetails>
+  <span class="col">Judges ({{ test.judges.length }})
+    <i *ngIf="test.judges.length < test.expected_judges" class="fa fa-exclamation-triangle warning" [ngbPopover]="judges" container="body" popoverTitle="Judges for {{ test.testcode }} {{ test.phase}}"
+      ngbTooltip="There should be 5 judges in this test"></i>
+    <i *ngIf="test.judges.length === test.expected_judges" class="fa fa-check check" [ngbPopover]="judges" container="body" popoverTitle="Judges for {{ test.testcode }} {{ test.phase}}"
+      ngbTooltip="Good job! Nothing to worry about here."></i>
+  </span>
+  <span class="col">
+    <i class="fa fa-clone check" ngbTooltip="Split test" [ngbPopover]="split" container="body" popoverTitle="Split test after x riders"></i>
+    <i class="fa fa-link check" ngbTooltip="Merge test sections" [ngbPopover]="join" container="body" popoverTitle="Merge with section x"></i>
+  </span>
+  <span class="col">
+    Section: {{ test.section + 1 }}
+  </span>
+</ng-template>
