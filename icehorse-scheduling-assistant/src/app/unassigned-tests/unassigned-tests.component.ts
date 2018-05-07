@@ -25,13 +25,11 @@ export class UnassignedTestsComponent implements OnInit, DoCheck, OnDestroy {
     }
 
     this.subscription = this.updateService.update.subscribe(
-      hasUpdates => this.updates = hasUpdates);
+      () => this.getTestData());
   }
 
   ngDoCheck() {
-    if (this.updates) {
-      this.getTestData();
-    }
+
   }
 
   ngOnDestroy(): void {
@@ -53,9 +51,17 @@ export class UnassignedTestsComponent implements OnInit, DoCheck, OnDestroy {
   reloadTestData(): void {
     this.loading = true;
     this.competitionImporter.refreshTestData().subscribe(
-      data => this.testdata = data,
-      () => function () { console.log('Error when reloading'); this.loading = false; },
-      () => this.loading = false
+      data => {
+        this.testdata = data;
+      },
+      () => {
+        console.log('Error when reloading');
+        this.loading = false;
+      },
+      () => {
+        this.loading = false;
+        this.updateService.doUpdate();
+      }
     );
   }
 
@@ -69,10 +75,18 @@ export class UnassignedTestsComponent implements OnInit, DoCheck, OnDestroy {
   }
 
   saveTest(test, phase, section_id, state, startBlock): void {
-    this.competitionImporter.saveTestState(test, phase, section_id, state, startBlock).subscribe(
+    this.competitionImporter.saveTestState(test, phase, section_id, state, startBlock, 0, 0).subscribe(
       data => this.saved = data,
       error => console.log('Error when fetching data'),
       () => console.log('Successfully saved test state')
+    );
+  }
+
+  generate(): void {
+    this.competitionImporter.generateSchedule().subscribe(
+      () => console.log('Generated schedule'),
+      () => console.log('Error when auto generating'),
+      () => this.updateService.doUpdate()
     );
   }
 

@@ -10,6 +10,11 @@ import { SettingsProviderService } from '../settings-provider.service';
 export class HeaderComponent implements OnInit {
   name = '';
   settings;
+  currentlink = '/';
+  navItems = [
+    {text: 'Schedule', icon: 'fa-calendar', link: '/'},
+    {text: 'Judges', icon: 'fa-users', link: '/judges'}
+  ];
 
   constructor(private app: AppComponent, private settingsProvider: SettingsProviderService) { }
 
@@ -28,6 +33,10 @@ export class HeaderComponent implements OnInit {
       error => console.log('Error when fetching data'),
       () => this.setTitle()
     );
+  }
+
+  onSelect(link): void {
+    console.log(link);
   }
 
 }

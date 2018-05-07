@@ -10,6 +10,7 @@ import { GlobalUpdateService } from '../global-update.service';
 export class TestCardScheduleComponent implements OnInit {
   @Input() test;
   @Input() rowspan;
+  @Input() starttime;
   @Output() testGrab = new EventEmitter();
   @Output() testGrabStart = new EventEmitter();
 
@@ -20,12 +21,32 @@ export class TestCardScheduleComponent implements OnInit {
   split_rr = 0;
   split_lr = 0;
   join_section = 0;
+  judgeList = [];
+  endtime;
 
   constructor(private competitionImporter: CompetitionImporterService, private updateService: GlobalUpdateService) { }
 
   ngOnInit() {
+    this.test.state = new Date(this.test.state);
     this.hours = Math.floor(this.test.prel_time / 60);
     this.minutes = this.test.prel_time % 60;
+    this.endtime = new Date(this.starttime.getTime() + this.test.prel_time * 60000);
+    if (this.test.riders_per_heat > 1) {
+      this.free_left = this.test.left_heats * 3 - this.test.left_rein;
+      this.free_right = this.test.right_heats * 3 - this.test.right_rein;
+    }
+
+    this.updateService.update.subscribe(
+      () => this.onUpdate(),
+      () => console.log('Error on update')
+    );
+  }
+
+  onUpdate(): void {
+    this.getJudges();
+    this.hours = Math.floor(this.test.prel_time / 60);
+    this.minutes = this.test.prel_time % 60;
+    this.endtime = new Date(this.starttime.getTime() + this.test.prel_time * 60000);
     if (this.test.riders_per_heat > 1) {
       this.free_left = this.test.left_heats * 3 - this.test.left_rein;
       this.free_right = this.test.right_heats * 3 - this.test.right_rein;
@@ -42,32 +63,61 @@ export class TestCardScheduleComponent implements OnInit {
 
   splitTest(): void {
     this.competitionImporter.split(this.test.testcode, this.test.phase, this.test.section, this.split_lr, this.split_rr).subscribe(
-      () => console.log('Split test ' + this.test.testcode),
-      () => console.log('Error with split')
+      () => console.log('Next'),
+      () => console.log('Error with split'),
+      () => this.updateService.doUpdate()
     );
-    this.updateService.doUpdate(true);
   }
 
   joinTest(): void {
     this.competitionImporter.join(this.test.testcode, this.test.phase, this.join_section - 1, this.test.section).subscribe(
-      () => console.log('Joined test ' + this.test.testcode)
+      () => console.log('Next'),
+      () => console.log('Error with join'),
+      () => this.updateService.doUpdate()
     );
-    this.updateService.doUpdate(true);
   }
 
-  addJudge(name: string) {
-    this.competitionImporter.addJudge(this.test.testcode, this.test.phase, name).subscribe(
-      () => console.log('Added judge ' + name)
+  addJudge(fname: string, lname: string) {
+    this.competitionImporter.addJudge(this.test.testcode,
+                                      this.test.phase,
+                                      fname,
+                                      lname,
+                                      this.test.state.getTime()).subscribe(
+      () => this.updateService.doUpdate(),
+      () => console.log('Error when adding judge')
     );
-    this.test.judges.push(name);
   }
 
-  removeJudge(name: string) {
-    this.competitionImporter.removeJudge(this.test.testcode, this.test.phase, name).subscribe(
-      () => console.log('Removed judge ' + name)
+  removeJudge(fname: string, lname: string) {
+    this.competitionImporter.removeJudge(this.test.testcode,
+                                        this.test.phase,
+                                        fname,
+                                        lname,
+                                        this.test.state.getTime()).subscribe(
+      () => this.updateService.doUpdate(),
+      () => console.log('Error when removing judge')
     );
-    this.test.judges.pop(name);
-    name = '';
   }
 
+  getJudges() {
+    this.competitionImporter.getJudgesForTest(this.test.testcode, this.test.phase, this.test.state.getTime()).subscribe(
+      judges => this.judgeList = judges
+    );
+  }
+
+  toDate(date: string): Date {
+    return new Date(date);
+  }
+
+  toggleFinal(phase: string) {
+    this.competitionImporter.toggleFinal(this.test.testcode, phase).subscribe(
+      update => this.test = update,
+      () => console.log('Error when toggling final'),
+      () => this.updateService.doUpdate()
+    );
+  }
+
+  log(judge) {
+    console.log(judge.times[0]);
+  }
 }

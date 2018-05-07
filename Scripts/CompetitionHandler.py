@@ -1,22 +1,20 @@
 import pandas as pd
 from pymongo import MongoClient
 import math
+import datetime
 
 ip = '85.191.252.150'
 port = 32772
 
 class SportiImporter:
-    sheet = ""
-    filepath = ""
-    testlist = []
 
     def __init__(self, filepath):
         self.filepath = filepath
         self.load_file()
+        self.testlist = []
+        self.sheet = ""
         
-    
     def load_file(self):
-        MongoClient(ip, port).IcehorseDB.tests.remove({})
         xls = pd.ExcelFile(self.filepath)
         self.sheet = xls.parse(0)
         
@@ -50,19 +48,21 @@ class SportiImporter:
         client = MongoClient(ip, port)
         db = client.IcehorseDB
         collection = db.tests
-        times = db.test_times
-
         test = collection.find_one({
             'testcode': testcode.upper(),
             'phase': 'Preliminary'
         })
 
         final = test.copy()
+
         final['phase'] = (phase + 'fin').lower()
-        final['prel_time'] = times.find_one({
+
+        times = db.test_times.find_one({
             'test': testcode.lower(),
             'phase': final['phase'].lower()
-        })['time']
+        })
+
+        final['prel_time'] = times['time']
         final['left_rein'] = 1
         final['right_rein'] = 0
         final['left_heats'] = 1
@@ -70,6 +70,7 @@ class SportiImporter:
         final['state'] = 'unassigned'
         final['section'] = 0
         final['start_block'] = 0
+        final['priority'] = times['priority']
         final.pop('_id')
         collection.insert_one(final)
 
@@ -99,7 +100,8 @@ class Test:
         self.state = 'unassigned'
         self.hasAfinal = False
         self.hasBfinal = False
-        self.judges = []
+        self.start = 0
+        self.end = 0
 
         client = MongoClient(ip, port)
         db = client.IcehorseDB
@@ -117,9 +119,10 @@ class Test:
         self.right_heats = math.ceil(self.right_rein / self.riders_per_heat)
         self.prel_time = (self.left_heats + self.right_heats) * self.time_per_heat
         self.expected_judges = test_info['expected_judges']
+        self.priority = test_info['priority']
 
         client.close()
-        if tests.find_one({'testcode': self.testcode}):
+        if tests.find_one({'testcode': self.testcode, 'phase': self.phase, 'section': self.section_id}):
             self.update()
         else:
             self.save()
@@ -141,8 +144,10 @@ class Test:
                 'section': self.section_id,
                 'left_heats': self.left_heats,
                 'right_heats': self.right_heats,
-                'judges': self.judges,
-                'expected_judges': self.expected_judges
+                'expected_judges': self.expected_judges,
+                'start': self.start,
+                'end': self.end,
+                'priority': self.priority
             },
         )
     
@@ -162,8 +167,10 @@ class Test:
             'section': self.section_id,
             'left_heats': self.left_heats,
             'right_heats': self.right_heats,
-            'judges': self.judges,
-            'expected_judges': self.expected_judges
+            'expected_judges': self.expected_judges,
+            'start': self.start,
+            'end': self.end,
+            'priority': self.priority
         }
 
     def save(self):
@@ -178,3 +185,110 @@ class Test:
         db = client.IcehorseDB
         test = db.tests
         test.replace_one({'testcode': self.testcode, 'phase': self.phase, 'section': self.section_id}, self.to_dict())
+
+class Judge:
+    def __init__(self, fname, lname):
+        client = MongoClient(ip, port)
+        judges = client.IcehorseDB.judges
+        curr_judge = judges.find_one({'fname': fname, 'lname': lname})
+        
+        if curr_judge != None:
+            self.fname = curr_judge['fname']
+            self.lname = curr_judge['lname']
+            self.status = curr_judge['status']
+            self.tests = curr_judge['tests']
+            self.times = curr_judge['times']
+        else:
+            self.fname = fname
+            self.lname = lname
+            self.status = 'unknown'
+            self.tests = []
+            self.times = []
+        client.close()
+
+    def update_tests(self, testcode, start, end, time, date, prev_start):
+        test = self.tests[self.tests.index(next((test for test in self.tests if test['testcode'] == testcode and test['start'] == prev_start)))]
+        test['date'] = date
+        test['start'] = start
+        test['end'] = end
+        test['time'] = time
+
+    def calculate_time(self, date):
+        if type(date) != datetime.datetime:
+            date = datetime.datetime.utcfromtimestamp(int(date)/1000)
+        client = MongoClient(ip, port)
+        time = 0
+        starts = []
+        ends = []
+        start = 0
+        end = 0
+
+        if len(self.tests) > 0:
+            for tests in self.tests:
+                if tests['date'] == date:
+                    starts.append(tests['start'])
+                    ends.append(tests['end'])
+                    time += tests['time']
+            
+            if len(starts) > 0:
+                start = min(starts)
+
+            if len(ends) > 0:
+                end = max(ends)
+
+
+        client.close()
+
+        if any(t.get('date', None) == date for t in self.times):
+            self.times[self.times.index(next((day for day in self.times if day['date'] == date)))] = {
+                'date': date,
+                'time': time,
+                'start': start,
+                'end': end
+            }
+        else:
+            self.times.append(
+                {
+                    'date': date,
+                    'time': time,
+                    'start': start,
+                    'end': end
+                }
+            )
+
+    def to_dict(self):
+        return {
+            'fname': self.fname,
+            'lname': self.lname,
+            'status': self.status,
+            'tests': self.tests,
+            'times': self.times
+        }
+    
+    def to_tuple(self):
+        return (
+            {
+                'fname': self.fname,
+                'lname': self.lname,
+                'status': self.status,
+                'tests': self.tests,
+                'times': self.times
+            },
+        )
+    
+    def save(self):
+        client = MongoClient(ip, port)
+        db = client.IcehorseDB
+        judges = db.judges
+        judges.insert_one(self.to_dict())
+        client.close()
+    
+    def update(self):
+        client = MongoClient(ip, port)
+        db = client.IcehorseDB
+        judges = db.judges
+        replace = judges.replace_one({'lname': self.lname, 'fname': self.fname}, self.to_dict())
+        client.close()
+
+        if replace.modified_count < 1:
+            self.save()

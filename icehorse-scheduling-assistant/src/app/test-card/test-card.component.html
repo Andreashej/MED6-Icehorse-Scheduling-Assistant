@@ -5,12 +5,10 @@
       <div *ngIf="test.right_rein === 0; else heats" class="groupsize-1 heats">Number of riders: {{ test.left_rein }} </div>
       <ng-template #heats>
         <span class="heats lr">Left Rein: {{ test.left_heats }} ({{ test.left_rein }})
-          <span class="bagde" [class.badge-danger]="this.free_left == 0"
-            [class.badge-success]="this.free_left > 0">+{{ this.free_left }}</span>
+          <span class="bagde" [class.badge-danger]="this.free_left == 0" [class.badge-success]="this.free_left > 0">+{{ this.free_left }}</span>
         </span>
         <span class="heats rr">Right Rein: {{ test.right_heats }} ({{ test.right_rein }})
-          <span class="bagde" [class.badge-danger]="this.free_right == 0"
-            [class.badge-success]="this.free_right > 0">+{{ this.free_right }}</span>
+          <span class="bagde" [class.badge-danger]="this.free_right == 0" [class.badge-success]="this.free_right > 0">+{{ this.free_right }}</span>
         </span>
       </ng-template>
     </div>
@@ -18,10 +16,10 @@
   <div class="time col-4">
     <span class="hours" *ngIf="hours > 0">{{ hours }}h</span>
     <span class="minutes" *ngIf="minutes > 0">{{ minutes }}m</span>
-    <div class="btn-group" *ngIf="test.phase === 'Preliminary'">
-        <button class="btn btn-sm" [class.btn-danger]="!test.hasAfinal" [class.btn-success]="test.hasAfinal" type="button" (click)="toggleFinal('a')">AFIN</button>
-        <button class="btn btn-sm" [class.btn-danger]="!test.hasBfinal" [class.btn-success]="test.hasBfinal" type="button" (click)="toggleFinal('b')">BFIN</button>
-      </div>
+    <div class="btn-group" *ngIf="test.phase === 'Preliminary' && test.section == 0">
+      <button class="btn btn-sm" [class.btn-danger]="!test.hasAfinal" [class.btn-success]="test.hasAfinal" type="button" (click)="toggleFinal('a')">AFIN</button>
+      <button class="btn btn-sm" [class.btn-danger]="!test.hasBfinal" [class.btn-success]="test.hasBfinal" type="button" (click)="toggleFinal('b')">BFIN</button>
+    </div>
   </div>
-  
+
 </div>

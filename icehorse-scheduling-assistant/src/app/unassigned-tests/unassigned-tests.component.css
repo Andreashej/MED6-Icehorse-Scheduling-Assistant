@@ -22,5 +22,12 @@ button {
     100% { transform: rotate(360deg); }
 }
 .btn-container {
-    width: 100%;
+    width: calc(100% - 50px);
+    position: absolute;
+    bottom: 10px;
+    left: 25px;
+}
+
+.droppable-area {
+    min-height: 80vh;
 }

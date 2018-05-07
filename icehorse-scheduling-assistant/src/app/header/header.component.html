@@ -1,4 +1,7 @@
 <div class="header">
-  <i class="fa fa-bars" id="menu-button"></i>
+  <nav class="nav nav-justified">
+      <a *ngFor="let nav of navItems" class="nav-link" routerLink="{{nav.link}}"><i class="fa {{nav.icon}}"></i><span>{{nav.text}}</span></a>
+  </nav>
+  
   <h1 class="competition-name">{{name}}</h1>
 </div>

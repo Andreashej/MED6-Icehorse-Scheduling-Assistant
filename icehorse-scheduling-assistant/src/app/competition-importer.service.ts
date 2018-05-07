@@ -20,9 +20,9 @@ export class CompetitionImporterService {
     return this.http.get(this.base_url + 'get-time/' + test + '/' + phase);
   }
 
-  saveTestState(test: string, phase: string, section_id: number, state: string, startBlock: string): Observable<any> {
-    // console.log(this.base_url + test + '/' + phase + '/' + section_id + '/save/' + state + '/' + startBlock);
-    return this.http.get(this.base_url + test + '/' + phase + '/' + section_id + '/save/' + state + '/' + startBlock);
+  saveTestState(test: string, phase: string, section_id: number, state: string, startBlock: string, start, end): Observable<any> {
+    return this.http.get(
+      this.base_url + test + '/' + phase + '/' + section_id + '/save/' + state + '/' + startBlock + '/' + start + '/' + end);
   }
 
   split(test: string, phase: string, section_id: number, lr: number, rr: number): Observable<any> {
@@ -33,15 +33,30 @@ export class CompetitionImporterService {
     return this.http.get(this.base_url + test + '/' + phase + '/join/' + section1 + '/' + section2);
   }
 
-  addJudge(test: string, phase: string, judge: string): Observable<any> {
-    return this.http.get(this.base_url + test + '/' + phase + '/judges/add/' + judge);
+  addJudge(test: string, phase: string, fname: string, lname: string, date): Observable<any> {
+    return this.http.get(
+      this.base_url + 'set-judge/' + fname + '/' + lname + '/' + test + '/' + phase + '/' + date);
   }
 
-  removeJudge(test: string, phase: string, judge: string): Observable<any> {
-    return this.http.get(this.base_url + test + '/' + phase + '/judges/remove/' + judge);
+  removeJudge(test: string, phase: string, fname: string, lname: string, date): Observable<any> {
+    return this.http.get(
+      this.base_url + 'unset-judge/' + fname + '/' + lname + '/' + test + '/' + phase + '/' + date);
   }
 
-  toggleFinal(test: string, phase: string) {
+  getAllJudges(): Observable<any> {
+    return this.http.get(this.base_url + 'get-judges');
+  }
+
+  getJudgesForTest(test: string, phase: string, date): Observable<any> {
+    return this.http.get(this.base_url + 'get-judges/' + test + '/' + phase + '/' + date);
+  }
+
+  toggleFinal(test: string, phase: string): Observable<any> {
     return this.http.get(this.base_url + test + '/toggle-' + phase + '-final');
   }
+
+  generateSchedule(): Observable<any> {
+    return this.http.get(this.base_url + 'generate-schedule');
+  }
+
 }

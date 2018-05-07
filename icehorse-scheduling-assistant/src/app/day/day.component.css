@@ -32,6 +32,10 @@ h2 {
     padding: 0 5px;
 }
 
+.drag-over-border {
+    background-color: #312783;
+}
+
 app-test-card-schedule {
     height: 100%;
     display: flex;

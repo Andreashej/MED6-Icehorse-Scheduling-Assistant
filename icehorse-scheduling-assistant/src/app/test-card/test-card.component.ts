@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { NgDragDropModule } from 'ng-drag-drop';
 import { CompetitionImporterService } from '../competition-importer.service';
+import { GlobalUpdateService } from '../global-update.service';
 
 @Component({
   selector: 'app-test-card',
@@ -17,7 +18,7 @@ export class TestCardComponent implements OnInit {
 
   @Output() testGrab = new EventEmitter();
 
-  constructor(private competitionImporter: CompetitionImporterService) {
+  constructor(private competitionImporter: CompetitionImporterService, private updateService: GlobalUpdateService) {
   }
 
   testGrabbed(e: any) {
@@ -37,7 +38,8 @@ export class TestCardComponent implements OnInit {
     this.competitionImporter.toggleFinal(this.test.testcode, phase).subscribe(
       update => this.test = update
     );
-    this._toggleFinal.emit(null);
+    //this._toggleFinal.emit(null);
+    this.updateService.doUpdate();
   }
 
 }

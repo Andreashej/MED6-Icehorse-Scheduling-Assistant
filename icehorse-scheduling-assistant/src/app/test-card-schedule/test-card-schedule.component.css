@@ -5,6 +5,14 @@
     border: none;
 }
 
+.small h5 {
+    font-size: large;
+}
+
+.smaller h5 {
+    font-size: .8rem;
+}
+
 .draghandle {
     cursor: move;
 }
@@ -27,12 +35,36 @@
     margin-bottom: .3em;
 }
 
+.capitalize {
+    text-transform: uppercase;
+}
+
+.timespan {
+    font-size: .8rem;
+}
+
 .remove {
+    color: red;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+.critical {
     color: red;
 }
 
 .warning {
     color: orange;
+}
+
+.noclick {
+    cursor: default !important;
+}
+
+.nopoint {
+    cursor: default !important;
+    pointer-events: none;
 }
 
 .col:last-child {

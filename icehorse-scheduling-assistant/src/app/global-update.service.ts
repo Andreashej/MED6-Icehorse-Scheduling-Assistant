@@ -8,8 +8,8 @@ export class GlobalUpdateService {
 
   update = this._updateSource.asObservable();
 
-  doUpdate(hasUpdates: boolean) {
-    this._updateSource.next(hasUpdates);
+  doUpdate() {
+    this._updateSource.next(null);
   }
 
   constructor() { }

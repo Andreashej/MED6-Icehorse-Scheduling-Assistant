@@ -5,15 +5,32 @@
     height: 3.5em;
 }
 
-.competition-name, i {
-    margin: 0;
+.competition-name {
     font-size: 32px;
 }
 
 .competition-name {
+    margin: 0 auto;
+    width: fit-content;
     text-align: center;
 }
 
-#menu-button {
+.nav {
     float: left;
+}
+
+.nav .nav-link {
+    color: white;
+}
+
+.nav .nav-link:hover {
+    color: lightgrey;
+}
+
+.nav a span {
+    margin-left: 10px;
+}
+
+.nav .active {
+    border: thin white solid;
 }

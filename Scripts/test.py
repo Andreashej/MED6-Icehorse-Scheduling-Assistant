@@ -4,6 +4,8 @@ from flask_cors import CORS, cross_origin
 from pymongo import MongoClient
 import math
 import os
+import copy
+import datetime
 
 ip = '85.191.252.150'
 port = 32772
@@ -18,11 +20,20 @@ filepath = os.path.dirname(os.path.realpath(__file__))
 # Desktop
 icehorse = ch.SportiImporter(filepath + '\\..\\Data\\icetest-liste.xlsx')
 
+@app.route('/drop-all')
+def drop_all():
+    MongoClient(ip, port).IcehorseDB.tests.delete_many({})
+    return jsonify(True)
+
 @app.route('/get-tests/<state>')
 @cross_origin(support_credentials=True)
 def get_tests(state):
     client = MongoClient(ip, port)
-    all_tests = client.IcehorseDB.tests.find({'state': state})
+    if state == 'unassigned':
+        all_tests = client.IcehorseDB.tests.find({'state': state})
+    else:
+        time = datetime.datetime.utcfromtimestamp(int(state)/1000)
+        all_tests = client.IcehorseDB.tests.find({'state': time})
     client.close()
     testlist = ()
     for test in all_tests:
@@ -46,17 +57,17 @@ def toggle_final(test, x):
     if x == 'a':
         test_db['hasAfinal'] = not test_db['hasAfinal']
         if test_db['hasAfinal']:
-            final = icehorse.create_final(test, x)
+            icehorse.create_final(test, x)
         else:
-            final = icehorse.remove_final(test, x)
+            icehorse.remove_final(test, x)
 
     elif x == 'b':
         test_db['hasBfinal'] = not test_db['hasBfinal']
 
         if test_db['hasBfinal']:
-            final = icehorse.create_final(test, x)
+            icehorse.create_final(test, x)
         else:
-            final = icehorse.remove_final(test, x)
+            icehorse.remove_final(test, x)
 
     client.IcehorseDB.tests.replace_one({'testcode': test.upper(), 'phase': 'Preliminary'}, test_db)
     client.close()
@@ -65,14 +76,57 @@ def toggle_final(test, x):
 
     return jsonify(test_db)
 
-@app.route('/<testcode>/<phase>/<int:section>/save/<state>/<start_block>/')
+@app.route('/<testcode>/<phase>/<int:section>/save/<state>/<start_block>/<int:start>/<int:end>')
 @cross_origin(support_credentials=True)
-def save(testcode, phase, section, state, start_block):
+def save(testcode, phase, section, state, start_block, start, end):
     client = MongoClient(ip, port)
     test_db = client.IcehorseDB.tests.find_one({'testcode': testcode.upper(), 'phase': phase, 'section': section})
-    test_db['state'] = state
-    test_db['start_block'] = start_block
+    prev_start = copy.copy(test_db['start'])
+    prev_state = copy.copy(test_db['state'])
+
+    if state == 'unassigned':
+        test_db['state'] = state
+        test_db['start_block'] = 0
+        test_db['start'] = 0
+        test_db['end'] = 0
+    else:
+        state = int(state)
+        state = datetime.datetime.utcfromtimestamp(state/1000)
+        start = datetime.datetime.utcfromtimestamp(start/1000)
+        end = datetime.datetime.utcfromtimestamp(end/1000)
+        test_db['state'] = state
+        test_db['start_block'] = start_block
+        test_db['start'] = start
+        test_db['end'] = end
     client.IcehorseDB.tests.replace_one({'testcode': testcode.upper(), 'phase': phase, 'section': section}, test_db)
+
+    judges = client.IcehorseDB.judges.find({
+        'tests': {
+            '$elemMatch': {
+                'testcode': testcode.upper(),
+                'phase': phase,
+                'start': prev_start
+            }
+        }
+    },{
+        'fname': 1,
+        'lname': 1,
+        'status': 1,
+        'tests': {
+            '$elemMatch': {'date': prev_state}
+        },
+        'times': {
+            '$elemMatch': {'date': prev_state}
+        }
+    })
+
+    for judge in judges:
+        judge_obj = ch.Judge(judge['fname'], judge['lname'])
+        judge_obj.update_tests(testcode, start, end, test_db['prel_time'], state, prev_start)
+        judge_obj.calculate_time(state)
+        judge_obj.calculate_time(prev_state)
+        judge_obj.update()
+
     test_db.pop('_id')
     client.close()
     return jsonify(test_db)
@@ -117,29 +171,29 @@ def split(testcode, phase, section_id, left, right):
     new_section = test_doc.copy()
 
     highest_id = client.IcehorseDB.tests.find({'phase': phase, 'testcode': testcode.upper()}).sort('section', -1).limit(1)[0]['section']
-
-    new_section['left_rein'] = test_doc['left_rein'] - left
-    new_section['right_rein'] = test_doc['right_rein'] - right
+    new_section['right_rein'] = test_doc['right_rein'] - right * test_doc['riders_per_heat']
+    new_section['left_rein'] = test_doc['left_rein'] - left * test_doc['riders_per_heat']
     new_section['left_heats'] = math.ceil(new_section['left_rein'] / new_section['riders_per_heat'])
     new_section['right_heats'] = math.ceil(new_section['right_rein'] / new_section['riders_per_heat'])
     new_section['section'] = highest_id + 1
     new_section['prel_time'] = (new_section['left_heats'] + new_section['right_heats']) * new_section['time_per_heat']
     new_section['state'] = 'unassigned'
     new_section.pop('_id')
+    client.IcehorseDB.tests.insert_one(new_section)
 
-    test_doc['left_rein'] = left
-    test_doc['right_rein'] = right
+    test_doc['left_rein'] = left * test_doc['riders_per_heat']
+    test_doc['right_rein'] = right * test_doc['riders_per_heat']
     test_doc['left_heats'] = math.ceil(test_doc['left_rein'] / test_doc['riders_per_heat'])
     test_doc['right_heats'] = math.ceil(test_doc['right_rein'] / test_doc['riders_per_heat'])
     test_doc['prel_time'] = (test_doc['left_heats'] + test_doc['right_heats']) * test_doc['time_per_heat']
     client.IcehorseDB.tests.replace_one(match_doc, test_doc)
-    
-    client.IcehorseDB.tests.insert_one(new_section)
-    client.close()
-
     new_section.pop('_id')
     
+    client.close()
+    test_doc.pop('_id')
+
     return jsonify(new_section)
+
 
 @app.route('/<testcode>/<phase>/join/<int:section_id1>/<int:section_id2>')
 @cross_origin(support_credentials=True)
@@ -173,49 +227,181 @@ def join(testcode, phase, section_id1, section_id2):
 
     return jsonify(section1)
 
-@app.route('/<testcode>/<phase>/judges/add/<name>')
+@app.route('/set-judge/<fname>/<lname>/<testcode>/<phase>/<date>/')
 @cross_origin(support_credentials=True)
-def add_judge(testcode, phase, name):
-    match = {
-        'phase': phase,
-        'testcode': testcode.upper(),
-    }
+def set_judge(fname, lname, testcode, phase, date):
+    judge = ch.Judge(fname, lname)
     client = MongoClient(ip, port)
-    tests = client.IcehorseDB.tests.find(match)
-    test_arr = ()
+    tests = client.IcehorseDB.tests.find({
+        'testcode': testcode,
+        'phase': phase
+    })
+    client.close()
     for test in tests:
-        test['judges'].append(name)
-        client.IcehorseDB.tests.save(test)
+        judge.tests.append({
+            'testcode': testcode.upper(),
+            'phase': phase,
+            'date': datetime.datetime.utcfromtimestamp(int(date)/1000),
+            'start': test['start'],
+            'end': test['end'],
+            'time': test['prel_time']
+        })
+    judge.calculate_time(date)
+    judge.update()
+    return jsonify(judge.to_tuple())
 
-        test.pop('_id')
-        test_arr += (test,)
-
-    return jsonify(test_arr)
-
-@app.route('/<testcode>/<phase>/judges/remove/<name>')
+@app.route('/unset-judge/<fname>/<lname>/<testcode>/<phase>/<date>/')
 @cross_origin(support_credentials=True)
-def remove_judge(testcode, phase, name):
-    match = {
-        'phase': phase,
-        'testcode': testcode.upper(),
-    }
+def unset_judge(fname, lname, testcode, phase, date):
+    judge = ch.Judge(fname, lname)
     client = MongoClient(ip, port)
-    tests = client.IcehorseDB.tests.find(match)
-    test_arr = ()
+    tests = client.IcehorseDB.tests.find({
+        'testcode': testcode,
+        'phase': phase
+    })
+    client.close()
     for test in tests:
-        test['judges'].remove(name)
-        client.IcehorseDB.tests.save(test)
-        
-        test.pop('_id')
-        test_arr += (test,)
+        judge.tests.remove({
+            'testcode': testcode.upper(),
+            'phase': phase,
+            'date': datetime.datetime.utcfromtimestamp(int(date)/1000),
+            'start': test['start'],
+            'end': test['end'],
+            'time': test['prel_time']
+        })
+    judge.calculate_time(date)
+    judge.update()
 
-    return jsonify(test_arr)
-
-@app.route('/get-judges')
+    return jsonify(judge.to_tuple())
+    
+@app.route('/get-judges/')
 @cross_origin(support_credentials=True)
 def get_judges():
-    print()
+    client = MongoClient(ip, port)
+    judges = client.IcehorseDB.judges.find({})
 
+    judge_arr = []
+    for judge in judges:
+        judge.pop('_id')
+        judge_arr += (judge,)
+
+    return jsonify(judge_arr)
+
+@app.route('/get-judge/<fname>/<lname>/')
+@cross_origin(support_credentials=True)
+def get_judge(fname, lname):
+    client = MongoClient(ip, port)
+    judge = client.IcehorseDB.judges.find_one({'fname': fname, 'lname': lname})
+
+    client.close()
+    judge.pop('_id')
+
+    return jsonify(judge)
+
+@app.route('/get-judges/<test>/<phase>/<date>')
+@cross_origin(support_credentials=True)
+def get_judges_for_test(test, phase, date):
+    client = MongoClient(ip, port)
+    judges = client.IcehorseDB.judges.find({
+        'tests': {
+            '$elemMatch': {
+                'testcode': test.upper(),
+                'phase': phase,
+            }
+        }
+    },{
+        'fname': 1,
+        'lname': 1,
+        'status': 1,
+        'tests': {
+            '$elemMatch': {'date': datetime.datetime.utcfromtimestamp(int(date)/1000)}
+        },
+        'times': {
+            '$elemMatch': {'date': datetime.datetime.utcfromtimestamp(int(date)/1000)}
+        }
+    })
+
+    client.close()
+
+    judge_arr = []
+    for judge in judges:
+        judge.pop('_id')
+        judge_arr += (judge,)
+
+    return jsonify(judge_arr)
+
+@app.route('/generate-schedule')
+@cross_origin(support_credentials=True)
+def generate_schedule():
+    test_arr = []
+    client = MongoClient(ip, port)
+
+    settings = client.IcehorseDB.competition_setup.find_one()
+
+    test_collection = client.IcehorseDB.tests
+    current_day = 0
+    current_time = settings['days'][current_day]
+    current_block = 0
+
+    try:
+        next_test = test_collection.find({'state': 'unassigned'}).sort([('priority', 1)]).limit(1).next()
+    except:
+        return jsonify("No unassigned tests left...")
+    
+    while next_test:   
+        if next_test['prel_time'] > 120:
+            heats_per_two_hour = 120 / next_test['time_per_heat']
+            if next_test['left_heats'] > heats_per_two_hour:
+                left = heats_per_two_hour
+                right = 0
+            elif next_test['right_heats'] > heats_per_two_hour:
+                right = heats_per_two_hour
+                left = 0
+            else:
+                left = math.floor(next_test['left_heats'] / 2)
+                right = math.floor(next_test['right_heats'] / 2)
+
+            split(next_test['testcode'], next_test['phase'], next_test['section'], left, right)
+            next_test = test_collection.find_one({'testcode': next_test['testcode'], 'phase': next_test['phase'], 'section': next_test['section']})
+
+        next_test['start'] = current_time
+        next_test['end'] = next_test['start'] + datetime.timedelta(minutes=next_test['prel_time'])
+        
+        if next_test['end'] > settings['days'][current_day] + datetime.timedelta(hours=settings['hours']):
+            current_day += 1
+            current_block = 0
+            try:
+                current_time = settings['days'][current_day]
+            except:
+                break
+            next_test['start'] = current_time
+            next_test['end'] = next_test['start'] + datetime.timedelta(minutes=next_test['prel_time'])
+
+        next_test['start_block'] = int(current_block)
+        next_test['state'] = settings['days'][current_day]
+
+        blocksize = math.ceil(next_test['prel_time'] / 5)
+
+        current_time = next_test['end'] + datetime.timedelta(minutes=10)
+        current_block = next_test['start_block'] + blocksize + 2
+
+        test_collection.replace_one({'testcode': next_test['testcode'].upper(), 'phase': next_test['phase'], 'section': next_test['section']},next_test)
+
+        next_test = test_collection.find_one({'state': 'unassigned', 'testcode': next_test['testcode'], 'phase': next_test['phase']})
+
+        if next_test == None:
+            try:
+                next_test = test_collection.find({'state': 'unassigned'}).sort([('priority', 1)]).limit(1).next()
+            except:
+                break
+
+    all_tests = test_collection.find()
+    for test in all_tests:
+        test.pop('_id')
+        test_arr.append(test)
+
+    client.close()
+    return jsonify(test_arr)
 
 if __name__ == '__main__':
     app.run(debug=True)

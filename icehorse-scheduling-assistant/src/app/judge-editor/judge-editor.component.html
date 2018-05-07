@@ -1,0 +1,32 @@
+<h1>Judge overview</h1>
+<table class="list-group">
+  <tr class="list-group-item row">
+    <th class="col-3">Name</th>
+    <th class="col" *ngFor="let day of settings.days">{{ day | date:'EEEE MMM d' }}</th>
+  </tr>
+  <tr class="list-group-item row" *ngFor="let judge of judges">
+    <td class="name col-3">
+      {{ judge.fname }} {{ judge.lname }}
+    </td>
+    <td class="col" *ngFor="let day of settings.days">
+      <span *ngIf="judgeHours(judge, day)">
+        <b>Judging hours:</b>
+        <div class="badge" [class.badge-danger]="judgeHours(judge, day).duration > 480" [class.badge-success]="judgeHours(judge, day).duration <= 480">
+          <span *ngIf="judgeHours(judge, day).hours > 0">{{judgeHours(judge, day).hours}}h</span>
+          <span *ngIf="judgeHours(judge, day).minutes > 0">{{judgeHours(judge, day).minutes}}m</span>
+        </div>
+        <br>
+        <b>Length of day:</b>
+        <div class="badge" [class.badge-danger]="judgeHours(judge, day).duration > 480" [class.badge-success]="judgeHours(judge, day).duration <= 480">
+          <span *ngIf="lengthOfDay(judge, day).hours > 0">{{lengthOfDay(judge, day).hours}}h</span>
+          <span *ngIf="lengthOfDay(judge, day).minutes > 0">{{lengthOfDay(judge, day).minutes}}m</span>
+        </div>
+      </span>
+    </td>
+  </tr>
+</table>
+
+<div class="explanation">
+  <span class="badge badge-danger">10h 5m</span> = The judge more than 8 hours of judging or a longer day than 10 hours, which is the maximum.
+  <span class="badge badge-success">6h 3m</span> = All times are below the maximum limit.
+</div>

@@ -1,0 +1,21 @@
+h1 {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.list-group-item {
+    display: flex;
+}
+
+td {
+    vertical-align: middle;
+}
+
+th {
+    font-size: 20px;
+}
+
+.list-group-item:first-child {
+    border-bottom:  #312783 medium solid;
+    border-top: none;
+}

@@ -5,14 +5,14 @@
         <i *ngIf="testdata" class="fa fa-refresh" [class.loading]="loading" id="refresh" (click)="reloadTestData()"></i>
       </h2>
     </span>
-    <div (onDrop)="onDrop($event)" droppable>
+    <div (onDrop)="onDrop($event)" droppable class="droppable-area">
       <app-test-card *ngFor="let test of testdata" [test]="test" (testGrab)="removeUnassigned(test)" (_toggleFinal)="getTestData()"></app-test-card>
       
     </div>
   </div>
 
   <div class="btn-container">
-    <button *ngIf="!testdata" class="btn btn-success btn-large" (click)="getTestData()">Import tests</button>
-    <button *ngIf="testdata" class="btn btn-success btn-large">Generate Schedule</button>
+    <button *ngIf="!testdata" class="btn btn-success btn-large" (click)="reloadTestData()">Import tests</button>
+    <button *ngIf="testdata" class="btn btn-success btn-large" (click)="generate()">Generate Schedule</button>
   </div>
 </div>
