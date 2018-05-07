@@ -38,8 +38,7 @@ export class TestCardComponent implements OnInit {
     this.competitionImporter.toggleFinal(this.test.testcode, phase).subscribe(
       update => this.test = update
     );
-    //this._toggleFinal.emit(null);
-    this.updateService.doUpdate();
+    this.updateService.doUpdate(this.test.testcode);
   }
 
 }

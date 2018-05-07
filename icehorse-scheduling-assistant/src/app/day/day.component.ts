@@ -50,13 +50,14 @@ export class DayComponent implements OnInit, OnDestroy {
         block.testcode = test.testcode;
         block.content = test;
         block.droppable = false;
+        console.log(block.testcode);
       }
     }
   }
 
   constructor(private settingsProvider: SettingsProviderService,
-              private competitionImporter: CompetitionImporterService,
-              private updateService: GlobalUpdateService) { }
+    private competitionImporter: CompetitionImporterService,
+    private updateService: GlobalUpdateService) { }
 
   ngOnInit() {
     this.date = new Date(this.date);
@@ -102,20 +103,32 @@ export class DayComponent implements OnInit, OnDestroy {
       error => console.log('Error when fetching data'),
       () => {
         this.subscription = this.updateService.update.subscribe(
-          () => {
-            this.blocks = [];
+          next => {
+            if (next.includes('finaltoggle')) {
+              const values = next.split('&');
+              console.log(values);
+              const block = this.blocks.filter(test => test.testcode === values[1] && test.content.phase === values[2] + 'fin');
+              if (block !== []) {
+                console.log(block);
+                block[0].content = undefined;
+                block[0].rowspan = 1;
+                block[0].droppable = true;
+                block[0].testcode = '';
+              }
+            }
             this.initDays();
-          });
+          }
+        );
       });
   }
 
   saveTest(test, phase, section_id, state, startBlock, start, end): void {
     this.competitionImporter.saveTestState(
       test, phase, section_id, state, startBlock, start, end).subscribe(
-      () => console.log('Saving...'),
-      error => console.log('Error when fetching data ' + error),
-      () => console.log('Successfully saved test state')
-    );
+        () => console.log('Saving...'),
+        error => console.log('Error when fetching data ' + error),
+        () => console.log('Successfully saved test state')
+      );
   }
 
   allowDrop(block): void {

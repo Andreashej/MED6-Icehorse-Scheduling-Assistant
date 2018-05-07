@@ -60,7 +60,7 @@ export class UnassignedTestsComponent implements OnInit, DoCheck, OnDestroy {
       },
       () => {
         this.loading = false;
-        this.updateService.doUpdate();
+        this.updateService.doUpdate('');
       }
     );
   }
@@ -86,7 +86,7 @@ export class UnassignedTestsComponent implements OnInit, DoCheck, OnDestroy {
     this.competitionImporter.generateSchedule().subscribe(
       () => console.log('Generated schedule'),
       () => console.log('Error when auto generating'),
-      () => this.updateService.doUpdate()
+      () => this.updateService.doUpdate('')
     );
   }
 
