@@ -5,7 +5,6 @@ import { CompetitionImporterService } from '../competition-importer.service';
 import { EventEmitter } from 'events';
 import { GlobalUpdateService } from '../global-update.service';
 import { Subscription } from 'rxjs/Subscription';
-import { POINT_CONVERSION_COMPRESSED } from 'constants';
 
 @Component({
   selector: 'app-day',
