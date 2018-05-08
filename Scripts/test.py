@@ -287,46 +287,44 @@ def get_judges():
 
     return jsonify(judge_arr)
 
-@app.route('/get-judge/<fname>/<lname>/')
+@app.route('/update-judge/<fname>/<lname>/<new_fname>/<new_lname>/<new_status>')
 @cross_origin(support_credentials=True)
-def get_judge(fname, lname):
-    client = MongoClient(ip, port)
-    judge = client.IcehorseDB.judges.find_one({'fname': fname, 'lname': lname})
+def update_judge(fname, lname, new_fname, new_lname, new_status):
+    judge = ch.Judge(fname, lname)
+    judge.update_judge_info(new_fname, new_lname, new_status)
+    judge.update()
 
-    client.close()
-    judge.pop('_id')
+    return jsonify(judge.to_tuple())
 
-    return jsonify(judge)
-
-@app.route('/get-judges/<test>/<phase>/<date>')
+@app.route('/get-judges/<test>/<phase>/<int:date>')
 @cross_origin(support_credentials=True)
 def get_judges_for_test(test, phase, date):
-    client = MongoClient(ip, port)
-    judges = client.IcehorseDB.judges.find({
-        'tests': {
-            '$elemMatch': {
-                'testcode': test.upper(),
-                'phase': phase,
-            }
-        }
-    },{
-        'fname': 1,
-        'lname': 1,
-        'status': 1,
-        'tests': {
-            '$elemMatch': {'date': datetime.datetime.utcfromtimestamp(int(date)/1000)}
-        },
-        'times': {
-            '$elemMatch': {'date': datetime.datetime.utcfromtimestamp(int(date)/1000)}
-        }
-    })
-
-    client.close()
-
     judge_arr = []
-    for judge in judges:
-        judge.pop('_id')
-        judge_arr += (judge,)
+    if type(date) == int:
+        client = MongoClient(ip, port)
+        judges = client.IcehorseDB.judges.find({
+            'tests': {
+                '$elemMatch': {
+                    'testcode': test.upper(),
+                    'phase': phase,
+                }
+            }
+        },{
+            'fname': 1,
+            'lname': 1,
+            'status': 1,
+            'tests': {
+                '$elemMatch': {'date': datetime.datetime.utcfromtimestamp(int(date)/1000)}
+            },
+            'times': {
+                '$elemMatch': {'date': datetime.datetime.utcfromtimestamp(int(date)/1000)}
+            }
+        })
+
+        client.close()
+        for judge in judges:
+            judge.pop('_id')
+            judge_arr += (judge,)
 
     return jsonify(judge_arr)
 

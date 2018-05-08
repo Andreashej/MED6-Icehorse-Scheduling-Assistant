@@ -206,6 +206,19 @@ class Judge:
             self.times = []
         client.close()
 
+    def update_judge_info(self, new_fname, new_lname, new_status):
+        client = MongoClient(ip, port)
+        judge = client.IcehorseDB.judges.find_one({'fname': self.fname, 'lname': self.lname})
+        self.fname = new_fname
+        self.lname = new_lname
+        self.status = new_status
+
+        if judge:
+            replace = client.IcehorseDB.judges.replace_one(judge, self.to_dict())
+        else:
+            self.save()
+        client.close()
+
     def update_tests(self, testcode, start, end, time, date, prev_start):
         test = self.tests[self.tests.index(next((test for test in self.tests if test['testcode'] == testcode and test['start'] == prev_start)))]
         test['date'] = date
@@ -214,8 +227,10 @@ class Judge:
         test['time'] = time
 
     def calculate_time(self, date):
-        if type(date) != datetime.datetime:
+        try:
             date = datetime.datetime.utcfromtimestamp(int(date)/1000)
+        except:
+            print('unassigned')
         client = MongoClient(ip, port)
         time = 0
         starts = []
@@ -235,7 +250,6 @@ class Judge:
 
             if len(ends) > 0:
                 end = max(ends)
-
 
         client.close()
 

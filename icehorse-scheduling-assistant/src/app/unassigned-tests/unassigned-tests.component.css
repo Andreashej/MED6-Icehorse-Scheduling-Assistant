@@ -31,3 +31,7 @@ button {
 .droppable-area {
     min-height: 80vh;
 }
+
+.drag-over-border {
+    border: green thick solid;
+}

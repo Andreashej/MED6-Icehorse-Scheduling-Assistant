@@ -59,4 +59,8 @@ export class CompetitionImporterService {
     return this.http.get(this.base_url + 'generate-schedule');
   }
 
+  updateJudge(fname, lname, new_fname, new_lname, new_status): Observable<any> {
+    return this.http.get(this.base_url + 'update-judge/' + fname + '/' + lname + '/' + new_fname + '/' + new_lname + '/' + new_status);
+  }
+
 }

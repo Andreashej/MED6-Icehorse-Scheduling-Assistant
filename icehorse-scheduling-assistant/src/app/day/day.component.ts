@@ -102,43 +102,37 @@ export class DayComponent implements OnInit, OnDestroy {
       data => this.settings = data[0],
       error => console.log('Error when fetching data'),
       () => {
-        this.subscription = this.updateService.update.subscribe(
+        this.subscription = this.updateService.dayUpdate.subscribe(
           next => {
-            if (next.includes('finaltoggle')) {
-              const values = next.split('&');
-              console.log(values);
-              const block = this.blocks.filter(test => test.testcode === values[1] && test.content.phase === values[2] + 'fin');
-              if (block !== []) {
-                console.log(block);
-                block[0].content = undefined;
-                block[0].rowspan = 1;
-                block[0].droppable = true;
-                block[0].testcode = '';
-              }
+            console.log(next);
+            console.log(this.date.getDate());
+            if (next === this.date.getDate() + '&' + this.date.getMonth() + '&' + this.date.getYear() || next === '') {
+              this.blocks = [];
+              this.initDays();
             }
-            this.initDays();
-          }
-        );
-      });
-  }
+          });
+          this.initDays();
+      }
+    );
+}
 
-  saveTest(test, phase, section_id, state, startBlock, start, end): void {
-    this.competitionImporter.saveTestState(
-      test, phase, section_id, state, startBlock, start, end).subscribe(
-        () => console.log('Saving...'),
-        error => console.log('Error when fetching data ' + error),
-        () => console.log('Successfully saved test state')
-      );
-  }
+saveTest(test, phase, section_id, state, startBlock, start, end): void {
+  this.competitionImporter.saveTestState(
+    test, phase, section_id, state, startBlock, start, end).subscribe(
+      () => console.log('Saving...'),
+      error => console.log('Error when fetching data ' + error),
+      () => console.log('Successfully saved test state')
+    );
+}
 
-  allowDrop(block): void {
-    block.droppable = true;
-    block.rowspan = 1;
-  }
+allowDrop(block): void {
+  block.droppable = true;
+  block.rowspan = 1;
+}
 
-  remove(block) {
-    block.testcode = '';
-    block.content = undefined;
-    block.droppable = true;
-  }
+remove(block) {
+  block.testcode = '';
+  block.content = undefined;
+  block.droppable = true;
+}
 }

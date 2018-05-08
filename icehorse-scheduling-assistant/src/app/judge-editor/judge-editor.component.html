@@ -2,11 +2,24 @@
 <table class="list-group">
   <tr class="list-group-item row">
     <th class="col-3">Name</th>
+    <th class="col-2">Status</th>
     <th class="col" *ngFor="let day of settings.days">{{ day | date:'EEEE MMM d' }}</th>
   </tr>
   <tr class="list-group-item row" *ngFor="let judge of judges">
     <td class="name col-3">
-      {{ judge.fname }} {{ judge.lname }}
+      <div class="input-group">
+      <input class="form-control" #fname type="text" value="{{judge.fname}}" placeholder="First Name" (blur)="saveJudge(judge.fname, judge.lname, fname.value, lname.value, status.value)">
+      <input class="form-control" #lname type="text" value="{{judge.lname}}" placeholder="Last Name" (blur)="saveJudge(judge.fname, judge.lname, fname.value, lname.value, status.value)">
+      </div>
+    </td>
+    <td class="col-2">
+      <select #status class="custom-select" (blur)="saveJudge(judge.fname, judge.lname, fname.value, lname.value, status.value)">
+        <option [attr.selected]="judge.status === 'FEIF' ? '' : null" value="FEIF">FEIF</option>
+        <option [attr.selected]="judge.status === 'National' ? '' : null" value="National">National</option>
+        <option [attr.selected]="judge.status === 'C' ? '' : null" value="C">C</option>
+        <option [attr.selected]="judge.status === 'D' ? '' : null" value="D">D</option>
+        <option [attr.selected]="judge.status === 'unknown' ? '' : null">Unknown</option>
+      </select>
     </td>
     <td class="col" *ngFor="let day of settings.days">
       <span *ngIf="judgeHours(judge, day)">
@@ -23,6 +36,26 @@
         </div>
       </span>
     </td>
+  </tr>
+  <tr class="list-group-item row">
+    <td class="name col-3">
+      <div class="input-group">
+        <input class="form-control" #fnamenew type="text" placeholder="First Name">
+        <input class="form-control" #lnamenew type="text" placeholder="Last Name">
+      </div>
+    </td>
+    <td class="col-2">
+      <select #statusnew class="custom-select">
+        <option value="FEIF">FEIF</option>
+        <option value="National">National</option>
+        <option value="C">C</option>
+        <option value="D">D</option>
+      </select>
+    </td>
+    <td class="col">
+      <button class="btn btn-success" type="submit" (click)="saveJudge(fnamenew.value, lnamenew.value, fnamenew.value, lnamenew.value, statusnew.value); fnamenew.value = ''; lnamenew.value = ''; statusnew.value = 'feif'">Add</button>
+    </td>
+
   </tr>
 </table>
 

@@ -37,23 +37,23 @@ export class TestCardScheduleComponent implements OnInit {
     }
     this.getJudges();
 
-    this.updateService.update.subscribe(
+    this.updateService.testcardUpdate.subscribe(
       next => this.onUpdate(next),
       () => console.log('Error on update')
     );
   }
 
   onUpdate(next): void {
-    console.log(next);
-    if (next === 'judges&' + this.test.testcode ) {
+    if (next === this.test.testcode) {
       this.getJudges();
-    }
-    this.hours = Math.floor(this.test.prel_time / 60);
-    this.minutes = this.test.prel_time % 60;
-    this.endtime = new Date(this.starttime.getTime() + this.test.prel_time * 60000);
-    if (this.test.riders_per_heat > 1) {
-      this.free_left = this.test.left_heats * 3 - this.test.left_rein;
-      this.free_right = this.test.right_heats * 3 - this.test.right_rein;
+
+      this.hours = Math.floor(this.test.prel_time / 60);
+      this.minutes = this.test.prel_time % 60;
+      this.endtime = new Date(this.starttime.getTime() + this.test.prel_time * 60000);
+      if (this.test.riders_per_heat > 1) {
+        this.free_left = this.test.left_heats * 3 - this.test.left_rein;
+        this.free_right = this.test.right_heats * 3 - this.test.right_rein;
+      }
     }
   }
 
@@ -69,7 +69,10 @@ export class TestCardScheduleComponent implements OnInit {
     this.competitionImporter.split(this.test.testcode, this.test.phase, this.test.section, this.split_lr, this.split_rr).subscribe(
       () => console.log('Next'),
       () => console.log('Error with split'),
-      () => this.updateService.doUpdate(this.test.testcode)
+      () => {
+        this.updateService.updateUnassigned();
+        this.updateService.updateDay(this.starttime.getDate() + '&' + this.starttime.getMonth() + '&' + this.starttime.getYear());
+      }
     );
   }
 
@@ -77,30 +80,31 @@ export class TestCardScheduleComponent implements OnInit {
     this.competitionImporter.join(this.test.testcode, this.test.phase, this.join_section - 1, this.test.section).subscribe(
       () => console.log('Next'),
       () => console.log('Error with join'),
-      () => this.updateService.doUpdate(this.test.testcode)
+      () => this.updateService.updateDay('')
     );
   }
 
   addJudge(fname: string, lname: string) {
+    console.log(this.test.state.getTime());
     this.competitionImporter.addJudge(this.test.testcode,
-                                      this.test.phase,
-                                      fname,
-                                      lname,
-                                      this.test.state.getTime()).subscribe(
-      () => this.updateService.doUpdate('judges&' + this.test.testcode),
-      () => console.log('Error when adding judge')
-    );
+      this.test.phase,
+      fname,
+      lname,
+      this.test.state.getTime()).subscribe(
+        () => this.updateService.updateTestCard(this.test.testcode),
+        () => console.log('Error when adding judge')
+      );
   }
 
   removeJudge(fname: string, lname: string) {
     this.competitionImporter.removeJudge(this.test.testcode,
-                                        this.test.phase,
-                                        fname,
-                                        lname,
-                                        this.test.state.getTime()).subscribe(
-      () => this.updateService.doUpdate('judges&' + this.test.testcode),
-      () => console.log('Error when removing judge')
-    );
+      this.test.phase,
+      fname,
+      lname,
+      this.test.state.getTime()).subscribe(
+        () => this.updateService.updateTestCard(this.test.testcode),
+        () => console.log('Error when removing judge')
+      );
   }
 
   getJudges() {
@@ -117,7 +121,10 @@ export class TestCardScheduleComponent implements OnInit {
     this.competitionImporter.toggleFinal(this.test.testcode, phase).subscribe(
       update => this.test = update,
       () => console.log('Error when toggling final'),
-      () => this.updateService.doUpdate('finaltoggle&' + this.test.testcode + '&' + phase)
+      () => {
+        this.updateService.updateUnassigned();
+        this.updateService.updateDay(this.starttime.getDate() + '&' + this.starttime.getMonth() + '&' + this.starttime.getYear());
+      }
     );
   }
 }

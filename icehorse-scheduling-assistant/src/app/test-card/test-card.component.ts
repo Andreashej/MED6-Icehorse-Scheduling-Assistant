@@ -36,9 +36,12 @@ export class TestCardComponent implements OnInit {
 
   toggleFinal(phase: string) {
     this.competitionImporter.toggleFinal(this.test.testcode, phase).subscribe(
-      update => this.test = update
+      update => this.test = update,
+      () => console.log('Error on final toggle'),
+      () => {
+        this.updateService.updateUnassigned();
+      }
     );
-    this.updateService.doUpdate(this.test.testcode);
   }
 
 }

@@ -12,6 +12,7 @@ import { GlobalUpdateService } from '../global-update.service';
 export class JudgeEditorComponent implements OnInit {
   judges = [];
   settings = [];
+  edit = false;
 
   constructor(private competitionImporter: CompetitionImporterService,
     private settingsProvider: SettingsProviderService,
@@ -56,7 +57,8 @@ export class JudgeEditorComponent implements OnInit {
     }
   }
 
-  log(judge) {
-    console.log(judge);
+  saveJudge(fname, lname, new_fname, new_lname, new_status) {
+    this.competitionImporter.updateJudge(fname, lname, new_fname, new_lname, new_status).subscribe(
+      () => this.getJudges());
   }
 }
