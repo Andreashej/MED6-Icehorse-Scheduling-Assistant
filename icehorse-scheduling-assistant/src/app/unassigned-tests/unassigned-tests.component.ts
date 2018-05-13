@@ -93,4 +93,12 @@ export class UnassignedTestsComponent implements OnInit, DoCheck, OnDestroy {
     );
   }
 
+  createCustomTest(name, duration): void {
+    this.competitionImporter.create_custom(name, duration).subscribe(
+      () => console.log('Saved'),
+      () => console.log('Error when creating new'),
+      () => this.updateService.updateUnassigned()
+    );
+  }
+
 }

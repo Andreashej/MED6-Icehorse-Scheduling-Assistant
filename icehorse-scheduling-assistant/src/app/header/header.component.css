@@ -6,13 +6,15 @@
 }
 
 .competition-name {
-    font-size: 32px;
-}
-
-.competition-name {
     margin: 0 auto;
     width: fit-content;
     text-align: center;
+    font-size: 32px;
+}
+
+.track-selector {
+    float: right;
+    margin-right: 2em
 }
 
 .nav {
@@ -33,4 +35,20 @@
 
 .nav .active {
     border: thin white solid;
+}
+
+.dropdown-item:hover {
+    background-color: #312783;
+    color: white !important;
+    cursor: pointer;
+}
+
+.dropdown-toggle {
+    cursor: pointer;
+}
+
+@media print {
+    .no-print {
+        display: none;
+    }
 }

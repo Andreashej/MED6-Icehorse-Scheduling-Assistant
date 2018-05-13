@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { AppComponent } from '../app.component';
 import { SettingsProviderService } from '../settings-provider.service';
+import { CompetitionImporterService } from '../competition-importer.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-header',
@@ -8,35 +10,39 @@ import { SettingsProviderService } from '../settings-provider.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  name = '';
-  settings;
-  currentlink = '/';
-  navItems = [
-    {text: 'Schedule', icon: 'fa-calendar', link: '/'},
-    {text: 'Judges', icon: 'fa-users', link: '/judges'}
-  ];
 
-  constructor(private app: AppComponent, private settingsProvider: SettingsProviderService) { }
+  name = '';
+  settings = {
+    'name': '',
+    'tracks': []
+  };
+  currentlink = '/';
+  activeTrack = '';
+
+  constructor(private app: AppComponent,
+    private settingsProvider: SettingsProviderService,
+    private competitionImporter: CompetitionImporterService) { }
 
   ngOnInit() {
     this.getSettings();
-    this.name = this.app.title;
   }
 
   setTitle(): void {
-    this.name += ' | ' + this.settings[0].name;
+    this.name = this.settings.name;
+    this.activeTrack = this.settings.tracks[0];
+    this.competitionImporter.changeActiveTrack(this.activeTrack);
   }
 
   getSettings(): void {
     this.settingsProvider.getSettings().subscribe(
-      data => this.settings = data,
+      data => this.settings = data[0],
       error => console.log('Error when fetching data'),
       () => this.setTitle()
     );
   }
 
-  onSelect(link): void {
-    console.log(link);
+  changeTrack(): void {
+    this.competitionImporter.changeActiveTrack(this.activeTrack);
   }
 
 }

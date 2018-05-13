@@ -21,6 +21,7 @@ import { GlobalUpdateService } from './global-update.service';
 import { AppRoutingModule } from './/app-routing.module';
 import { JudgeEditorComponent } from './judge-editor/judge-editor.component';
 import { ScheduleContainerComponent } from './schedule-container/schedule-container.component';
+import { PrintHandlerComponent } from './print-handler/print-handler.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { ScheduleContainerComponent } from './schedule-container/schedule-contai
     DayComponent,
     TestCardScheduleComponent,
     JudgeEditorComponent,
-    ScheduleContainerComponent
+    ScheduleContainerComponent,
+    PrintHandlerComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,55 @@
+<div class="no-print">
+  <h1>Print Schedule for current track</h1>
+  <div class="row template-selector">
+    <div class="col-4 input-group mb-3">
+      <select [(ngModel)]="template" class="form-control">
+        <option value="" selected disabled>Select a template</option>
+        <option value="schedule">Schedule</option>
+        <option value="judge">Individual judge schedules</option>
+      </select>
+      <div class="input-group-append">
+        <button class="btn btn-success" (click)="print()">Print</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="schedule-template" class="print schedule-template" *ngIf="template === 'schedule'">
+  <div class="day" *ngFor="let day of settings.days">
+    <div class="header">
+      <h1 class="competition-name">{{ settings.name }}</h1>
+    </div>
+    <h1>Time Schedule | {{ competitionImporter.activeTrack }}</h1>
+    <app-day [date]="day" [printTemplate]="template"></app-day>
+  </div>
+</div>
+
+<div id="judge-template" class="print judge-template" *ngIf="template === 'judge'">
+  <div class="judge" *ngFor="let judge of judges">
+    <div class="header">
+      <h1 class="competition-name">{{ settings.name }}</h1>
+    </div>
+    <h1>Time Schedule for {{judge.fname}} {{judge.lname}}</h1>
+    <table class="day list-group" *ngFor="let day of settings.days">
+      <thead class="list-group-item row">
+        <th colspan="3">{{day | date:'EEEE MMM dd'}}</th>
+      </thead>
+      <tr class="list-group-item row">
+        <th class="col-2">Start time</th>
+        <th class="col-2">End time</th>
+        <th class="col">Test</th>
+        <th class="coL">Track</th>
+      </tr>
+      <ng-container *ngFor="let test of judge.tests">
+        <ng-container *ngIf="toDate(test.start).getDate() === toDate(day).getDate() && toDate(test.start).getMonth() === toDate(day).getMonth()">
+          <tr class="tests list-group-item row">
+            <td class="col-2">{{test.start | date:'HH:mm'}}</td>
+            <td class="col-2">{{test.end | date:'HH:mm'}}</td>
+            <td class="col">{{test.testcode}} {{test.phase}}</td>
+            <td class="col">{{ test.track }}</td>
+          </tr>
+        </ng-container>
+      </ng-container>
+    </table>
+  </div>
+</div>

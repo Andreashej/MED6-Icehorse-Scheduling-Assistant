@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { CompetitionImporterService } from '../competition-importer.service';
 import { GlobalUpdateService } from '../global-update.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-test-card-schedule',
@@ -11,6 +12,7 @@ export class TestCardScheduleComponent implements OnInit {
   @Input() test;
   @Input() rowspan;
   @Input() starttime;
+  @Input() printTemplate;
   @Output() testGrab = new EventEmitter();
   @Output() testGrabStart = new EventEmitter();
 
@@ -23,13 +25,22 @@ export class TestCardScheduleComponent implements OnInit {
   join_section = 0;
   judgeList = [];
   endtime;
+  judgesNotInTest = [];
+  selectedJudge = {
+    fname: '',
+    lname: ''
+  };
+
+  print = false;
+  printSchedule = false;
+  printScheduleWithJudges = false;
 
   constructor(private competitionImporter: CompetitionImporterService, private updateService: GlobalUpdateService) { }
 
   ngOnInit() {
     this.test.state = new Date(this.test.state);
     this.hours = Math.floor(this.test.prel_time / 60);
-    this.minutes = this.test.prel_time % 60;
+    this.minutes = Math.round((this.test.prel_time % 60) * 10) / 10;
     this.endtime = new Date(this.starttime.getTime() + this.test.prel_time * 60000);
     if (this.test.riders_per_heat > 1) {
       this.free_left = this.test.left_heats * 3 - this.test.left_rein;
@@ -41,6 +52,12 @@ export class TestCardScheduleComponent implements OnInit {
       next => this.onUpdate(next),
       () => console.log('Error on update')
     );
+
+    if (this.printTemplate === 'schedule') {
+      this.print = true;
+      this.printSchedule = true;
+      this.printScheduleWithJudges = true;
+    }
   }
 
   onUpdate(next): void {
@@ -48,7 +65,7 @@ export class TestCardScheduleComponent implements OnInit {
       this.getJudges();
 
       this.hours = Math.floor(this.test.prel_time / 60);
-      this.minutes = this.test.prel_time % 60;
+      this.minutes = Math.round((this.test.prel_time % 60) * 10) / 10;
       this.endtime = new Date(this.starttime.getTime() + this.test.prel_time * 60000);
       if (this.test.riders_per_heat > 1) {
         this.free_left = this.test.left_heats * 3 - this.test.left_rein;
@@ -109,7 +126,18 @@ export class TestCardScheduleComponent implements OnInit {
 
   getJudges() {
     this.competitionImporter.getJudgesForTest(this.test.testcode, this.test.phase, this.test.state.getTime()).subscribe(
-      judges => this.judgeList = judges
+      judges => {
+        this.judgeList = judges;
+        for (const judge of this.judgeList) {
+          judge.times[0].start = new Date(judge.times[0].start);
+          judge.times[0].end = new Date(judge.times[0].end);
+        }
+      },
+      () => console.log('Error on judge retrieve')
+    );
+
+    this.competitionImporter.getJudgesNotInTest(this.test.testcode, this.test.phase).subscribe(
+      judges => this.judgesNotInTest = judges
     );
   }
 
@@ -127,4 +155,7 @@ export class TestCardScheduleComponent implements OnInit {
       }
     );
   }
+
 }
+
+

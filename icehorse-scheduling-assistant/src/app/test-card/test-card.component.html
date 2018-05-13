@@ -1,6 +1,6 @@
 <div class="test-card alert alert-dark row" draggable [dragData]="test" (onDragEnd)="testGrabbed($event)">
   <div class="test-content col">
-    <h5 [class.capitalize]="test.phase !== 'Preliminary'">{{ test.testcode }} {{ test.phase }}</h5>
+    <h5 [class.capitalize]="test.phase !== 'Preliminary' && test.phase !== 'custom'">{{ test.testcode }}<span *ngIf="test.phase !== 'custom'"> {{ test.phase }}</span></h5>
     <div *ngIf="test.phase === 'Preliminary'">
       <div *ngIf="test.right_rein === 0; else heats" class="groupsize-1 heats">Number of riders: {{ test.left_rein }} </div>
       <ng-template #heats>

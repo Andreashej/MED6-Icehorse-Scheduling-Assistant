@@ -11,4 +11,8 @@ body {
 
 html,body {
     height: 100%;
-  }
+}
+
+ngb-popover-window {
+    width: 274px;
+}

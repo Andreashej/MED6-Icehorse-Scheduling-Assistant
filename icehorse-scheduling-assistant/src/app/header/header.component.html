@@ -1,7 +1,25 @@
-<div class="header">
-  <nav class="nav nav-justified">
-      <a *ngFor="let nav of navItems" class="nav-link" routerLink="{{nav.link}}"><i class="fa {{nav.icon}}"></i><span>{{nav.text}}</span></a>
+<div class="header no-print">
+  <nav class="nav nav-justified no-print">
+    <a class="nav-link" routerLink="/">
+      <i class="fa fa-calendar"></i>
+      <span>Schedule</span>
+    </a>
+    <a class="nav-link" routerLink="/judges">
+      <i class="fa fa-users"></i>
+      <span>Judges</span>
+    </a>
+    <a class="nav-link" routerLink="/print">
+      <i class="fa fa-print"></i>
+      <span>Print</span>
+    </a>
   </nav>
-  
-  <h1 class="competition-name">{{name}}</h1>
+
+  <div class="track-selector">
+    <span>Current track: </span>
+    <select class="btn btn-light" [(ngModel)]="activeTrack" (change)="changeTrack()">
+      <option *ngFor="let track of settings.tracks" [value]="track" [attr.selected]="track === settings.tracks[0]">{{ track }}</option>
+    </select>
+  </div>
+
+  <h1 class="competition-name">{{ app.title }} | {{ name }}</h1>
 </div>

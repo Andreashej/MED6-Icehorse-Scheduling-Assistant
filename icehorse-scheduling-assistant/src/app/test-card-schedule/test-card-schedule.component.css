@@ -5,12 +5,25 @@
     border: none;
 }
 
+.judges span {
+    font-size: 18px;
+    float: left;
+}
+
+.small-judge span {
+    font-size: large !important;
+}
+
+.smaller-judge span {
+    font-size: .8rem !important;
+}
+
 .small h5 {
-    font-size: large;
+    font-size: large !important;
 }
 
 .smaller h5 {
-    font-size: .8rem;
+    font-size: .8rem !important;
 }
 
 .draghandle {
@@ -71,6 +84,11 @@
     text-align: right;
 }
 
+.fa {
+    min-width: 5px;
+    min-height: 5px;
+}
+
 .time {
     text-align: right;
 }
@@ -80,41 +98,81 @@
 }
 
 .T1 {
-    background-color: #1abc9c;
+    background-color: #A9D978;
     color: black;
 }
 
 .T2 {
-    background-color: #2ecc71;
+    background-color: #B4FFB3;
     color: black;
 }
 
 .T3 {
-    background-color: #3498db;
+    background-color: #67A266;
     color: black;
 }
 
 .T4 {
-    background-color: #9b59b6;
+    background-color: #44985D;
     color: white;
 }
 
+.T5 {
+    background-color: #9DB688;
+    color: black;
+}
+
+.T8, .T8J {
+    background-color: #AABCA6;
+    color: black;
+}
+
 .V1 {
+    background-color: #7194C0;
+    color: black;
+}
+
+.V2 {
+    background-color: #4B627F;
+    color: white;
+}
+
+.V3 {
+    background-color: #96C4FF;
+    color: black;
+}
+
+.V5, .V5J {
+    background-color: #263140;
+    color: white;
+}
+
+.F1 {
     background-color: #34495e;
     color: white;
 }
 
-.V2 {
-    background-color: #f39c12;
+.F2 {
+    background-color: #87B0E5;
     color: black;
 }
 
-.F1 {
-    background-color: #c0392b;
+.PP1 {
+    background-color: #E74C3C;
     color: white;
 }
 
-.F2 {
-    background-color: #6ab04c;
+.P2 {
+    background-color: #C0392B;
+    color: white;
+}
+
+.P1 {
+    background-color: #A4392C;
+    color: white;
+}
+
+.custom {
+    background-color: #d6d8d9;
     color: black;
 }

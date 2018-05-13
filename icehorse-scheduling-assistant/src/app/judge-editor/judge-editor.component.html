@@ -30,7 +30,7 @@
         </div>
         <br>
         <b>Length of day:</b>
-        <div class="badge" [class.badge-danger]="judgeHours(judge, day).duration > 480" [class.badge-success]="judgeHours(judge, day).duration <= 480">
+        <div class="badge" [class.badge-danger]="lengthOfDay(judge, day).duration > 600" [class.badge-success]="lengthOfDay(judge, day).duration <= 600">
           <span *ngIf="lengthOfDay(judge, day).hours > 0">{{lengthOfDay(judge, day).hours}}h</span>
           <span *ngIf="lengthOfDay(judge, day).minutes > 0">{{lengthOfDay(judge, day).minutes}}m</span>
         </div>
@@ -60,6 +60,6 @@
 </table>
 
 <div class="explanation">
-  <span class="badge badge-danger">10h 5m</span> = The judge more than 8 hours of judging or a longer day than 10 hours, which is the maximum.
+  <span class="badge badge-danger">10h 5m</span> = The judge has more than 8 hours of judging or a longer day than 10 hours, which is the maximum.
   <span class="badge badge-success">6h 3m</span> = All times are below the maximum limit.
 </div>

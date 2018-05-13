@@ -4,7 +4,7 @@ import math
 import datetime
 
 ip = '85.191.252.150'
-port = 32772
+port = 32773
 
 class SportiImporter:
 
@@ -33,7 +33,7 @@ class SportiImporter:
         return count_left, count_right
 
     def get_test_list(self):
-        return list(self.sheet)[7:]
+        return list(self.sheet)[9:]
     
     def get_tests(self):
         testlist = tuple()
@@ -102,25 +102,35 @@ class Test:
         self.hasBfinal = False
         self.start = 0
         self.end = 0
+        self.track = ''
 
         client = MongoClient(ip, port)
         db = client.IcehorseDB
         tests = db.tests
         times = db.test_times
-        test_info = times.find_one({
-            'test': self.testcode.lower(),
-            'phase': 'prel'
-        })
-        self.riders_per_heat = test_info['riders_per_heat']
-        self.time_per_heat = test_info['time']
-        self.phase = 'Preliminary'
         self.section_id = 0
-        self.left_heats = math.ceil(self.left_rein / self.riders_per_heat)
-        self.right_heats = math.ceil(self.right_rein / self.riders_per_heat)
-        self.prel_time = (self.left_heats + self.right_heats) * self.time_per_heat
-        self.expected_judges = test_info['expected_judges']
-        self.priority = test_info['priority']
+        try:
+            test_info = times.find_one({
+                'test': self.testcode.lower(),
+                'phase': 'prel'
+            })
+            self.riders_per_heat = test_info['riders_per_heat']
+            self.time_per_heat = test_info['time']
+            self.left_heats = math.ceil(self.left_rein / self.riders_per_heat)
+            self.right_heats = math.ceil(self.right_rein / self.riders_per_heat)
+            self.expected_judges = test_info['expected_judges']
+            self.priority = test_info['priority']
+            self.phase = 'Preliminary'
+        except:
+            self.riders_per_heat = 0
+            self.time_per_heat = 0
+            self.left_heats = 0
+            self.right_heats = 0
+            self.expected_judges = 0
+            self.priority = 999
+            self.phase = 'custom'
 
+        self.prel_time = (self.left_heats + self.right_heats) * self.time_per_heat
         client.close()
         if tests.find_one({'testcode': self.testcode, 'phase': self.phase, 'section': self.section_id}):
             self.update()
@@ -147,7 +157,8 @@ class Test:
                 'expected_judges': self.expected_judges,
                 'start': self.start,
                 'end': self.end,
-                'priority': self.priority
+                'priority': self.priority,
+                'track': self.track
             },
         )
     
@@ -170,7 +181,9 @@ class Test:
             'expected_judges': self.expected_judges,
             'start': self.start,
             'end': self.end,
-            'priority': self.priority
+            'priority': self.priority,
+            'track': self.track
+            
         }
 
     def save(self):
@@ -214,17 +227,18 @@ class Judge:
         self.status = new_status
 
         if judge:
-            replace = client.IcehorseDB.judges.replace_one(judge, self.to_dict())
+            client.IcehorseDB.judges.replace_one(judge, self.to_dict())
         else:
             self.save()
         client.close()
 
-    def update_tests(self, testcode, start, end, time, date, prev_start):
+    def update_tests(self, testcode, start, end, time, date, prev_start, track):
         test = self.tests[self.tests.index(next((test for test in self.tests if test['testcode'] == testcode and test['start'] == prev_start)))]
         test['date'] = date
         test['start'] = start
         test['end'] = end
         test['time'] = time
+        test['track'] = track
 
     def calculate_time(self, date):
         try:

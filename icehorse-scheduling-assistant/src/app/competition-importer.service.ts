@@ -1,15 +1,24 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class CompetitionImporterService {
+  activeTrack = 'Oval Track';
+  _trackChange = new BehaviorSubject(false);
 
   constructor(private http: HttpClient) { }
   base_url = 'http://127.0.0.1:5000/';
+  trackChange = this._trackChange.asObservable();
+
+  changeActiveTrack(track: string): void {
+    this.activeTrack = track;
+    this._trackChange.next(true);
+  }
 
   getTestData(state: string): Observable<any> {
-    return this.http.get(this.base_url + 'get-tests/' + state);
+    return this.http.get(this.base_url + 'get-tests/' + state + '/' + this.activeTrack);
   }
 
   refreshTestData(): Observable<any> {
@@ -22,7 +31,8 @@ export class CompetitionImporterService {
 
   saveTestState(test: string, phase: string, section_id: number, state: string, startBlock: string, start, end): Observable<any> {
     return this.http.get(
-      this.base_url + test + '/' + phase + '/' + section_id + '/save/' + state + '/' + startBlock + '/' + start + '/' + end);
+      this.base_url + test + '/' + phase + '/' + section_id + '/save/' + state + '/'
+      + startBlock + '/' + start + '/' + end + '/' + this.activeTrack);
   }
 
   split(test: string, phase: string, section_id: number, lr: number, rr: number): Observable<any> {
@@ -51,6 +61,10 @@ export class CompetitionImporterService {
     return this.http.get(this.base_url + 'get-judges/' + test + '/' + phase + '/' + date);
   }
 
+  getJudgesNotInTest(test: string, phase: string): Observable<any> {
+    return this.http.get(this.base_url + 'get-judges-not-in/' + test + '/' + phase);
+  }
+
   toggleFinal(test: string, phase: string): Observable<any> {
     return this.http.get(this.base_url + test + '/toggle-' + phase + '-final');
   }
@@ -61,6 +75,10 @@ export class CompetitionImporterService {
 
   updateJudge(fname, lname, new_fname, new_lname, new_status): Observable<any> {
     return this.http.get(this.base_url + 'update-judge/' + fname + '/' + lname + '/' + new_fname + '/' + new_lname + '/' + new_status);
+  }
+
+  create_custom(test, duration): Observable<any> {
+    return this.http.get(this.base_url + 'create_custom/' + test + '/' + duration);
   }
 
 }

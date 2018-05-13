@@ -8,32 +8,29 @@ import copy
 import datetime
 
 ip = '85.191.252.150'
-port = 32772
+port = 32773
 
 app = Flask(__name__)
 CORS(app, support_credentials=True)
 
 filepath = os.path.dirname(os.path.realpath(__file__))
 
-# Laptop
-# icehorse = ch.SportiImporter('C:\\Users\\ah\\Documents\\MED6-Icehorse-Scheduling-Assistant\\Data\\icetest-liste.xlsx')
-# Desktop
-icehorse = ch.SportiImporter(filepath + '\\..\\Data\\icetest-liste.xlsx')
+icehorse = ch.SportiImporter(filepath + '\\..\\Data\\pinse.xlsx')
 
 @app.route('/drop-all')
 def drop_all():
     MongoClient(ip, port).IcehorseDB.tests.delete_many({})
     return jsonify(True)
 
-@app.route('/get-tests/<state>')
+@app.route('/get-tests/<state>/<track>')
 @cross_origin(support_credentials=True)
-def get_tests(state):
+def get_tests(state, track):
     client = MongoClient(ip, port)
     if state == 'unassigned':
         all_tests = client.IcehorseDB.tests.find({'state': state})
     else:
         time = datetime.datetime.utcfromtimestamp(int(state)/1000)
-        all_tests = client.IcehorseDB.tests.find({'state': time})
+        all_tests = client.IcehorseDB.tests.find({'state': time, 'track': track})
     client.close()
     testlist = ()
     for test in all_tests:
@@ -47,7 +44,7 @@ def get_tests(state):
 def reload():
     icehorse.load_file()
     icehorse.get_tests()
-    return get_tests('unassigned')
+    return get_tests('unassigned', '')
 
 @app.route('/<test>/toggle-<x>-final')
 @cross_origin(support_credentials=True)
@@ -76,11 +73,14 @@ def toggle_final(test, x):
 
     return jsonify(test_db)
 
-@app.route('/<testcode>/<phase>/<int:section>/save/<state>/<start_block>/<int:start>/<int:end>')
+@app.route('/<testcode>/<phase>/<int:section>/save/<state>/<start_block>/<int:start>/<int:end>/<string:track>')
 @cross_origin(support_credentials=True)
-def save(testcode, phase, section, state, start_block, start, end):
+def save(testcode, phase, section, state, start_block, start, end, track):
     client = MongoClient(ip, port)
     test_db = client.IcehorseDB.tests.find_one({'testcode': testcode.upper(), 'phase': phase, 'section': section})
+    if test_db == None:
+        test_db = client.IcehorseDB.tests.find_one({'testcode': testcode, 'phase': phase, 'section': section})
+
     prev_start = copy.copy(test_db['start'])
     prev_state = copy.copy(test_db['state'])
 
@@ -89,6 +89,7 @@ def save(testcode, phase, section, state, start_block, start, end):
         test_db['start_block'] = 0
         test_db['start'] = 0
         test_db['end'] = 0
+        test_db['track'] = ''
     else:
         state = int(state)
         state = datetime.datetime.utcfromtimestamp(state/1000)
@@ -98,7 +99,11 @@ def save(testcode, phase, section, state, start_block, start, end):
         test_db['start_block'] = start_block
         test_db['start'] = start
         test_db['end'] = end
-    client.IcehorseDB.tests.replace_one({'testcode': testcode.upper(), 'phase': phase, 'section': section}, test_db)
+        test_db['track'] = track
+
+    replace = client.IcehorseDB.tests.replace_one({'testcode': testcode.upper(), 'phase': phase, 'section': section}, test_db)
+    if replace.modified_count < 1:
+        client.IcehorseDB.tests.replace_one({'testcode': testcode, 'phase': phase, 'section': section}, test_db)
 
     judges = client.IcehorseDB.judges.find({
         'tests': {
@@ -122,7 +127,7 @@ def save(testcode, phase, section, state, start_block, start, end):
 
     for judge in judges:
         judge_obj = ch.Judge(judge['fname'], judge['lname'])
-        judge_obj.update_tests(testcode, start, end, test_db['prel_time'], state, prev_start)
+        judge_obj.update_tests(testcode, start, end, test_db['prel_time'], state, prev_start, track)
         judge_obj.calculate_time(state)
         judge_obj.calculate_time(prev_state)
         judge_obj.update()
@@ -244,7 +249,8 @@ def set_judge(fname, lname, testcode, phase, date):
             'date': datetime.datetime.utcfromtimestamp(int(date)/1000),
             'start': test['start'],
             'end': test['end'],
-            'time': test['prel_time']
+            'time': test['prel_time'],
+            'track': test['track']
         })
     judge.calculate_time(date)
     judge.update()
@@ -267,7 +273,8 @@ def unset_judge(fname, lname, testcode, phase, date):
             'date': datetime.datetime.utcfromtimestamp(int(date)/1000),
             'start': test['start'],
             'end': test['end'],
-            'time': test['prel_time']
+            'time': test['prel_time'],
+            'track': test['track']
         })
     judge.calculate_time(date)
     judge.update()
@@ -295,6 +302,23 @@ def update_judge(fname, lname, new_fname, new_lname, new_status):
     judge.update()
 
     return jsonify(judge.to_tuple())
+
+@app.route('/get-judges-not-in/<test>/<phase>/')
+@cross_origin(support_credentials=True)
+def get_judges_not_in_test(test, phase):
+    judge_arr = []
+    client = MongoClient(ip, port)
+    judges = client.IcehorseDB.judges.find()
+
+    client.close()
+    for judge in judges:
+        if any(t.get('testcode', None) == test and t.get('phase', None) == phase for t in judge['tests']):
+            continue
+        judge.pop('_id')
+        judge_arr += (judge,)
+
+    return jsonify(judge_arr)
+
 
 @app.route('/get-judges/<test>/<phase>/<int:date>')
 @cross_origin(support_credentials=True)
@@ -328,6 +352,16 @@ def get_judges_for_test(test, phase, date):
 
     return jsonify(judge_arr)
 
+@app.route('/create_custom/<testcode>/<duration>')
+@cross_origin(support_credentials=True)
+def create_entry(testcode, duration):
+    entry = ch.Test(testcode,0,0)
+    entry.phase = 'custom'
+    entry.prel_time = duration
+    entry.update()
+
+    return jsonify(entry.to_dict())
+
 @app.route('/generate-schedule')
 @cross_origin(support_credentials=True)
 def generate_schedule():
@@ -348,7 +382,7 @@ def generate_schedule():
     
     while next_test:   
         if next_test['prel_time'] > 120:
-            heats_per_two_hour = 120 / next_test['time_per_heat']
+            heats_per_two_hour = math.floor(120 / next_test['time_per_heat'])
             if next_test['left_heats'] > heats_per_two_hour:
                 left = heats_per_two_hour
                 right = 0
@@ -361,9 +395,18 @@ def generate_schedule():
 
             split(next_test['testcode'], next_test['phase'], next_test['section'], left, right)
             next_test = test_collection.find_one({'testcode': next_test['testcode'], 'phase': next_test['phase'], 'section': next_test['section']})
-
-        next_test['start'] = current_time
+        
+        if current_time.time().minute % 5 != 0:
+            rounded_minutes = 5 - (current_time.time().minute % 5)
+        else:
+            rounded_minutes = 0
+        next_test['start'] = current_time + datetime.timedelta(minutes=rounded_minutes)
         next_test['end'] = next_test['start'] + datetime.timedelta(minutes=next_test['prel_time'])
+
+        if str(next_test['priority'])[1] == "3":
+            next_test['track'] = 'Pace Track'
+        else:
+            next_test['track'] = 'Oval Track'
         
         if next_test['end'] > settings['days'][current_day] + datetime.timedelta(hours=settings['hours']):
             current_day += 1
@@ -380,8 +423,8 @@ def generate_schedule():
 
         blocksize = math.ceil(next_test['prel_time'] / 5)
 
-        current_time = next_test['end'] + datetime.timedelta(minutes=10)
-        current_block = next_test['start_block'] + blocksize + 2
+        current_time = next_test['end'] + datetime.timedelta(minutes=5)
+        current_block = next_test['start_block'] + blocksize + 1
 
         test_collection.replace_one({'testcode': next_test['testcode'].upper(), 'phase': next_test['phase'], 'section': next_test['section']},next_test)
 

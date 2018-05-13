@@ -27,7 +27,7 @@ export class TestCardComponent implements OnInit {
 
   ngOnInit() {
     this.hours = Math.floor(this.test.prel_time / 60);
-    this.minutes = this.test.prel_time % 60;
+    this.minutes = Math.round((this.test.prel_time % 60) * 10) / 10;
     if (this.test.riders_per_heat > 1) {
       this.free_left = this.test.left_heats * 3 - this.test.left_rein;
       this.free_right = this.test.right_heats * 3 - this.test.right_rein;

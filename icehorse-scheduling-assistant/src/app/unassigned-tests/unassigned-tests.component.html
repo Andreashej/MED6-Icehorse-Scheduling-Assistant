@@ -7,11 +7,19 @@
     </span>
     <div (onDrop)="onDrop($event)" droppable class="droppable-area">
       <app-test-card *ngFor="let test of testdata" [test]="test" (testGrab)="removeUnassigned(test)"></app-test-card>
-      
+
     </div>
   </div>
   <div class="btn-container">
-    <button *ngIf="!testdata" class="btn btn-success btn-large" (click)="reloadTestData()">Import tests</button>
-    <button *ngIf="testdata" class="btn btn-success btn-large" (click)="generate()">Generate Schedule</button>
+    <div class="input-group mb-3">
+      <input type="text" #customName class="form-control" placeholder="Name of custom entry" size="40">
+      <input type="number" #customDuration class="form-control" placeholder="Duration" step="5" min="0">
+      <div class="input-group-prepend">
+        <button class="btn btn-success" (click)="createCustomTest(customName.value, customDuration.value); customName.value = ''; customDuration.value = '';">
+          <i class="fa fa-plus"></i>
+        </button>
+      </div>
+    </div>
+    <button *ngIf="testdata.length > 0" class="btn btn-success btn-large" (click)="generate()">Generate Schedule</button>
   </div>
 </div>

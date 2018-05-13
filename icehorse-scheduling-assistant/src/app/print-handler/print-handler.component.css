@@ -1,0 +1,67 @@
+.print {
+    display: none;
+    float: none;
+}
+
+.header {
+    background-color: #312783;
+    color: white;
+    padding: 10px;
+    height: 3.5em;
+    margin-bottom: 0;
+}
+
+.input-group {
+    margin: 10px auto;
+}
+
+.competition-name {
+    margin: 0 auto;
+    width: fit-content;
+    text-align: center;
+    font-size: 32px;
+}
+
+@media print {
+    .no-print {
+        display: none;
+    }
+
+    .print {
+        display: block;
+    }
+
+    .judge {
+        page-break-after: always;
+    }
+}
+
+h1 {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.list-group-item {
+    display: flex;
+}
+
+td {
+    vertical-align: middle;
+}
+
+th {
+    font-size: 20px;
+}
+
+.list-group-item:first-child {
+    border-bottom:  #312783 medium solid;
+    border-top: none;
+}
+
+thead {
+    border: none !important;
+}
+
+thead th {
+    font-size: 28px;
+}

@@ -15,7 +15,7 @@
 }
 
 .grid tr {
-    height: .45em;
+    height: .90em;
 }
 
 td {
@@ -39,4 +39,14 @@ h2 {
 app-test-card-schedule {
     height: 100%;
     display: flex;
+}
+
+@media print {
+    .grid {
+        page-break-after: always;
+    }
+
+    .grid tr {
+        height: .45em;
+    }
 }

@@ -13,6 +13,7 @@ import { Subscription } from 'rxjs/Subscription';
 })
 export class DayComponent implements OnInit, OnDestroy {
   @Input() date;
+  @Input() printTemplate;
   scheduledTests = [];
   settings = {
     'days': [],
@@ -24,6 +25,7 @@ export class DayComponent implements OnInit, OnDestroy {
   saved;
   updates = false;
   subscription: Subscription;
+  trackChangeSubscription: Subscription;
 
   onDropTest(test: any, elt) {
     const blockSize = Math.ceil(test.dragData.prel_time / 5);
@@ -31,7 +33,7 @@ export class DayComponent implements OnInit, OnDestroy {
       test.dragData.testcode,
       test.dragData.phase,
       test.dragData.section,
-      this.date.getTime(),
+      new Date(this.date),
       this.blocks.indexOf(elt),
       elt.blocktime.getTime(),
       new Date(elt.blocktime.getTime() + test.dragData.prel_time * 60000).getTime());
@@ -39,6 +41,7 @@ export class DayComponent implements OnInit, OnDestroy {
     elt.rowspan = blockSize;
     elt.testcode = test.dragData.testcode;
     elt.content = test.dragData;
+    elt.content.state = new Date(this.date);
     elt.droppable = false;
   }
 
@@ -50,7 +53,6 @@ export class DayComponent implements OnInit, OnDestroy {
         block.testcode = test.testcode;
         block.content = test;
         block.droppable = false;
-        console.log(block.testcode);
       }
     }
   }
@@ -66,6 +68,7 @@ export class DayComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+    this.trackChangeSubscription.unsubscribe();
   }
 
   removeUnassigned(e: any, test) {
@@ -111,14 +114,19 @@ export class DayComponent implements OnInit, OnDestroy {
               this.initDays();
             }
           });
-          this.initDays();
+          this.trackChangeSubscription = this.competitionImporter.trackChange.subscribe(
+            () => {
+              this.blocks = [];
+              this.initDays();
+            }
+          );
       }
     );
 }
 
 saveTest(test, phase, section_id, state, startBlock, start, end): void {
   this.competitionImporter.saveTestState(
-    test, phase, section_id, state, startBlock, start, end).subscribe(
+    test, phase, section_id, state.getTime(), startBlock, start, end).subscribe(
       () => console.log('Saving...'),
       error => console.log('Error when fetching data ' + error),
       () => console.log('Successfully saved test state')
