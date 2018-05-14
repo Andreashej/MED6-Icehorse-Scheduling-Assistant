@@ -5,7 +5,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class CompetitionImporterService {
-  activeTrack = 'Oval Track';
+  public activeTrack = 'Oval Track';
   _trackChange = new BehaviorSubject(false);
 
   constructor(private http: HttpClient) { }

@@ -39,7 +39,7 @@ export class JudgeEditorComponent implements OnInit {
   judgeHours(time, day) {
     try {
       day = time.times.find(x => x.date === day);
-      return { 'hours': Math.floor(day.time / 60), 'minutes': day.time % 60, 'duration': day.time };
+      return { 'hours': Math.floor(day.time / 60), 'minutes': Math.round(day.time % 60), 'duration': day.time };
     } catch (e) {
       return { 'hours': 0, 'minutes': 0 };
     }
@@ -51,7 +51,7 @@ export class JudgeEditorComponent implements OnInit {
       const start = new Date(judge.start);
       const end = new Date(judge.end);
       const duration = (end.getTime() - start.getTime()) / 60000;
-      return { 'hours': Math.floor(duration / 60), 'minutes': duration % 60, 'duration': duration };
+      return { 'hours': Math.floor(duration / 60), 'minutes': Math.round(duration % 60), 'duration': duration };
     } catch (e) {
       return { 'hours': 0, 'minutes': 0 };
     }

@@ -4,13 +4,16 @@
     <table class="grid">
       <tr *ngFor="let block of blocks">
         <td *ngIf="block.blocktime && block.blocktime.getMinutes() == 0" class="hour-divider time" rowspan="12">{{ block.blocktime | date:'HH:mm'}}</td>
-        <td [class.hour-divider]="block.blocktime.getMinutes() == 0" 
-            [class.scheduled]="block.rowspan > 1"
-            [attr.rowspan]="block.rowspan"
-            droppable
-            [dropEnabled]="block.droppable"
-            (onDrop)="onDropTest($event, block)">
-            <app-test-card-schedule *ngIf="block.content" [test]="block.content" [rowspan]="block.rowspan" [starttime]="block.blocktime" [printTemplate]="printTemplate" (testGrab)="remove(block)" (testGrabStart)="allowDrop(block)"></app-test-card-schedule>
+        <td [class.hour-divider]="block.blocktime.getMinutes() == 0" [class.scheduled]="block.rowspan > 1" [attr.rowspan]="block.rowspan"
+          droppable [dropEnabled]="block.droppable" (onDrop)="onDropTest($event, block)">
+          <app-test-card-schedule *ngIf="block.content" [test]="block.content" [rowspan]="block.rowspan" [starttime]="block.blocktime"
+            [printTemplate]="printTemplate" (testGrab)="remove(block)" (testGrabStart)="allowDrop(block)"></app-test-card-schedule>
+        </td>
+      </tr>
+      <tr *ngIf="printTemplate">
+        <td colspan="2">
+          <h6>This schedule was generated as a part of Andreas Hejndorfs bachelor project. I will be very grateful if you leave
+            your feedback here: https://goo.gl/forms/YY7dKercc81lrVp23</h6>
         </td>
       </tr>
     </table>

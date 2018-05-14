@@ -26,7 +26,7 @@ def drop_all():
 @cross_origin(support_credentials=True)
 def get_tests(state, track):
     client = MongoClient(ip, port)
-    if state == 'unassigned':
+    if state == 'unassigned' or track == '':
         all_tests = client.IcehorseDB.tests.find({'state': state})
     else:
         time = datetime.datetime.utcfromtimestamp(int(state)/1000)
@@ -445,4 +445,4 @@ def generate_schedule():
     return jsonify(test_arr)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, threaded=True)

@@ -28,7 +28,7 @@ export class DayComponent implements OnInit, OnDestroy {
   trackChangeSubscription: Subscription;
 
   onDropTest(test: any, elt) {
-    const blockSize = Math.ceil(test.dragData.prel_time / 5);
+    const blockSize = Math.ceil((test.dragData.prel_time - 1) / 5);
     this.saveTest(
       test.dragData.testcode,
       test.dragData.phase,
@@ -49,7 +49,7 @@ export class DayComponent implements OnInit, OnDestroy {
     if (tests.length > 0) {
       for (const test of tests) {
         const block = this.blocks[test.start_block];
-        block.rowspan = Math.ceil(test.prel_time / 5);
+        block.rowspan = Math.ceil((test.prel_time - 1) / 5);
         block.testcode = test.testcode;
         block.content = test;
         block.droppable = false;
@@ -93,10 +93,13 @@ export class DayComponent implements OnInit, OnDestroy {
 
   getTestData(): void {
     this.scheduledTests = [];
+    const trackstate = this.competitionImporter.activeTrack;
     this.competitionImporter.getTestData(this.date.getTime()).subscribe(
       data => this.scheduledTests = data,
       () => console.log('Error when fetching data'),
-      () => this.initSchedule(this.scheduledTests)
+      () => {
+        this.initSchedule(this.scheduledTests);
+      }
     );
   }
 

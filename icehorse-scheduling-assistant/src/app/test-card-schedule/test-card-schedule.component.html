@@ -21,7 +21,7 @@
         <span class="minutes" *ngIf="minutes > 0">{{ minutes }}m</span>
       </h5>
     </div>
-    <div *ngIf="rowspan > 6 && !print">
+    <div *ngIf="rowspan > 5 && !print">
       <ng-container *ngTemplateOutlet="testDetails"></ng-container>
     </div>
     <div class="row judges" [class.small-judge]="rowspan < 7" [class.smaller-judge]="rowspan < 6" *ngIf="printScheduleWithJudges">
