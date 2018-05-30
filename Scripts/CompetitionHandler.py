@@ -33,7 +33,7 @@ class SportiImporter:
         return count_left, count_right
 
     def get_test_list(self):
-        return list(self.sheet)[9:]
+        return list(self.sheet)[12:]
     
     def get_tests(self):
         testlist = tuple()

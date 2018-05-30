@@ -102,7 +102,6 @@ export class TestCardScheduleComponent implements OnInit {
   }
 
   addJudge(fname: string, lname: string) {
-    console.log(this.test.state.getTime());
     this.competitionImporter.addJudge(this.test.testcode,
       this.test.phase,
       fname,

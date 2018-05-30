@@ -97,77 +97,77 @@
     cursor: pointer;
 }
 
-.T1 {
+[class*="T1"] {
     background-color: #A9D978;
     color: black;
 }
 
-.T2 {
+[class*="T2"] {
     background-color: #B4FFB3;
     color: black;
 }
 
-.T3 {
+[class*="T3"] {
     background-color: #67A266;
     color: black;
 }
 
-.T4 {
+[class*="T4"] {
     background-color: #44985D;
     color: white;
 }
 
-.T5 {
+[class*="T5"] {
     background-color: #9DB688;
     color: black;
 }
 
-.T8, .T8J {
+[class*="T8"] {
     background-color: #AABCA6;
     color: black;
 }
 
-.V1 {
+[class*="V1"], [class*="GDB"] {
     background-color: #7194C0;
     color: black;
 }
 
-.V2 {
+[class*="V2"], [class*="GDT"] {
     background-color: #4B627F;
     color: white;
 }
 
-.V3 {
+[class*="V3"], [class*="GDC"] {
     background-color: #96C4FF;
     color: black;
 }
 
-.V5, .V5J {
+[class*="V5"], [class*="GDY"] {
     background-color: #263140;
     color: white;
 }
 
-.F1 {
+[class*="F1"], [class*="GDA"] {
     background-color: #34495e;
     color: white;
 }
 
-.F2 {
+[class*="F2"] {
     background-color: #87B0E5;
     color: black;
 }
 
-.PP1 {
+[class*="PP1"] {
     background-color: #E74C3C;
     color: white;
 }
 
-.P2 {
+[class*="P2"] {
     background-color: #C0392B;
     color: white;
 }
 
-.P1 {
+[class*="P1"] {
     background-color: #A4392C;
     color: white;
 }
