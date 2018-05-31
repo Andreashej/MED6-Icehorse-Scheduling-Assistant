@@ -89,7 +89,8 @@
 </ng-template>
 
 <ng-template #judges>
-  <div *ngFor="let judge of judgeList" class="alert alert-primary">{{ judge.fname }} {{ judge.lname }} ({{judge.status}})
+  <div *ngFor="let judge of judgeList" class="alert alert-primary">
+    {{ judge.fname }} {{ judge.lname }} ({{judge.status}})
     <i *ngIf="judge.times[0].time > 480" ngbTooltip="This judge has more than 8 hours of judging today..." class="fa fa-exclamation-triangle warning noclick" container="body"></i>
     <i *ngIf="judge.times[0].end.getTime() - judge.times[0].start.getTime() > 600 * 60000" ngbTooltip="This judge has a longer day than 10 hours today..."
       class="fa fa-exclamation-triangle warning noclick" container="body"></i>

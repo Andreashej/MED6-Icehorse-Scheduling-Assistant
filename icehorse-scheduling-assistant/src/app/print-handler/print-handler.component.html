@@ -38,7 +38,7 @@
         <th class="col-2">Start time</th>
         <th class="col-2">End time</th>
         <th class="col">Test</th>
-        <th class="coL">Track</th>
+        <th class="col">Track</th>
       </tr>
       <ng-container *ngFor="let test of judge.tests">
         <ng-container *ngIf="toDate(test.start).getDate() === toDate(day).getDate() && toDate(test.start).getMonth() === toDate(day).getMonth()">
@@ -51,8 +51,5 @@
         </ng-container>
       </ng-container>
     </table>
-    <div class="footer">
-      <h6>This schedule was generated as a part of Andreas Hejndorfs bachelor project. I will be very grateful if you leave your feedback here: https://goo.gl/forms/YY7dKercc81lrVp23</h6>
-    </div>
   </div>
 </div>
