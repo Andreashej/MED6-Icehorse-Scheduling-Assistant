@@ -2,6 +2,7 @@ import pandas as pd
 from pymongo import MongoClient
 import math
 import datetime
+from bson.objectid import ObjectId
 
 ip = '85.191.252.150'
 port = 32773
@@ -44,13 +45,12 @@ class SportiImporter:
 
         return testlist
     
-    def create_final(self, testcode, phase):
+    def create_final(self, base_test, phase, test_id):
         client = MongoClient(ip, port)
         db = client.IcehorseDB
         collection = db.tests
         test = collection.find_one({
-            'testcode': testcode.upper(),
-            'phase': 'Preliminary'
+            "_id": ObjectId(test_id)
         })
 
         final = test.copy()
@@ -58,7 +58,7 @@ class SportiImporter:
         final['phase'] = (phase + 'fin').lower()
 
         times = db.test_times.find_one({
-            'test': testcode.lower(),
+            'test': base_test.lower(),
             'phase': final['phase'].lower()
         })
 
@@ -83,16 +83,16 @@ class SportiImporter:
         collection = db.tests
 
         deleted = collection.remove({
-            'testcode': testcode.upper(),
-            'phase': (phase + 'fin').lower()
+            "testcode": testcode,
+            "phase": (phase + 'fin').lower()
         })
         client.close()
         return(deleted)
 
 class Test:
 
-    def __init__(self, tc, lr, rr):
-        self.testcode = tc
+    def __init__(self, tc, lr, rr, ageclass = "", s=0, yr=0, j=0):
+        self.testcode = tc + " " + ageclass
         self.left_rein = lr
         self.right_rein = rr
         self.sections = []
@@ -103,6 +103,10 @@ class Test:
         self.start = 0
         self.end = 0
         self.track = ''
+        self.base_test = tc
+        self.senior = s
+        self.young_rider = yr
+        self.junior = j
 
         client = MongoClient(ip, port)
         db = client.IcehorseDB
@@ -111,7 +115,7 @@ class Test:
         self.section_id = 0
         try:
             test_info = times.find_one({
-                'test': self.testcode.lower(),
+                'test': self.base_test.lower(),
                 'phase': 'prel'
             })
             self.riders_per_heat = test_info['riders_per_heat']
@@ -158,7 +162,8 @@ class Test:
                 'start': self.start,
                 'end': self.end,
                 'priority': self.priority,
-                'track': self.track
+                'track': self.track,
+                'base_test': self.base_test
             },
         )
     
@@ -182,7 +187,8 @@ class Test:
             'start': self.start,
             'end': self.end,
             'priority': self.priority,
-            'track': self.track
+            'track': self.track,
+            'base_test': self.base_test
             
         }
 

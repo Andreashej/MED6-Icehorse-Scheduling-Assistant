@@ -105,13 +105,11 @@ export class DayComponent implements OnInit, OnDestroy {
 
   getSettings(): void {
     this.settingsProvider.getSettings().subscribe(
-      data => this.settings = data[0],
+      data => this.settings = data,
       error => console.log('Error when fetching data'),
       () => {
         this.subscription = this.updateService.dayUpdate.subscribe(
           next => {
-            console.log(next);
-            console.log(this.date.getDate());
             if (next === this.date.getDate() + '&' + this.date.getMonth() + '&' + this.date.getYear() || next === '') {
               this.blocks = [];
               this.initDays();

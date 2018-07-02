@@ -22,6 +22,7 @@ import { AppRoutingModule } from './/app-routing.module';
 import { JudgeEditorComponent } from './judge-editor/judge-editor.component';
 import { ScheduleContainerComponent } from './schedule-container/schedule-container.component';
 import { PrintHandlerComponent } from './print-handler/print-handler.component';
+import { SettingsComponent } from './settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { PrintHandlerComponent } from './print-handler/print-handler.component';
     TestCardScheduleComponent,
     JudgeEditorComponent,
     ScheduleContainerComponent,
-    PrintHandlerComponent
+    PrintHandlerComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,

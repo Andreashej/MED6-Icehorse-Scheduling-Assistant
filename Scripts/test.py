@@ -2,6 +2,7 @@ import CompetitionHandler as ch
 from flask import Flask, jsonify
 from flask_cors import CORS, cross_origin
 from pymongo import MongoClient
+from bson.objectid import ObjectId
 import math
 import os
 import copy
@@ -34,14 +35,17 @@ def get_tests(state, track):
     client.close()
     testlist = ()
     for test in all_tests:
-        test.pop('_id')
+        test["_id"] = str(test["_id"])
         testlist += (test,)
 
     return jsonify(testlist)
 
-@app.route('/reload-file')
+@app.route('/reload-file/<competition_id>')
 @cross_origin(support_credentials=True)
-def reload():
+def reload(competition_id):
+    client = MongoClient(ip,port)
+    settings = client.IcehorseDB.competition_setup.find_one({"_id": ObjectId(competition_id)})
+    icehorse = ch.SportiImporter(filepath + '\\..\\Data\\' + settings['import_path'])
     icehorse.load_file()
     icehorse.get_tests()
     return get_tests('unassigned', '')
@@ -50,23 +54,24 @@ def reload():
 @cross_origin(support_credentials=True)
 def toggle_final(test, x):
     client = MongoClient(ip, port)
-    test_db = client.IcehorseDB.tests.find_one({'testcode': test.upper(), 'phase': 'Preliminary'})
+    test_db = client.IcehorseDB.tests.find_one({'_id': ObjectId(test)})
     if x == 'a':
         test_db['hasAfinal'] = not test_db['hasAfinal']
         if test_db['hasAfinal']:
-            icehorse.create_final(test, x)
+            print (test_db['base_test'])
+            icehorse.create_final(test_db['base_test'], x, test)
         else:
-            icehorse.remove_final(test, x)
+            icehorse.remove_final(test_db['testcode'], x)
 
     elif x == 'b':
         test_db['hasBfinal'] = not test_db['hasBfinal']
 
         if test_db['hasBfinal']:
-            icehorse.create_final(test, x)
+            icehorse.create_final(test_db['base_test'], x, test)
         else:
-            icehorse.remove_final(test, x)
+            icehorse.remove_final(test_db['testcode'], x)
 
-    client.IcehorseDB.tests.replace_one({'testcode': test.upper(), 'phase': 'Preliminary'}, test_db)
+    client.IcehorseDB.tests.replace_one({'_id': ObjectId(test)}, test_db)
     client.close()
 
     test_db.pop('_id')
@@ -136,16 +141,14 @@ def save(testcode, phase, section, state, start_block, start, end, track):
     client.close()
     return jsonify(test_db)
 
-@app.route('/settings')
+@app.route('/settings/<competition_id>')
 @cross_origin(support_credentials=True)
-def get_settings():
+def get_settings(competition_id):
     client = MongoClient(ip, port)
-    test_db = client.IcehorseDB.competition_setup.find()
+    settings = client.IcehorseDB.competition_setup.find_one({"_id": ObjectId(competition_id) })
     client.close()
-    settings = ()
-    for setting in test_db:
-        setting.pop('_id')
-        settings += (setting,)
+
+    settings["_id"] = str(settings["_id"])
 
     return jsonify(settings)
 

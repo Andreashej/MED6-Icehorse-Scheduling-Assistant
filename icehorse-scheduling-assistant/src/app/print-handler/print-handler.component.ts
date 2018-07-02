@@ -33,7 +33,7 @@ export class PrintHandlerComponent implements OnInit {
 
   getSettings(): void {
     this.settingsProvider.getSettings().subscribe(
-      data => this.settings = data[0],
+      data => this.settings = data,
       error => console.log('Error when fetching data'),
       () => console.log('Got settings')
     );

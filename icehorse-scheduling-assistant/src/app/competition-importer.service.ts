@@ -6,6 +6,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 @Injectable()
 export class CompetitionImporterService {
   public activeTrack = 'Oval Track';
+  public activeCompetition = '5adbad64e32b8b118f3d9d0c';
   _trackChange = new BehaviorSubject(false);
 
   constructor(private http: HttpClient) { }
@@ -22,7 +23,7 @@ export class CompetitionImporterService {
   }
 
   refreshTestData(): Observable<any> {
-    return this.http.get(this.base_url + 'reload-file');
+    return this.http.get(this.base_url + 'reload-file' + '/' + this.activeCompetition);
   }
 
   getTestTime(test: string, phase: string): Observable<any> {

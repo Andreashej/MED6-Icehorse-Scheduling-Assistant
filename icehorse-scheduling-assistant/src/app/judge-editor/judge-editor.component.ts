@@ -20,7 +20,7 @@ export class JudgeEditorComponent implements OnInit {
 
   ngOnInit() {
     this.settingsProvider.getSettings().subscribe(
-      settings => this.settings = settings[0]
+      settings => this.settings = settings
     );
 
     this.updateService.update.subscribe(

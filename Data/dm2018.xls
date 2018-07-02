@@ -1,0 +1,273 @@
+STA	HorseID	Name_First	Name_Last	Birthday	City	Club	Name_Horse	F	Mobile	Email	T1	T2	V1	F1	PP1	P2	P1	GDA	GDB	GDC	GDT	GDY	
+1	DK2007103978	Kristine	Rask	28/07/2003	Hjørring	Langtved	Seifur fra Skovagergård		26139990	aaen-rask@hotmail.com			1								1		
+2	DK2010201144	Anne Kragh Bang	Jensen	11/07/2002	Dronninglund	Hekla	Hæra fra Birkegaarden		25534097	metteallan@mail.dk											1		
+3	DK2007104776	Anne	Thomsen	26/02/1995	Horsens	Gandur	Haukur fra Dannevang		30298149	annelt@live.dk									1				
+4	IS1998157001	Kari-Nina	Sprunk-Jansen	27/10/1990	Glostrup	DI	Brjánn fra Saudarkroki		27159938	staldstrokkur@gmail.com					1	1	1	1					
+5	DE2005134188	Sarah Rosenberg	Asmussen	21/06/1999	Klampenborg	Kjarni	Baldur vom Hrafnsholt		22726785	dina@roas-advice.dk	1			1	1	1							
+6	IS2006135809	Sofie	Panduro	25/01/1995	Vellinge	Kjarni	Hest fra hest		+46768460838	sofie.v.panduro@gmail.com		1		1	1	1							
+7	IS2001187601	Sofie	Panduro	25/01/1995	Vellinge	Kjarni.	Hest fra hest		+46768460838	sofie.v.panduro@gmail.com		1	1		1	1							
+8	IS1999186184	Amalie	Astrup Jacobi	25/10/1996	Helsingør	Kjarni	Steinn fra Bakkoti		30201604	liap@novonordisk.com					1	1	1						
+9	NO2010105129	Caroline	Marcker Christiansen	08/04/1999	Kongens Lyngby	Kjarni	Dökkvi fra Kleiva		51905284	mettemarcker@gmail.com		1		1									
+10	DK2003102998	Caroline	Reinbach	28/11/2000	Nykøbing Sj	Faxi / DI	Jói Fra Fly		50860066	caroline@reinbach.dk		1		1	1	1	1						
+11	IS2007184743	Michala	Breyen	07/11/1989	Malling	DI	Kolar fra Strandarhöfdi		28299610	michala10_7@msn.com			1										
+12	IS2008258600	Anna Albinus	Skadhede	21/10/1998	Fredensborg	Kjarni	Olga frá Flugumyri		31624255	da@valcon.dk	1		1										
+13	IS2003157677	Anna Albinus	Skadhede	21/10/1998	Fredensborg	Kjarni	Glymur frá Grófargili		31624255	da@valcon.dk			1									1	
+14	DK2004107181	Kate	Nesbit	04/10/2002	Brønderslev	Gári	Askur fra Nørholm Enge		21254556	rln@ml-mejlsted.dk											1		
+15	DK2003103141	Clara	Håkonsson	29/03/1999	Klampenborg	Kjarni	Kolfaxi fra Lilleheden		21260982	charlottehaa@hotmail.com	1		1										
+16	IS2004286692	Clara	Håkonsson	29/03/1999	Klampenborg	Kjarni	Branda fra Holtsmúla		21260982	charlottehaa@hotmail.com					1	1	1						
+17	DK2003204770	Nanna	Lanzky Otto	30/03/2000	Vipperød	Faxi	Ondrun fra Bøgegården		23989833	nannaotto@live.dk				1	1	1	1						
+18	IS2001188221	Isabella	Christensen	11/04/1994	Støvring	Hekla	Ísak fra Efra-Langholti		42648333	vrinsk@hotmail.dk									1				
+19	DK2006107673	Birgitte	Simoni	13/01/1961	Fredensborg	Dyrdilmyri	Kiljan fra Katulabo		26480128	pilehoj@mail.dk	1		1						1				
+20	IS2000156302	Lea	Albeck Laursen	31/07/1997	Aalborg	Tvistur	Eitill frá Leysingjastöðum II		40509614	leaalbeck@gmail.com		1	1										
+21	DK2012100386	Julie Sofie Kryger Franken	Ravnskjær	20/06/1997	Boeslunde	Blossi	Tveggi fra Thealyst		25794108	anja@neblenaturridning.dk												1	
+22	Dk2005205020	Mathilde Hudlebusch	Vestergaard	10/04/2007	Ringkøbing	Nori	Kráka fra Rødstenskær		23656200	putte@vme.dk										1			
+23	DK2006104709	Tine	Dahlberg	01/08/1962	Humlebæk	dyrdilmyri	Hrafnfinnur fra Bakkeholm		41301857	tgdahlberg@gmail.com									1				
+24	DK2011100051	Smilla	Beyer	23/02/2001	Svenstrup J	D.I	Fókus fra Nøddegården		53591235	smilla.b@live.dk	1		1										
+25	IS2008182584	Gerd	Engelbrecht	23/04/1967	Aarup	Skeifa/Tvistur	Janus frá Skúfslæk		30200212	gerd.engelbrecht2304@gmail.com	1			1	1	1	1	1					
+26	IS2005158916	Kristine B.	Jørgensen	18/08/1998	Fredensborg	Kjarni	Týr frá Þverá II		31259171	kbj@villestrup.dk	1		1										
+27	IS2008188336	Kristine B.	Jørgensen	18/08/1998	Fredensborg	Kjarni	Jarl frá Jaðri		31259171	kbj@villestrup.dk	1			1	1								
+28	DK2009100743	Natalie	Fischer	12/02/1999	Otterup	Skeifa	Ímnir fra Egeskov		29921167	natalie@svalur.dk		1		1	1								
+29	DK2006207418	Sophia Bro	Lundgren	25/11/2004	Tisvildeleje	Dyrdilmyri	Ösp fra Bjarup		+ 45 41415933	lundgrensusannebro@gmail.com	1		1								1		
+30	DK2007108705	Freja Krogsgaard	Nørgaard	27/10/2006	Hjørring	Hekla	stjarni fra skarholt		20976662	anjakrogsgaard@yahoo.dk										1			
+31	DK2007204106	Thelma	Hansen	19/06/2004	Holstebro	Snegla	Lippa fra Handbjerghus		26379479	thelma@hansen-arnal.com											1		
+32	DK2007107790	Emilie	Saaugaard-Haaning	26/04/2004	Holstebro	Snegla	Glæpur fra Nr. Tolstrup		29257230	skinbjergvej7@gmail.com	1		1								1		
+33	IS2005137898	Nikoline	Rødtnes	01/04/2006	Svenstrup J	Tvistur	Snarfari frá Syðstu-Görðum		26252399	jovalljunior@hotmail.com	1		1										
+34	IS2006149012	Mette	Aagaard	29/11/1986	Gislinge	DI	Fróði frá Laugabóli		30288341	mettejep@hotmail.com						1	1						
+35	Dk2011200924	Ida Brunsgaard	Pedersen	25/11/2005	Ringkøbing	Nóri	Emma fra Jespersgaarde		26354868	sophieerik@gmail.com										1			
+36	IS2006235614	Sine	Damm Bak	04/01/2004	Højslev	Fjördur	Esja frá Innri-Skeljabrekku		40830449	mdbbh14@gmail.com					1	1							
+37	DK2000205151	Luna	Christensen	30/06/2003	Frederikshavn	Talent Team Nord	Katla fra Skagway		40924147	maiogluna@hotmail.com		1	1										
+38	DK2007208472	Luna	Christensen	30/06/2003	Frederikshavn	talent Team Nord	Nuka fra Nøddegården		40924147	maiogluna@hotmail.com											1		
+39	DK2010100785	Mai	Christensen	26/07/2000	Frederikshavn	Talent Team Nord	Gullfeti fra Gjermose		40924147	maiogluna@hotmail.com												1	
+40	IS2003156302	Mie	Ravn	04/09/1985	Støvring	Tvistur	Vilje fra Leysingjastöðum II		60181415	mieravn@yahoo.dk	1		1						1				
+41	DK2010101091	Emma	Vinge	06/04/2005	Tilst	FLØGRI	Móri fra Helledige		22247777	lars.vinge@vrcenter.dk										1			
+42	IS2002258316	Anna-Maria	Madsen	06/02/1971	Odense N	Frami	Blika fra Hólum		27281970	ams.toscana@cdnet.dk									1				
+43	IS2012287187	Anne Sofie	Jensen	05/04/1999	Vodskov	Hekla	Ljùfa fra Òseyri		60817510	annejen@live.dk												1	
+44	IS2006157025	Siggi	Oskarsson	20/06/1976	Dronninglund	DI - Hekla	Valur fra Keldudal		26747247	siggi-mette@mail.dk								1					
+45	IS2006255474	Charlotte	Cook	24/01/1978	Græsted	Dyrdilmyri	Sæla fra Þóreyjarnúpi		61306722	cfogh@yahoo.com						1	1						
+46	DK2012200336	Charlotte	Cook	24/01/1978	Græsted	Dyrdilmyri	Raudhetta fra Bakkeholm		61306722	cfogh@yahoo.com	1			1	1								
+47	IS2010265792	Charlotte	Cook	24/01/1978	Græsted	Dyrdilmyri	Duld fra Ytra-Dalsgerði		61306722	cfogh@yahoo.com					1	1	1	1					
+48	IS2011287807	Malte Cook	Simonsen	09/10/2008	Græsted	Dyrdilmyri	Hervör fra Blesastöðum		28833365	hestepraksis@bakkeholm.dk										1			
+49	DK2010200971	Marie	Rytter	16/07/1997	Aalborg	Tvistur	Kilja fra Debelmose		61147723	marierytter@hotmail.com		1		1	1	1							
+50	DK2001106391	Marie	Rytter	16/07/1997	Aalborg	Tvistur	Àsi fra Guldbæk		61147723	marierytter@hotmail.com	1			1	1	1							
+51	DK2009100722	Alberte	Bach	05/02/2001	Frederikshavn	Hekla	Þór fra Nr. Harritslev		42290502	albertebach2@gmail.com											1		
+52	IS2003176211	Liva Kjær	Madsen	07/04/2000	Jerup	Hekla	Dúx frá Útnyrðingsstöðum		28294721	helle@tordenskiold.dk												1	
+53	DK2009200535	Iben Merete	Toftvang	23/01/1982	Malling	Toppur	Björgvin fra Bakkebo		40450607	iben_merete@hotmail.com			1						1				
+54	IS2010137637	Anne	Balslev	16/05/1981	Herfølge	DI	Drøsull fra Brautaholti		20471116 / 21782524	nb@kromannreumert.com	1		1										
+55	DK2010200293	Anna Katrine Schang	Rasmussen	12/11/2002	Skanderborg	DI	Yssa fra Ludvigsbjerge		21121187	anna.schang.r@gmail.com											1		
+56	DK2006201534	Michelle	Kaalbye	22/12/1997	Ulstrup	DI	Flippa fra Legind		21377580	michellekaalbye@gmail.com												1	
+57	IS2009281965	Jannike	fogh	25/11/1954	København Ø	Dyrdilmyri	Skutla fra Kvistum		23202904	jannikefogh@gmail.com								1					
+58	IS2002165228	Ida Emilie	Kaasgaard	10/02/1997	Odder	Kjarni	Naskur fra Bulandi		21860021	janedeedee@me.com		1	1										
+59	DK2005100326	Mathilde	Mehlsen	31/07/2006	Birkerød	Dyrdilmyri	Gylfi fra Sall		53639432	storgaard-mehlsen@mail.dk										1			
+60	IS2009182280	Mathilde	Mehlsen	31/07/2006	Birkerød	Dyrdilmyri	Sunnanvindur frá Solvangi		53639432	storgaard-mehlsen@mail.dk										1			
+61	DK2005106359	Amanda	Frandsen	12/03/2005	Skanderborg	CHC	Djarfur fra Ballebækgård		22368002	imbh70@hotmail.com										1			
+62	DK2001102145	Jan	Horndrup Hansen	06/01/1960	Viby J	Toppur	Seifur Fra Bispegården		23301650	mollegaardislandsheste@gmail.com	1								1				
+63	DK2010100819	Jan	Horndrup Hansen	06/01/1960	Viby J	Toppur	Aron fra Møllegaard		23301650	mollegaardislandsheste@gmail.com	1				1	1		1					
+64	DK2012100288	Jan	Horndrup Hansen	06/01/1960	Viby J	Toppur	Segull Fra Møllegaard		23301650	mollegaardislandsheste@gmail.com									1				
+65	DK2011200015	Maja	Nørgaard	13/06/2000	Hedensted	DI	Dalvör fra Eyfjörd		71755643	majanrgaard@gmail.com												1	
+66	IS2003135733	Thomas Vilain	Rørvang	06/10/1993	Vejle	DI	Toppur fra Skardi 1		40881133	charlotte@roervang.dk						1	1						
+67	DK2008108893	Amalie	Møller-San Pedro	22/04/1994	Helsinge	DI	Viktor fra Bækkegården		23445488	amalie@heikir.dk		1		1				1					
+68	IS2010187803	Amalie	Møller-San Pedro	22/04/1994	Helsinge	DI	Huginn fra Blesastödum 1A		23445489	amalie@heikir.dk								1					
+69	DK2005103465	Ida	Bolther Holleufer	26/01/2001	Randers sv	toppur	Ask fra Korsø		29855214	bolhol@email.dk											1		
+70	IS2008265307	Lucas Hedegaard	Sørensen	16/02/2005	Svenstrup J	Tvistur	Blika fra Skriðu		40179858	hedegaard77@hotmail.com					1	1							
+71	IS2009165351	josephine	skadhede	14/06/1999	Åbyhøj	aska	Kræklingur frá Graðshorni		26145353	oleskadhede@privat.dk			1									1	
+72	IS2003286959	Julie	Clauding	03/08/1993	Roskilde	DI	Hetja fra Litlu-Tungu		+4550563105	juliehetja@hotmail.com									1				
+73	IS2001257002	Marie-Louise	Skjønnemand	17/03/1995	Svenstrup J	Tvistur	Frostrós frá Sauðárkróki		61700395	svesken@drifa.dk					1	1	1						
+74	DK2007101272	Amalie Koefoed	Winding	18/10/2000	Århus V	Jökull	Mestur fra Næsset		61722230	amalie.winding@gmail.com		1											
+75	DK2010100243	Jette Reinbach	Wenk	13/03/1960	Nykøbing Sj.	Thor	Kramsi fra Vesterlyng		40338111	wenk@mail.dk									1				
+76	DK2006105418	Randi	Bilberg	09/02/1976	Egtved	DI	Jupiter fra Tudvad		21379485	rbilberg@health.sdu.dk					1	1	1						
+77	IS2010187810	Victoria Sophie	Lundsten-Wilkinson	13/06/1999	Vejby	Dyrdilmyri	Virgill frá Blesastöðum 1a		20 974 973	wilklund@outlook.com		1											
+78	DK2009100212	Elin	Tindskard	21/09/1982	Hirtshals	Hekla	Bassi fra Tindsgarði		40181515	tindskard@gmail.com		1	1										
+79	IS2004165494	Fie	Vittrup Andersen	10/05/2003	Fjerritslev	Ægir	Bjarmi fra Efri-Rauðalæk		22629152	hjortdaldyrefarm@mail.dk											1		
+80	IS2001182458	Clara	Samuelsen	13/11/2006	Frederikshavn	Talent Team Nord	Muni fra Halakoti		61370706	christinaemma@hotmail.com		1	1										
+81	dk2009101230	Lone	Sognstrup	30/10/1969	Holstebro	kostur	fyrsti fra st sognstrup		20786104	sognstrup@altiboxmail.dk								1					
+82	is2001186752	Kristian	Jørgensen	30/06/1980	Frederikshavn	tvistur	sambo fra skarði		40371369	stutteri@starbakken.dk		1		1	1								
+83	DK2005201656	Maja	Kallmayer	09/03/2000	Løkken	Gari	Spes fra Gultentorp		29286939	gl.klitgaard@icloud.com								1					
+84	DK2002103708	Therese Clausen	Brock	23/08/1998	Gistrup	Tvistur	Nóttfari fra Breth		29895103	theresecb@gmail.com		1		1	1	1							
+85	DK2011200349	Louise	Rokkjær Simonsen	16/05/2002	Skanderborg	Gandur	Himnasending fra HCL Hestar		29629177	inro@fvst.dk	1												
+86	DK2001207537	Louise	Rokkjær Simonsen	16/05/2002	Skanderborg	Gandur	Húgsyn fra Skarholt		29629177	inro@fvst.dk											1		
+87	DK2009100008	Eva	Nordahl Duval	21/10/1966	Ballerup	Dyrdilmyri	Viðar fra Bredgaard		21970414	evanordahlduval@gmail.com									1				
+88	Dk2006105387	Anne Sofie	Pedersen	20/11/1993	Haderup	Snegla	Tývar fra Toosholm		23649683	anne-sofie93@hotmail.com				1									
+89	DK2008205422	Astrid	Normann Andersen	06/12/2003	Frederikshavn	Talent Team Nord	Stelpa fra Pikkerbakken		29114294	dna@nrdc.dk											1		
+90	DK2008104212	Sofie	Ladefoged	08/07/2001	Randers SV	DI	Adam fra Staagerup		27453422	britlade@gmail.com											1		
+91	DK2011200282	Janni	Jensen	22/09/1989	Frederikshavn	Hekla	Alfa fra Sysselhaven		41117409	jannijensen89@gmail.com									1				
+92	IS2006286757	Laura	Arboe	28/04/2002	Roskilde	Thor	Fiðla frá Árbæjarhjáleigu		26534626	arboe.ch@privat.dk						1	1						
+93	DK2006204623	Mette	Carlsen	14/03/1986	Odense C	DI	Sigrún fra Ørskov Vestergård		29245912	mette_carlsen_18@hotmail.com		1											
+94	DK2010100252	Martin	Rokkjær Simonsen	04/06/1999	Skanderborg	Gandur	Kraftur fra HCL Hestar		29639077	martin.r.simonsen@gmail.com	1												
+95	DK2009100150	Jessica Hou	Geertsen	07/07/2000	Egtved	Gandur	Skuggi fra Bendstrup		42140229	ehf35@hotmail.com			1									1	
+96	DK2008106308	Cecilie Mau	Philipsen	06/03/2003	Fredensborg	Dyrdilmyri	Bliður fra Eriksholm		21148773	birgittemau@live.dk			1								1		
+97	IS2007266571	Rebekka	Hyldgaard	23/12/1997	Vinderup	DI	Dalvör frá Stafni		31258860	jeaniehyldgaard@gmail.com												1	
+98	DK2003102858	Cecilie	Østergaard	31/10/1995	Skjern	Tvistur	Bersi fra Legind		28308996	cecilie_oestergaard@outlook.dk	1			1	1	1		1					
+99	IS2008155050	Kati	Summa	07/02/1991	Tikøb	DI	Brennir frá Efri-Fitjum		+358407470066	kati.summa@hotmail.com									1				
+100	DK2009100606	Mette Bovbjerg	Sørensen	13/06/1978	Nykøbing M	hrimfaxa	Nøkkvi fra Glyngøre		24236713	info@stutterilegind.dk				1	1								
+101	DK2010100567	Rikke Kaldahl	Reinwald	25/08/1987	Jerup	Hekla	Draumur fra Guldbæk		61462301	rikkereinwald@hotmail.com				1				1					
+102	DK2005105657	Katharina	Kjerulff	06/06/1970	Rudkøbing	Skeifa Svendborg	Sotari fra Stald Stuhr		27845702	katharinakjerulff@gmail.com									1				
+103	IS2006182466	Tania Højvang	Jensen	03/07/1983	Fredensborg	Dyrdilmyri	Oddsteinn frá Halakoti		+45 26830307	completeriding@gmail.com				1	1			1					
+104	IS2004182456	Tania Højvang	Jensen	03/07/1983	Fredensborg	Dyrdilmyri	Fridur frá Halakoti		+45 26830307	completeriding@gmail.com			1										
+105	IS2006158508	Tania Højvang	Jensen	03/07/1983	Fredensborg	Dyrdilmyri	Sjarmi frá Vatnsleysa		+45 26830307	completeriding@gmail.com									1				
+106	DK2001206335	Frigg Worm	Jensen	07/05/2008	Fredensborg	DI	Thórdis fra Nord		+45 26830307	completeriding@gmail.com										1			
+107	DK2011100344	Eva Christine	Dahlquist	12/08/2006	Svenstrup J	Tvistur	Sær fra Flødal		26165891	dahlquistsus@gmail.com			1										
+108	DK2008102214	Anders	Stokbro	24/11/1981	Støvring	Tvistur	Ljosi fra Bispegården		22323705	asbeslagsmed@gmail.com				1	1	1							
+109	DK2009100887	Palma	Sandlau Jacobsen	14/04/2007	Hellerup	Pyttur	Otur fra Ørumgaard		28989090	julie@juliesandlau.com										1			
+110	DK2007104650	Sabine Stilling	Jørgensen	12/02/1987	Odense SV	Skeifa	Djass fra Engholm		28579022	binemus87@gmail.com		1	1						1				
+111	DK2011200840	Sara	Mogensen Larsen	20/04/1997	Fjerritslev	Tvistur	Díva fra Sø-Dís		20127275	sara.disa@me.com	1		1									1	
+112	DK2010100480	Jón	Stenild	30/12/1982	Jerslev J	DI	Eilífur fra Teglborg		28153940	jonstenild@gmail.com				1	1								
+113	Is2010201043	Henrik	Gohn	24/06/1968	Ringsted	Faxi	Rakel fra Skipaskaga		21488829	genette@live.dk					1	1	1						
+114	DK2003106270	Alberte	Kiel Mortensen	03/11/2005	Ringsted	Faxi	Pá fra Eyfjörd		21488829	genette@live.dk		1	1										
+115	IS2006187766	Jeanette Holst	Gohn	07/08/1979	Ringsted	Faxi	Blossi frá Efri-Gegnishólum		21488829	genette@live.dk		1		1	1								
+116	DK2007203158	Ida Sofie	Ellemose	20/05/1996	Varde	Klub Langtved	Brana fra Helledige		21120883	idasofie@ellemose.eu	1												
+117	DK2010200423	Pernille	Mølgaard Nielsen	01/10/1993	Bindslev	Klub Langtved	Stjarna fra Langtved		22 63 30 14	nielsenpernille@aol.com		1	1						1				
+118	DK2009200643	Pernille	Mølgaard Nielsen	01/10/1993	Bindslev	Klub Langtved	Saga fra Langtved		22 63 30 14	nielsenpernille@aol.com								1					
+119	IS2006180500	Julie	Christiansen	22/03/1977	Allingåbro	DI	Stormur frá Hemlu I		27291436	gajuislandsheste@hotmail.com		1		1	1								
+120	IS2007288358	Veronica	Hallquist	03/08/1987	Birkerød	DI	Hjálp frá Þverspyrnu		50182307	veronica.hallquist@gmail.com								1					
+121	DK2009200236	Silje	Pedersen	25/03/2002	Struer	Snegla	Týra fra Engimyri		51711825	silje.b.pedersen@jubii.dk											1		
+122	DK2010100501	Caroline	Djernis	21/07/2001	Sæby	Klub Langtved/Talent Team Nord	Björgvin fra Langtved		25112339	rdjernis@me.com											1		
+123	IS1995165786	Caroline	Djernis	21/07/2001	Sæby	Klub Langtved/ Talent Team Nord	Biskup frá Saurbæ		25112339	rdjernis@me.com											1		
+124	DK2008108842	Michelle Munkholm	Andersen	08/03/1999	Holstebro	Snegla	Dagur fra Debelmose		51778058	lbmandersen@gmail.com		1	1										
+125	IS2006255573	Jette Saltoft	Gram	20/08/1963	Tølløse	Thor	Hera frá Bessastödum		30896115	jette.saltoft.gram@live.dk					1	1	1						
+126	DK2011100406	Jette Saltoft	Gram	20/08/1963	Tølløse	Thor	Kjarval fra Søtofte		30896115	jette.saltoft.gram@live.dk					1	1		1					
+127	DK2010100776	Liv	Egerland	28/04/2001	Aalborg	Tvistur	Seiður fra Jór		31316541	liv@stranden.com	1		1										
+128	IS2005182012	Anna Christine	Ulbæk	29/08/1991	Tikøb	DI	Gjafar fra Hvoli		42366159	kontakt@staldulbaek.dk		1		1									
+129	DK2010100419	Anna Christine	Ulbæk	29/08/1991	Tikøb	DI	Agnar fra Ulbæk		40366101	kontakt@staldulbaek.dk	1			1	1								
+130	DK2010100570	Kent	Ostenfeld	25/09/1973	Fjerritslev	Islænderklubben Ægir	Högni fra Guldbæk		20242002	ostenfeld8@hotmail.com									1				
+131	is2006186183	Gudmundur	Palsson	27/07/1980	Hjørring	hekla	Dokkvi Fra Bakkakoti		81757272	hektor317@gmail.com				1	1			1					
+132	IS2004186138	Askja	Thorsdottir	27/03/2004	Hjørring	Talent team nord	Sjor fra Armoti		81757272	hektor317@gmail.com				1							1		
+133	IS2009186101	Askja	Thorsdottir	27/03/2004	Hjørring	talent team nord	Stapi fra Kirkjubæ		81757272	hektor317@gmail.com											1		
+134	IS2005158856	Frederikke	Stougård	22/09/1994	Holstebro	Snegla	Börkur frá Sólheimum		20997270	frederikke_stougaard@hotmail.com	1												
+135	DK2010100671	Sofie Hessel	Lange	11/01/2005	Mårslet	ASKA	Grímur fra Engholm		61703336	mai.lange@hotmail.com										1			
+136	IS2005165247	Tine	Terkildsen	21/02/1965	Fredensborg	Dyrdilmyri	Hrimnir fra Osi		21186898	tine@skovhjoernet.dk	1		1										
+137	IS2008287033	Anne Sofie	Nielsen	21/02/1965	Fredensborg	Dyrdilmyri	Nott fra Ingolfshvoli		21186898	tine@skovhjoernet.dk			1						1				
+138	IS2005265980	Gulla	Gudnadottir	21/11/1978	Spjald	Di	Hekla fra Akureyri		31441152	gullagudna@gmail.com						1	1						
+139	DK2004105319	Catharina	Smidth	02/11/2001	Kokkedal	DI/Dyrdilmyri	Hápunktur fra Nord		53838222	cath.smidth@gmail.com	1			1	1	1							
+140	DK1998103061	Catharina	Smidth	02/11/2001	Kokkedal	DI/Dyrdilmyri	Nökkvi fra Ryethøj		53838222	c.hitscher@gmail.com		1	1										
+141	IS2006186512	Catharina	Smidth	02/11/2001	Kokkedal	DI/Dyrdilmyri	Óðinn frá Áskoti		53838222	cath.smidth@gmail.com	1		1								1		
+142	IS2008186917	Jørgen	Svendsen	18/05/1964	Fredensborg	Dyrdilmyri	Strumur fra Feti		53413333	js@afpr.dk	1												
+143	IS2010166206	Jørgen	Svendsen	18/05/1964	Fredensborg	Dyrdilmyri	Edall fra Torfunesi		53413333	js@afpr.dk					1	1	1						
+144	DK2007205034	Petrine	Jakobsen	19/08/2003	Græsted	Dyrdilmyri	Hedda fra Nord		40798494	fie@ishesten.dk			1								1		
+145	DK2008106898	Amalie	Reiche	10/09/2001	Helsinge	Dyrdilmyri/DI	Snorri fra Ganges Bro		26368062	am.reiche@hotmail.com											1		
+146	DK2009100193	Anne Sofie	Nielsen	05/10/1972	Græsted	Dyrdilmyri	Ormur fra Nord		40798494	fie@ishesten.dk				1									
+147	is2010187190	Rasmus Møller	Jensen	02/02/1976	Svenstrup J	Tvistur	Garpur fra Kjarri		21452785	rasmus@islandshesteinfo.dk	1			1	1								
+148	dk2011200735	Rasmus Møller	Jensen	02/02/1976	Svenstrup J	Tvistur	Hetja fra Nordal		21452785	rasmus@islandshesteinfo.dk	1			1									
+149	DK2001105598	Cecilie	Sloth	29/03/1973	Farum	Fakur	Vignir fra Tyrevioldsdal		23423452	slothkarina@hotmail.com										1			
+150	DK2008105591	Sarah	Bunzel	04/01/1994	Holstebro	Snegla	Bakkus fra Grundet Hus		28969374	sarah_bunzel@hotmail.com	1		1										
+151	DK2004106590	Nina	Henriksen	22/12/1967	Aarup	Skeifa	Gandur fra Tindbæk		30285100	ninahenriksen.orte@gmail.com	1		1										
+152	IS2008282054	Ida	Olsen Henriksen	21/12/2000	Aarup	DI	Lind fra Læk		21359867	ninahenriksen.orte@gmail.com												1	
+153	Dk2007101101	Nadia	Ejderskov	22/12/2005	København Ø	Pyttur	Brún fra Skarholt		51361939	benedikteejderskov@hotmail.com										1			
+154	IS2006235991	Carla	Guld	30/09/1997	København Ø	Kjarni	Pía frá Hrísum		60483430	carla.guld@gmail.com	1		1									1	
+155	DK2009200775	Ditte	Byskov	02/03/1994	Gørding	DI	Gylling fra Hafdal		53827211	ditte_bh@hotmail.com		1											
+156	DK2003105565	Josefine Lund	Damkier	04/03/2004	Svenstrup J	Tvistur	Stillir fra Susja		22759531	vibeke.damkier@gmail.com	1		1										
+157	DK2005103049	Oline	Damgaard	30/12/2003	Pandrup	Hekla	Andi fra Skyggefaxe		20922212	ingrid.damgaard@skolekom.dk		1									1		
+158	IS2008165890	Caroline	Storch	05/12/1995	Helsinge	Dyrdilmyri	Kapall frá Kommu		40283606	ceb.storch@gmail.com		1		1	1			1					
+159	DK2006107101	Caroline	Storch	05/12/1995	Helsinge	Dyrdilmyri	Glæsir fra Rist		40283606	ceb.storch@gmail.com						1	1						
+160	DK2009200108	Freyja Valdimarsdottir	Hansen	13/02/2004	Farum	Pytla	Gæfa fra Fogedgården		23475755	simeha03@live.com											1		
+161	DK2010101081	Rikke	Sejlund	28/06/1997	Holstebro	Kostur	Sólon Fra Stutteri Sonne		30265902	rikkesejlund@hotmail.com	1		1										
+162	Dk2010101069	Amalie Juul	Hansen	25/03/2001	Dronninglund	Hekla	Fákur Fra Lilleheden		30429060	lailaisheste@hotmail.dk											1		
+163	Dk2005206216	Alma	Frandsen	06/10/2006	Hadsten	DI	Fyrsta fra Stofholmdal		20925078	brian@frandsennet.dk										1			
+164	NL2010100145	Almira Rasch	Stæhr	21/03/2003	Rudkøbing	Skeifa Svendborg	Kjalar van de Valge		24272103	almgus@sol.dk	1		1								1		
+165	DK2012100747	Charlotte	Cook	24/01/1978	Græsted	DI	Logi fra Bakkeholm		61306722	cfogh@yahoo.com					1	1		1					
+166	DK2010100791	Dorte	Rasmussen	13/12/1964	Rude	Blossi	Bragi fra Strø		40338032	mail@tjenergaarden.dk	1		1										
+167	DK2010100471	Jens	Iversen	06/10/1958	Rude	Blossi	Draupnir fra Fjordgården		40338032	mail@tjenergaarden.dk					1	1							
+168	IS2004176173	Maja Nymann	Blitskov	09/10/1997	Frederiksværk	Dyrdilmyri	Ljóni frá Ketilsstöðum		20978879	maja.n.b@hotmail.com	1			1	1	1							
+169	IS2006282014	Maja Nymann	Blitskov	09/10/1997	Frederiksværk	Dyrdilmyri	Hremsa frá Hvoli		20978879	maja.n.b@hotmail.com				1	1	1	1						
+170	IS2008282465	Maja Nymann	Blitskov	09/10/1997	Frederiksværk	Dyrdilmyri	Vægð frá Halakoti		20978879	maja.n.b@hotmail.com												1	
+171	IS2009125350	Freyja Viskum	Madsen	23/07/1996	Ebeltoft	Jökull	Júlíus Sesar frá Kópavogi		22366235	freyjavm@gmail.com								1					
+172	DK2009101250	Line Sofie	Skødt	31/07/1986	Bording	DI	Fjölvi fra Eyfjörd		26133155	linesofie1@hotmail.com		1											
+173	DK2008105794	Terese	Jørgensen	20/08/1989	Hirtshals	Hekla	Ymer fra Østergård		60214577	terese_joergensen14@hotmail.com									1				
+174	DE2007122056	Rikke Schöllhammer	Wolff	04/02/1980	Beder	Aska	Arko vom Heesberg		26144894	rikkewolff@gmail.com		1		1				1					
+175	IS2009186700	Mads	Borg	25/09/1975	Beder	Aska	Oddaverji frá Leirubakka		40869121	rikkeogmads@gmail.com		1		1									
+176	IS2006186919	Sasha	Sommer	12/04/1998	Hørsholm	Kjarni	Meyvant fra Feti		40407654	sasha@sommer-nielsen.dk		1	1										
+177	Is2001101093	Kristian	Tofte Ambo	15/02/1994	Tranekær	Skeifa	Tónn frá Ólafsbergi		41321305	kristiantofte@gmail.com	1		1										
+178	DK2009100354	Kristian	Tofte Ambo	15/02/1994	Tranekær	Skeifa	Viktor fra Kirstineholm		41321305	kristiantofte@gmail.com				1	1								
+179	IS2003184557	Emilie	Tofte Ambo	10/03/1997	Tranekær	skeifa	Dugur frá þúfu í landeyjum		20198359	emilie.tofte@icloud.com	1		1										
+180	IS2005235037	Emilie	Tofte Ambo	10/03/1997	Tranekær	Skeifa	Heilladís frá Akranesi		20198359	emilie.tofte@icloud.com				1									
+181	IS2011186228	Elina	Bering	06/09/1999	København K	Kjarni	Mökkur fra Hellu		31626430	abh@bruun-rasmussen.dk			1										
+182	IS2006180622	Frederikke	Bøgeblad larsen	20/12/1998	Klampenborg	kjarni	Veigur fra Eystri-Hol		23810279	hbrl@mail.dk	1		1										
+183	NO2009115263	Fiona	Bering	18/03/2002	København K	Dyrdilmyri	Funi fra Stall Øvstedal		40 71 85 95	abh@bruun-rasmussen.dk	1		1										
+184	DK2011100278	Christina	Johansen	13/10/1985	Hadsten	DI	Nóri fra Vivildgård		22449940	vivildgaard@hotmail.com		1	1										
+185	DK2008206654	Sigrid Bisgaard	Amstrup	08/10/1997	Rønde	Jökull	Dröfn fra Hcl Hestar		23220310	sigridbisgaard@gmail.com	1		1										
+186	IS2009156955	Emma	Hannover	10/05/1995	København Ø	Kjarni	Styrmir fra skagastrond		28346777	emma_stigandi@hotmail.com		1		1	1	1							
+187	IS1997155733	Roberta	Bøgeblad larsen	23/08/2006	Klampenborg	dyrdilmyri	Fengur fra Balkastöðum		23810279	hbrl@mail.dk										1			
+188	DK2010200633	Sigrid Bisgaard	Amstrup	08/10/1997	Rønde	Jökull	Silja fra Tybrind		23220310	hba2703@gmail.com												1	
+189	Dk2009201002	Hans-Christian	Løwe	10/12/1984	Hadsten	DI	Vigdis fra Vivildgård		22449940	vivildgaard@hotmail.com	1		1										
+190	DE2002135634	Karoline	Dahl Kjærulff	13/07/1999	Hjortshøj	Jökull	Kraftur Von Winkelsett		52383480	karoline@team-kjaerulff.dk				1	1	1							
+191	DK2012100113	Søren	Madsen	21/05/1955	Skjern	DI	Skinfaxi fra Lysholm		?+45 51 29 23 21?	agerskov86@hotmail.com	1			1	1								
+192	DK2002204978	Mathilde	Ditlev	16/03/2004	Nibe	Gauti	Þerna fra Lærkegården		29991601	mathilde.ditlev@gmail.com		1											
+193	IS2004187674	Caroline	Holvad	02/04/1998	Skanderborg	Gandur	Hróður frá Votmúla 2		61620427	caroline777@hotmail.com		1		1	1	1							
+194	DK2009100558	Caroline	Holvad	02/04/1998	Skanderborg	Gandur	Eldur fra Bækgård		61620427	caroline777@hotmail.com	1		1										
+195	IS2002236760	Ida Louise	Jacobsen	03/05/2007	Fredensborg	Hildingur	Spá fra Àlftàròsi		23710084	cafepingo@paradis.dk										1			
+196	DK2003106237	Ida Gerdes	Bastrup	13/11/2003	Helsinge	Dyrdilmyri	Joki fra Bispegården		29650044. 20538724	nee.bastrup@mail.dk		1	1										
+197	DK2010200745	Kristina	Larsen	02/01/1985	Vadum	Tvistur, Hekla	Týra fra Skovgaarden		22437014	k-larsen85@hotmail.com		1		1				1					
+198	DK2006101902	Kristina	Larsen	02/01/1985	Vadum	Tvistur, Hekla	Baldur fra Skovgaarden		22437014	k-larsen85@hotmail.com									1				
+199	DK2010100089	Alberte	Møller San Pedro	05/06/1996	Helsinge	Síða	Arnar fra Store Skovgaard		23445488	alberte1@heikir.dk		1	1										
+200	DK2009200239	Alberte	Møller San Pedro	05/06/1996	Helsinge	Síða	Tigla fra Bækkegården		23445488	alberte1@heikir.dk					1	1	1						
+201	IS2011187010	Alberte	Møller San Pedro	05/06/1996	Helsinge	Síða	Flugar frá Kjarri		23445488	alberte1@heikir.dk									1				
+202	DK2008202284	Henriette	Jefta Pedersen	21/06/1994	Randers NV	DI	Samba fra Tindsgarði		41121578	stumpa_1@hotmail.com		1											
+203	DE2010110333	Steffi	Svendsen	22/01/1977	Bindslev	Tvistur	Sjoli fra Teland		60479169	steffi@teland.dk	1		1										
+204	DK2011200263	camilla	jørgensen	18/11/1990	Hjørring	Hekla	Hind fra Hyldsbæk		23930126	camilla_joergensen13@hotmail.com									1				
+205	IS2002186434	Søren	Madsen	30/12/1986	Skjern	DI	Hárekur frá Hákoti		51292321	agerskov86@hotmail.com					1	1	1						
+206	DE2008122275	Cecilie Katrine	Salling	03/10/1998	Rødding	Dreki	Romeo vom Heesberg		20736066	annemettec@live.dk				1	1	1	1						
+207	NO2010210309	Steffi	Svendsen	22/01/1977	Bindslev	Tvistur	Saeunn fra Teland		60479169	steffi@teland.dk				1	1			1					
+208	IS2010186911	Emil	Fredsgaard Obelitz	28/10/1993	Nykøbing Sj	DI	Víkingur frá Feti		22572583	emilfo@live.dk	1		1										
+209	NO2004115369	Rosemarie	Wodschow	18/02/2001	Hellerup	Dyrdilmyri/Kjarni	Lettir fra Hellesylt		+45 28 40 44 26	rosevdww@gmail.com		1	1										
+210	IS2011187799	Emil	Fredsgaard Obelitz	28/10/1993	Nykøbing Sj	DI	Felix frá Blesastöðum 1A		22572583	emilfo@live.dk									1				
+211	IS2005125086	Caroline Grønbek	Nielsen	02/10/1996	Ringe	Skeifa	Kaldi frá Meðalfelli		29279766	caroline-osk@live.dk				1	1	1							
+212	DK2012200116	Karla	Rokkedal	03/01/2005	Nibe	Hekla / Tvistur	Dana fra Jespersgaarde		42138185	lene@rokkedal-nfc.dk		1											
+213	NO2006210163	Karla	Rokkedal	03/01/2005	Nibe	Hekla / Tvistur	Dimmalimm fra Teland		42138185	lene@rokkedal-nfc.dk										1			
+214	DK2010200946	Matilde	Rokkedal	21/06/2003	Nibe	Hekla / Tvistur	Korka fra Gunderstofte		42138185	lene@rokkedal-nfc.dk	1		1										
+215	DK2011100181	SIgurður Óli	Kristinsson	03/06/1975	Søndersø	DI	Sonur fra Dalur		29370043	siggioli75@gmail.com	1			1	1								
+216	IS2004157898	Sigurður Óli	Kristinsson	03/06/1975	Søndersø	DI	Askur frá Tunguhálsi II		29370043	siggioli75@gmail.com					1	1	1						
+217	IS2006249014	SIgurður Óli	Kristinsson	03/06/1975	Søndersø	DI	Snælda frá Laugabóli		29370043	siggioli75@gmail.com						1	1						
+218	IS2006188028	SIgurður Óli	Kristinsson	03/06/1975	Søndersø	DI	Feykir frá Háholti		29370043	siggioli75@gmail.com	1		1						1				
+219	IS2003125726	Caroline	Poulsen	05/12/1994	Hellerup	Kjarni/DI	Helgi frá Stafholti		20851585	carolinepoulsen@outlook.com	1		1										
+220	DK2006201479	SYs	Pilegaard	11/08/1991	Søndersø	DI	Saga fra vingegården		23710084	cafepingo@paradis.dk					1	1	1						
+221	IS2007287421	Sys	Pilegaard	11/08/1991	Søndersø	DI	Fluga frá Langsstöðum		40887845	info@staldsepi.dk	1		1						1				
+222	No2002115402	Laura Louise	Ullitz Nielsen	01/05/2002	Frederikshavn	DI	Adam fra Skarholt		30253056	ullitz@nielsen.mail.dk		1		1									
+223	DK2011100808	Camilla	Kragh-Hansen	28/07/2003	Gedved	Gandur	Víkingur fra Ørskov Vestergård		42681929	kraghhansen@privat.dk											1		
+224	IS2007123456	Inge-Petrine	Bæk	20/10/1966	Klampenborg	Dyrdilmyri	Ljoska fra Borgareyrum		28557680	i-p@godmail.dk	1								1				
+225	IS2002281966	Alva	Bonde	11/03/2004	Bryrup	Snegla	Ösp frá Kvistum		28833135	alvabonde@gmail.com	1		1								1		
+226	DK2006103744	Rikke	Lønbro	15/07/1988	Silkeborg	n/A	Fákur fra Dommerhuset		29918079	rikke_loenbro@hotmail.com			1						1				
+227	DK2010100779	Rikke	Lønbro	15/07/1988	Silkeborg	n/a	Léttir fra Toften		29918079	rikke_loenbro@hotmail.com									1				
+228	IS2007187806	Anne	Balslev	16/05/1981	Herfølge	DI	Kolfaxi fra Blesastödum		20471116 / 21782524	nb@kromannreumert.com	1		1										
+229	DK2010100188	Anne	Balslev	16/05/1981	Herfølge	DI	Röskur fra Skjød		20471116 / 21782524	nb@kromannreumert.com	1												
+230	DK2010100250	Christina	Johansen	13/10/1985	Hadsten	Di	Töfri fra Vivildgård		22449940	vivildgaard@hotmail.com	1			1	1								
+231	IS2008225604	Laura	Romme	08/02/2003	Egå	Fløgri	Aska fra Hlidsnesi		23933944	rommefamily@gmail.com											1		
+232	IS2006181405	Anna Elvira Marie	Otte	29/10/1996	Frederiksværk	DI	Einir frá Kastalabrekku		53373237	elviraxd@gmail.com									1				
+233	IS2008187133	Lene	Kamm	25/06/1957	Gentofte	Dyrdilmyri	Hlýri fra Hverargarði		40199128	lck@lenekamm.dk	1		1										
+234	DE2004243248	Julie	Sneholt	19/08/1997	Kokkedal	Dyrdilmyri	Fröken vom Forstwald		40444407	ns@bionord.dk			1										
+235	DK2010200562	Inger	Tony Bjørn Hansen	02/09/2005	Svendborg	Skeifa Svendborg	Eyja fra Almindehuse		27200578	mette@praksisarkitekter.dk										1			
+236	DK2010100116	Laura Emilie	Nielsen	14/09/1994	Odense C	Skeifa	Hnokki fra Toftedal		27504191	silver-ira@hotmail.com									1				
+237	IS1998184745	Laura	Hedegaard	27/06/2002	Vemb	Snegla	Fönix fra Sigluvík		40488326	smuksak.ah@gmail.com											1		
+238	IS2010258628	Tanja	Jordan	25/08/1969	København N	Thor	Asia fra Flugumyri II		23302327	tj.arkitekt@gmail.com									1				
+239	DK2009201297	Mona	Jordan	31/01/2003	København N	Thor	Freyja fra Voerladegård		23302327	tj.arkitekt@gmail.com											1		
+240	DK2002105552	Emilie	Bech	08/11/2001	Aalborg	Tvistur	Vakur fra Gultentorp		99409416	mbb@aub.aau.dk					1	1							
+241	IS2009288226	Birgitte	Simoni	13/01/1961	Fredensborg	Dyrdilmyri	Vornótt fra Efra-Langholti		26480128	pilehoj@mail.dk									1				
+242	DK2002103537	Elvira	Rio-Hattesen	01/02/1999	København Ø	Dyrdilmyri	Djarfgengur fra Nekselø		40170320	rio.hattesen@gmail.com												1	
+243	IS2007158620	karin	hassing	03/01/1957	Gilleleje	Dyrdilmyri	Hugur frá Flugumyri II		40784767	k.hassing@mail.dk			1										
+244	IS2008286482	Elisa Engelby	Hegelund	17/02/1982	Gistrup	Hekla	Tjara frá Hábæ		26415597	elisahegelund@hotmail.com	1												
+245	DK2010200875	Silke Agathe Wittus	Johnsen	18/11/2001	Malling	Toppur	Vespa fra Kringlan		42608340	silkewittus@gmail.com											1		
+246	IS2004187622	Mathilde	Kristensen	14/09/1996	Randers NØ	Toppur	Dropi frá Akurgerdi		30514812	mathilde@heier.dk								1					
+247	DK2011200302	Mathilde	Kristensen	14/09/1996	Randers NØ	Toppur	Svartarúna fra Grønkær		30514812	mathilde@heier.dk									1				
+248	DK2013100480	Line	Nielsen	20/05/2005	Løkken	Bjarmí Isheste	Vikivaki fra Kallmayer		21357850	majakallmayer@icloud.com										1			
+249	DK2004207207	Marie	Lybech Juncher	06/10/2003	Spentrup	Toppur	Bjørk fra Solholt		53651720	marielybechjuncher@gmail.com											1		
+250	Dk2007102107	Ann Marie	S. Vestergård	09/07/1975	Morud	Skeifa	Gaski f. Eskildsminde		25111221	a.marie@limkildeislandsheste.dk				1									
+251	DK2009200328	Rikke	Hasager	19/06/1993	Silkeborg	DI	Ásta fra Hindbjerghus		23281360	hasager93@hotmail.com									1				
+252	DK2008108657	Anne Kathrine	Carlsen	27/12/2000	Holstebro	Kostur	Depill fra Vivildgård		53656608	anne.kathrine.carlsen@hotmail.dk												1	
+253	DK2011200055	Ditte	Vang-Pedersen	10/01/1992	Frederiksværk	Dyrdilmyri	Háfóta fra Elmehøj		22932960	fjoelnir@hotmail.com									1				
+254	DK2009100107	Trine	Risvang	11/08/1983	Århus C	DI	Hlýri fra Elvahøj		4520623922	t_risvang@hotmail.com				1									
+255	DE2001143688	Maja	Frank Andresen	08/09/2001	Varde	Dreki	Visír vom birkenhof		22425180	majafrankandresen8@gmail.com			1										
+256	IS2006284811	Lisa	Lambertsen	13/10/1994	Brovst	ÆGIR	Hreyfing frá Tjaldhólum		61543673	lisalambertsen@gmail.com									1				
+257	Is2009101511	Dennis Hedebo	Johansen	10/07/1983	København N	Skeifa	Sindri fra Helgatuni		22826338	dennishedjo@yahoo.dk		1	1										
+258	IS2010135452	Julie	Christiansen	22/03/1977	Allingåbro	DI	Hugsuður frá Melaleiti		27291436	gajuislandsheste@hotmail.com	1		1										
+259	IS2008277186	Caroline	Sandberg	17/09/1991	Skara	Stella	Alfadis frá Bjarnanesi		27291436	carro_hlin@hotmail.com									1				
+260	DK2010100119	Jannie	Kaae	18/02/1962	Faaborg	Skeifa Svendborg	Oddur fra Katulabo		21646424	jannie.kaae@gmail.com								1					
+261	DK2004103694	Lærke	Christensen	23/01/1997	Grenaa	Tvistur	Leikur fra Bispegården		21126802	larke.117@hotmail.com		1	1										
+262	IS2011186702	Anne Frank	Andresen	05/03/1994	Varde	Tvistur	Vökull frá Leirubakka		29134543	annefrankandresen@gmail.com				1									
+263	DK2005107187	Stine Juhl	Madsen	02/10/1986	Vejle	Gandur	Pengill Fra Keilir		22587117	staldjuhl@gmail.com		1							1				
+264	DK2009200142	Mie	Hedebo Knudsen	23/10/1980	Morud	Skeifa	Viktoria fra Oren		23313779	mie_knudsen@hotmail.com				1	1			1					
+265	DK2008102550	Katrine	Skrubbeltrang	30/10/1986	Frederikshavn	Hekla	Isak fra Rendborg		51396677	raudur2002@yahoo.dk				1				1					
+266	FI2009112002	Sölvi	Sigurðarson	12/01/1978	Helsinge	Síða	Freir fra Kaakkola		51883886	solvisig78@gmail.com								1					
+267	IS2000281499	Dorthe Klitgaard	Christensen	16/08/1972	Kongerslev	DI	Lýsa Frá Ásmundarstödum		21606955	info@staldklitgaard.dk	1												
+268	DK2009200320	Laura	Helledie	22/08/2003	Dronninglund	Hekla	Idunn fra Jespersgaarde		51396677	raudur2002@yahoo.dk											1		
+269	DK2008103960	Henriette	Hindbo	12/02/1999	Fredericia	Gandur	Ullinn fra Faurholt		21839686	mysla@live.dk			1										
+270	IS2010158040	Stina	Larsen	17/10/1987	Bording	DI	Finnbogi fra Minni-Reykjum		28686099	stina-is@hotmail.com	1		1										
+271	DK2009100702	Stina	Larsen	17/10/1987	Bording	DI	Snarfari fra Slippen		28686099	stina-is@hotmail.com					1	1	1						
+272	IS2010156416	Johann Runar	Skualson	17/10/1987	Bording	DI	Akur fra Kagadarholi		28686099	stina-is@hotmail.com									1				
