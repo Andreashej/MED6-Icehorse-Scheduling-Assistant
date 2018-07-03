@@ -95,14 +95,6 @@ class Test:
         self.testcode = tc + " " + ageclass
         self.left_rein = lr
         self.right_rein = rr
-        self.sections = []
-        self.start_block = 0
-        self.state = 'unassigned'
-        self.hasAfinal = False
-        self.hasBfinal = False
-        self.start = 0
-        self.end = 0
-        self.track = ''
         self.base_test = tc
         self.senior = s
         self.young_rider = yr
@@ -136,9 +128,24 @@ class Test:
 
         self.prel_time = (self.left_heats + self.right_heats) * self.time_per_heat
         client.close()
-        if tests.find_one({'testcode': self.testcode, 'phase': self.phase, 'section': self.section_id}):
+        test = tests.find_one({'testcode': self.testcode, 'phase': self.phase, 'section': self.section_id})
+        if test:
+            self.state = test['state']
+            self.track = test['track']
+            self.start_block = test['start_block']
+            self.hasAfinal = test['hasAfinal']
+            self.hasBfinal = test['hasBfinal']
+            self.start = test['start']
+            self.end = test['end']
             self.update()
         else:
+            self.state = 'unassigned'
+            self.track = ''
+            self.start_block = 0
+            self.hasAfinal = False
+            self.hasBfinal = False
+            self.start = 0
+            self.end = 0
             self.save()
     
     def to_tuple(self):

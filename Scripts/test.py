@@ -1,5 +1,5 @@
 import CompetitionHandler as ch
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from flask_cors import CORS, cross_origin
 from pymongo import MongoClient
 from bson.objectid import ObjectId
@@ -7,6 +7,7 @@ import math
 import os
 import copy
 import datetime
+import json
 
 ip = '85.191.252.150'
 port = 32773
@@ -24,10 +25,13 @@ def drop_all():
     return jsonify(True)
 
 @app.route('/get-tests/<state>/<track>')
+@app.route('/get-tests')
 @cross_origin(support_credentials=True)
-def get_tests(state, track):
+def get_tests(state = None, track = None):
     client = MongoClient(ip, port)
-    if state == 'unassigned' or track == '':
+    if state == None and track == None:
+        all_tests = client.IcehorseDB.tests.find({'phase': 'Preliminary'})
+    elif state == 'unassigned' or track == '':
         all_tests = client.IcehorseDB.tests.find({'state': state})
     else:
         time = datetime.datetime.utcfromtimestamp(int(state)/1000)
@@ -234,6 +238,26 @@ def join(testcode, phase, section_id1, section_id2):
     section1.pop('_id')
 
     return jsonify(section1)
+
+@app.route('/save-test/<string:test_id>/<string:testcode>/<int:lr>/<int:rr>/<time_per_heat>')
+@cross_origin(support_credentials=True)
+def save_test(test_id, testcode, lr, rr, time_per_heat):
+    client = MongoClient(ip, port)
+    test = client.IcehorseDB.tests.find_one({"_id": ObjectId(test_id)})
+    
+    test['left_rein'] = lr
+    test['right_rein'] = rr
+    test['testcode'] = testcode
+    test['time_per_heat'] = float(time_per_heat)
+
+    test['left_heats'] = math.ceil(test['left_rein'] / test['riders_per_heat'])
+    test['right_heats'] = math.ceil(test['right_rein'] / test['riders_per_heat'])
+    test['prel_time'] = (test['left_heats'] + test['right_heats']) * test['time_per_heat']
+    client.IcehorseDB.tests.update({"_id": ObjectId(test_id)}, test)
+
+    test["_id"] = str(test["_id"])
+
+    return jsonify(test)
 
 @app.route('/set-judge/<fname>/<lname>/<testcode>/<phase>/<date>/')
 @cross_origin(support_credentials=True)

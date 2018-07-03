@@ -1,3 +1,3 @@
 <div class="row h-100 schedule" *ngIf="settings">
-  <app-day class="col day" *ngFor="let day of settings.days" [date]="day" [class.h-100]="settings.hours < 11"></app-day>
+  <app-day class="day col" *ngFor="let day of settings.days" [date]="day" [class.h-100]="settings.hours < 11"></app-day>
 </div>

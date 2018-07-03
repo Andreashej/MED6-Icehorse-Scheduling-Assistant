@@ -21,6 +21,9 @@ export class CompetitionImporterService {
   getTestData(state: string): Observable<any> {
     return this.http.get(this.base_url + 'get-tests/' + state + '/' + this.activeTrack);
   }
+  getAllTestData(): Observable<any> {
+    return this.http.get(this.base_url + 'get-tests');
+  }
 
   refreshTestData(): Observable<any> {
     return this.http.get(this.base_url + 'reload-file' + '/' + this.activeCompetition);
@@ -80,6 +83,10 @@ export class CompetitionImporterService {
 
   create_custom(test, duration): Observable<any> {
     return this.http.get(this.base_url + 'create_custom/' + test + '/' + duration);
+  }
+
+  saveTest(test_id, testcode, lr, rr, timePerHeat): Observable<any> {
+    return this.http.get(this.base_url + 'save-test/' + test_id + '/' + testcode + '/' + lr + '/' + rr + '/' + timePerHeat);
   }
 
 }

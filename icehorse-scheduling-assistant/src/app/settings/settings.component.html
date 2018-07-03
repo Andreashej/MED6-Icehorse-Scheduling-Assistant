@@ -16,4 +16,54 @@
       <input value="{{ settings.import_path }}">
     </div>
   </div>
-</div>
+  <table class="list-group">
+    <tr class="list-group-item row">
+      <th class="col">Testcode</th>
+      <th class="col">Left Rein Riders</th>
+      <th class="col">Right Rein Riders</th>
+      <th class="col-1">Duration</th>
+      <th class="col">Time per heat</th>
+      <th class="col-1"></th>
+    </tr>
+    <tr *ngFor="let test of tests" class="list-group-item row">
+      <td class="col">
+        <input class="form-control" #tc value="{{ test.testcode }}">
+      </td>
+      <td class="col">
+        <input class="form-control" #lr value="{{ test.left_rein }}">
+      </td>
+      <td class="col">
+        <input class="form-control" #rr value="{{ test.right_rein }}">
+      </td>
+      <td class="col-1">
+        {{ test.prel_time }}
+      </td>
+      <td class="col">
+          <input class="form-control" #tph value="{{ test.time_per_heat }}">
+      </td>
+      <td class="col-1">
+        <button class="btn btn-success" type="submit" (click)="saveTest(test._id, tc.value, tph.value, lr.value, rr.value)">Save</button>
+      </td>
+    </tr>
+    <tr class="list-group-item row">
+        <td class="col">
+            <input class="form-control" #tc placeholder="Testcode">
+          </td>
+          <td class="col">
+              <input class="form-control" #base placeholder="Base Test">
+          </td>
+          <td class="col">
+            <input class="form-control" #lr placeholder="Left Rein Riders">
+          </td>
+          <td class="col">
+            <input class="form-control" #rr placeholder="Right Rein Riders">
+          </td>
+          <td class="col-1">
+              
+          </td>
+          <td class="col-1">
+            <button class="btn btn-success" type="submit" (click)="saveTest(test._id, tc.value, tph.value, lr.value, rr.value)">Save</button>
+          </td>
+    </tr>
+  </table>
+  </div>
