@@ -89,4 +89,8 @@ export class CompetitionImporterService {
     return this.http.get(this.base_url + 'save-test/' + test_id + '/' + testcode + '/' + lr + '/' + rr + '/' + timePerHeat);
   }
 
+  createTest(testcode, lr, rr, base): Observable<any> {
+    return this.http.get(this.base_url + 'create-test/' + testcode + '/' + lr + '/' + rr + '/' + base);
+  }
+
 }

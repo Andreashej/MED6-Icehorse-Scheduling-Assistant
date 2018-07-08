@@ -36,4 +36,14 @@ export class SettingsComponent implements OnInit {
     );
   }
 
+  createTest(testcode, lr, rr, base) {
+    this.competitionImporter.createTest(testcode, lr, rr, base).subscribe(
+      () => {
+        this.competitionImporter.getAllTestData().subscribe(
+          data => this.tests = data
+        );
+      }
+    );
+  }
+
 }

@@ -91,14 +91,14 @@ class SportiImporter:
 
 class Test:
 
-    def __init__(self, tc, lr, rr, ageclass = "", s=0, yr=0, j=0):
-        self.testcode = tc + " " + ageclass
+    def __init__(self, tc, lr, rr, bt = ""):
+        self.testcode = tc
         self.left_rein = lr
         self.right_rein = rr
-        self.base_test = tc
-        self.senior = s
-        self.young_rider = yr
-        self.junior = j
+        if bt == "":
+            bt = self.testcode
+
+        self.base_test = bt
 
         client = MongoClient(ip, port)
         db = client.IcehorseDB

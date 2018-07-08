@@ -30,7 +30,7 @@ def drop_all():
 def get_tests(state = None, track = None):
     client = MongoClient(ip, port)
     if state == None and track == None:
-        all_tests = client.IcehorseDB.tests.find({'phase': 'Preliminary'})
+        all_tests = client.IcehorseDB.tests.find({'phase': 'Preliminary'}).sort('testcode', 1)
     elif state == 'unassigned' or track == '':
         all_tests = client.IcehorseDB.tests.find({'state': state})
     else:
@@ -254,10 +254,17 @@ def save_test(test_id, testcode, lr, rr, time_per_heat):
     test['right_heats'] = math.ceil(test['right_rein'] / test['riders_per_heat'])
     test['prel_time'] = (test['left_heats'] + test['right_heats']) * test['time_per_heat']
     client.IcehorseDB.tests.update({"_id": ObjectId(test_id)}, test)
-
+    client.close()
     test["_id"] = str(test["_id"])
 
     return jsonify(test)
+
+@app.route('/create-test/<string:testcode>/<int:lr>/<int:rr>/<bt>')
+@cross_origin(support_credentials=True)
+def create_test(testcode, lr, rr, bt):
+    test = ch.Test(testcode, lr, rr, bt)
+
+    return jsonify(test.to_dict())    
 
 @app.route('/set-judge/<fname>/<lname>/<testcode>/<phase>/<date>/')
 @cross_origin(support_credentials=True)

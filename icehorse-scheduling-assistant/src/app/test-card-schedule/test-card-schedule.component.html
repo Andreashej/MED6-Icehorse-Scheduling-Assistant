@@ -7,13 +7,13 @@
         <i class="fa fa-arrows draghandle" *ngIf="!print"></i>
         <span [class.capitalize]="test.phase !== 'Preliminary' && test.phase !== 'custom'">{{ test.testcode }}<span *ngIf="test.phase !== 'custom'"> {{ test.phase }}</span>
           <span *ngIf="print && test.phase == 'Preliminary'"> Section: {{ test.section + 1 }}</span>
-          <span *ngIf="test.phase == 'Preliminary'">({{ test.right_heats + test.left_heats }})</span>
+          <span *ngIf="test.phase == 'Preliminary' && !print">({{ test.right_heats + test.left_heats }})</span>
         </span>
         <i *ngIf="rowspan <= 10 && !print" class="fa fa-cog edit" [ngbPopover]="testDetails" placement="bottom" container="body"></i>
       </h5>
 
       <h5 class="col time">
-        <i *ngIf="test.prel_time > 125 && test.prel_time < 150" class="fa fa-warning warning noclick" ngbTooltip="This test is longer than 2 hours. Consider splitting it up to give the judges a break."
+        <i *ngIf="test.prel_time > 125 && test.prel_time < 150 && !print" class="fa fa-warning warning noclick" ngbTooltip="This test is longer than 2 hours. Consider splitting it up to give the judges a break."
           container="body" placement="bottom"></i>
         <i *ngIf="test.prel_time >= 150 && !print" class="fa fa-exclamation-circle critical noclick" ngbTooltip="This test is longer than 2,5 hours. You should split it up to give the judges a break."
           container="body" placement="bottom"></i>
