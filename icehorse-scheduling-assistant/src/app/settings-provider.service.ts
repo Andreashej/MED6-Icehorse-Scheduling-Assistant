@@ -7,10 +7,10 @@ import { CompetitionImporterService } from './competition-importer.service';
 export class SettingsProviderService {
 
   constructor(private http: HttpClient, private competitionImporter: CompetitionImporterService) { }
-  url = 'http://127.0.0.1:5000/settings';
+  url = 'http://schedule.tvistur.dk/api/settings/';
 
   getSettings(): Observable<any> {
-    return this.http.get(this.url + '/' +  this.competitionImporter.activeCompetition);
+    return this.http.get(this.url + this.competitionImporter.activeCompetition);
   }
 
 }

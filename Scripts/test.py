@@ -17,7 +17,11 @@ CORS(app, support_credentials=True)
 
 filepath = os.path.dirname(os.path.realpath(__file__))
 
-icehorse = ch.SportiImporter(filepath + '\\..\\Data\\us1_final.xlsx')
+icehorse = ch.SportiImporter(filepath + '/../Data/us1_final.xlsx')
+
+@app.route('/')
+def default():
+    return jsonify('Flask works!')
 
 @app.route('/drop-all')
 def drop_all():
